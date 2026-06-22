@@ -1,0 +1,4 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+20:41:13	58/58	---MCZ	200	added ('OK')	text/plain	date:Mon,%2008%20Jun%202026%2023:41:12%20GMT	https://bymonolog.com/robots.txt		(from )
+20:41:14	262167/262167	---MCZ	200	added ('OK')	text/html	date:Mon,%2008%20Jun%202026%2023:41:14%20GMT	https://bymonolog.com/	/Users/matthew/Documents/navy-output/bymonolog.com/index.html	(from )
+20:41:15	507154/507154	---MCZ	200	added ('OK')	application/javascript	date:Mon,%2008%20Jun%202026%2023:41:14%20GMT	https://bymonolog.com/v2645sy3qzdjNjhiNjUyYmJkNmM2NGE0NGM4ZmUzZTVl/OZ3ljJ_w_BAmsBzWVeD8lfyivfQ	/Users/matthew/Documents/navy-output/bymonolog.com/v2645sy3qzdjNjhiNjUyYmJkNmM2NGE0NGM4ZmUzZTVl/OZ3ljJ_w_BAmsBzWVeD8lfyivfQ	(from https://bymonolog.com/)

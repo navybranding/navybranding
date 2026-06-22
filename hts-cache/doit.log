@@ -1,0 +1,8 @@
+https://bymonolog.com/ -O /Users/matthew/Documents/navy-output -r3 -w -F "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -c4 -%c2 -K0 -v
+File generated automatically on Mon, 08 Jun 2026 20:41:11, do NOT edit
+
+To update a mirror, just launch httrack without any parameters
+The existing cache will be used (and modified)
+To have other options, retype all parameters and launch HTTrack
+To continue an interrupted mirror, just launch httrack without any parameters
+

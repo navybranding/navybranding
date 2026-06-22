@@ -1,0 +1,72 @@
+.t-heading {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.t-mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.t-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.t-eyebrow::before {
+  content: '●';
+  font-size: 0.5em;
+}
+
+.t-display {
+  font-family: var(--font-heading);
+  font-size: clamp(18vw, 22vw, 26vw);
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.t-section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 8vw, 10rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.t-large-body {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.5vw, 2.4rem);
+  line-height: 1.25;
+}
+
+.t-main {
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+  line-height: 1.6;
+}
+
+.t-small {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.text-muted  { color: var(--color-text-muted); }
+.text-dim    { color: var(--color-text-dim); }
+.text-beige  { color: var(--color-beige-light); }

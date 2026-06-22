@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --color-bg: #080807;
+  --color-text: #e8e8e3;
+  --color-text-muted: #8c8c73;
+  --color-text-dim: #6b645c;
+  --color-beige-light: #d1d1c7;
+  --color-beige-mid: #bfbfb1;
+  --color-dark-2: #181715;
+  --color-dark-3: #393632;
+  --color-border: rgba(232, 232, 227, 0.12);
+  --color-border-dim: rgba(107, 100, 92, 0.3);
+
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --transition-base: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-slow: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-expo: 0.65s cubic-bezier(0.16, 1, 0.35, 1);
+  --transition-fast: 0.25s ease;
+
+  --site-max: 1440px;
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --radius-pill: 100px;
+}

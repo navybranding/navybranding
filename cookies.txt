@@ -1,0 +1,5 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+bymonolog.com	TRUE	/	FALSE	1999999999	_cfuvid	JAjWvV.1w2Ag5w4hpaxcDXp4Emq0u.f6IjgD30SrlBc-1780962072.404543-1.0.1.1-hwkrlxQ4kQcmyUdsqfW_.Qq0Mz2eokfR2reKD_CKDBE
+bymonolog.com	TRUE	/	FALSE	1999999999	SameSite	None
+
