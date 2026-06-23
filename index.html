@@ -387,6 +387,27 @@ body::after {
   position: relative;
   background: radial-gradient(ellipse 90% 70% at 50% 50%, transparent 55%, rgba(20, 4, 9, 0.4) 100%), var(--swatch--black-400) !important;
 }
+/* Gradiente oficial da marca como camada de fundo bem discreta e animada — mesma identidade do footer */
+.hero_home_wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url('assets/navy-gradient-pattern.avif');
+  background-size: cover;
+  background-position: 50% 40%;
+  opacity: 0.16;
+  animation: heroGradientDrift 30s ease-in-out infinite alternate;
+}
+@keyframes heroGradientDrift {
+  0%   { background-position: 30% 20%; }
+  50%  { background-position: 70% 60%; }
+  100% { background-position: 45% 75%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero_home_wrap::before { animation: none; }
+}
 /* Textura do canvas do hero: presença bem discreta, não deve competir com o texto */
 .hero_canvas_item { opacity: 0.4; }
 
