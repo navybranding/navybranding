@@ -477,20 +477,20 @@ body::after {
 .footer_canvas_bottom {
   position: relative;
   background-image: url('assets/navy-gradient-pattern.avif');
-  background-size: 145% 145%;
-  background-position: 30% 40%;
-  animation: navyGradientDrift 22s ease-in-out infinite alternate;
+  background-size: cover;
+  background-position: 50% 30%;
+  animation: navyGradientDrift 26s ease-in-out infinite alternate;
 }
 @keyframes navyGradientDrift {
-  0%   { background-position: 25% 35%; }
-  50%  { background-position: 65% 55%; }
-  100% { background-position: 40% 70%; }
+  0%   { background-position: 50% 10%; }
+  50%  { background-position: 50% 55%; }
+  100% { background-position: 50% 25%; }
 }
 @media (prefers-reduced-motion: reduce) {
   .footer_canvas_bottom { animation: none; }
 }
-/* Canvas Three.js: halftone interativo (hold to disrupt) por cima do gradiente, transparente */
-.footer_canvas_item { position: relative; z-index: 1; }
+/* Canvas Three.js do halftone removido — não cabe na IDV da navy */
+.footer_canvas_item { display: none; }
 /* Texto da marca: cor sólida em vez do truque de mix-blend-mode usado sobre o halftone */
 .footer_canvas_content {
   z-index: 2 !important;
@@ -1745,7 +1745,7 @@ html.wf-design-mode .guide_wrap {
 	margin-left: 0.2em;
     }
 }
-</style></div></div><div data-footer-parallax-dark="" class="footer-wrap-dark" style="opacity: 0;"></div><div data-cursor-text="Hold to disrupt" data-canvas-container="" data-cursor-hover="" class="footer_canvas_bottom" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"><canvas data-canvas="" class="footer_canvas_item" data-engine="three.js r160" width="1440" height="360" style="width: 1440px; height: 360px; opacity: 1;"></canvas><div class="footer_canvas_content"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 480 233" fill="none" data-canvas-content="left" class="footer_canvas_svg" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);"><text x="0" y="194" font-family="owners, sans-serif" font-size="200" font-weight="400" fill="currentColor" letter-spacing="0">navy</text></svg><span data-canvas-content="right" class="footer_canvas_text u-text-style-main" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">『marcas 1% melhores a cada dia. 』</span></div></div></footer></main></div><script src="js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="js/webflow.a0aa6ca1.b7683852b8a60d8e.js" type="text/javascript" integrity="sha384-BrZ5RLWViy0IN9p2miOlvxmv2gP1sT/YqoMSDJznd6k1tb7t0mPZus3psGWfkx5f" crossorigin="anonymous"></script><script src="js/gsap.min.js" type="text/javascript"></script><script src="js/ScrollTrigger.min.js" type="text/javascript"></script><script src="js/SplitText.min.js" type="text/javascript"></script><script src="js/CustomEase.min.js" type="text/javascript"></script><script type="text/javascript">gsap.registerPlugin(ScrollTrigger,SplitText,CustomEase);</script><script src="js/three.min.js"></script>
+</style></div></div><div data-footer-parallax-dark="" class="footer-wrap-dark" style="opacity: 0;"></div><div data-canvas-container="" class="footer_canvas_bottom" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"><canvas data-canvas="" class="footer_canvas_item" data-engine="three.js r160" width="1440" height="360" style="width: 1440px; height: 360px; opacity: 1;"></canvas><div class="footer_canvas_content"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 480 233" fill="none" data-canvas-content="left" class="footer_canvas_svg" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);"><text x="0" y="194" font-family="owners, sans-serif" font-size="200" font-weight="400" fill="currentColor" letter-spacing="0">navy</text></svg><span data-canvas-content="right" class="footer_canvas_text u-text-style-main" style="translate: none; rotate: none; scale: none; opacity: 1; transform: translate(0px, 0px);">『marcas 1% melhores a cada dia. 』</span></div></div></footer></main></div><script src="js/jquery-3.5.1.min.dc5e7f18c8.js" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="js/webflow.a0aa6ca1.b7683852b8a60d8e.js" type="text/javascript" integrity="sha384-BrZ5RLWViy0IN9p2miOlvxmv2gP1sT/YqoMSDJznd6k1tb7t0mPZus3psGWfkx5f" crossorigin="anonymous"></script><script src="js/gsap.min.js" type="text/javascript"></script><script src="js/ScrollTrigger.min.js" type="text/javascript"></script><script src="js/SplitText.min.js" type="text/javascript"></script><script src="js/CustomEase.min.js" type="text/javascript"></script><script type="text/javascript">gsap.registerPlugin(ScrollTrigger,SplitText,CustomEase);</script><script src="js/three.min.js"></script>
 <script src="js/lenis.min.js"></script>
 <script src="js/howler.min.js"></script>
 <script src="js/barba.umd.js"></script>
