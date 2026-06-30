@@ -360,6 +360,68 @@ html.lenis, html.lenis body {
 }
   */
 
+
+/* ── Navbar CTA: align sound + aplicar side-by-side ─────────────────── */
+.navbar_cta_wrap {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+.navbar_left_sound_btn {
+  flex-shrink: 0 !important;
+  align-self: center !important;
+  display: flex !important;
+  align-items: center !important;
+}
+.navbar_cta_contain {
+  flex-shrink: 0 !important;
+  align-self: center !important;
+}
+
+/* ── Mobile: form overlay full-screen ───────────────────────────────── */
+@media screen and (max-width: 767px) {
+  #navy-form-overlay { flex-direction: column !important; }
+  .nf-left {
+    width: 100% !important;
+    padding: 1.25rem 1.5rem !important;
+    flex: 0 0 auto !important;
+    min-height: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  }
+  .nf-left-title { font-size: clamp(1.4rem, 5vw, 2rem) !important; }
+  .nf-right { width: 100% !important; flex: 1 !important; overflow-y: auto !important; }
+  .nf-q-label { font-size: clamp(1.1rem, 4vw, 1.5rem) !important; }
+  .nf-done-heading { font-size: clamp(2rem, 10vw, 3.5rem) !important; }
+  .nf-wpp-btn { font-size: 1rem !important; }
+}
+
+/* ── Mobile: hero ─────────────────────────────────────────────────────── */
+@media screen and (max-width: 767px) {
+  .hero_home_contain { padding: 0 1.5rem !important; }
+  .hero_home_scroll_wrap { font-size: clamp(0.85rem, 3.5vw, 1rem) !important; }
+}
+
+/* ── Mobile: services ────────────────────────────────────────────────── */
+@media screen and (max-width: 767px) {
+  .services_home_list { grid-template-columns: 1fr !important; }
+  .services_home_item { width: 100% !important; }
+  .services_home_top  { flex-direction: column !important; }
+}
+
+/* ── Mobile: CTA heading ─────────────────────────────────────────────── */
+@media screen and (max-width: 767px) {
+  .cta_home_heading.u-text-style-display {
+    font-size: clamp(2.5rem, 12vw, 5rem) !important;
+  }
+}
+
+/* ── Mobile: FAQ ─────────────────────────────────────────────────────── */
+@media screen and (max-width: 767px) {
+  .faq_home_item { flex-direction: column !important; }
+  .faq_home_question { font-size: clamp(1rem, 4vw, 1.25rem) !important; }
+}
 </style><script src="js/bundle.js?v=3"></script><script>(function(){function killHowlerBGM(){if(typeof Howler==='undefined'||!Howler._howls)return;Howler._howls.forEach(function(h){if(h._html5||(h._src&&h._src[0]&&h._src[0].indexOf('bgm')>-1)){h.volume(0);try{h.pause();}catch(e){}h.on('play',function(){h.volume(0);});}});}setTimeout(killHowlerBGM,100);setTimeout(killHowlerBGM,500);setTimeout(killHowlerBGM,2000);})();</script><style id="navy-fix">
 @font-face {
   font-family: 'Animo';
@@ -2285,13 +2347,29 @@ document.querySelectorAll('.case-reel-slideshow').forEach(function(reel) {
     prevBtn.disabled = true; nextBtn.disabled = true;
     done.classList.add('nf-active');
 
-    var labels = ['Nome','Marca','Segmento','Fase','Faturamento','Desafio','Quando','WhatsApp','E-mail'];
-    var msg = '*Nova aplicação Navy*
-
-' +
-      answers.map(function(a,i){ return labels[i] + ': ' + (a||'n/a'); }).join('
-');
+    /* labels na ordem correta das perguntas */
+    var labels = ['Nome','Marca','Segmento','Fase','Desafio','Quando','Faturamento','WhatsApp','E-mail'];
+    var msg = '*Nova aplica\u00e7\u00e3o Navy*\n\n' +
+      answers.map(function(a,i){ return labels[i] + ': ' + (a||'n/a'); }).join('\n');
     wppLink.href = 'https://wa.me/' + NAVY_WPP + '?text=' + encodeURIComponent(msg);
+
+    /* Formspree AJAX */
+    var payload = {
+      email: answers[8] || '',
+      nome:  answers[0] || '',
+      marca: answers[1] || '',
+      segmento: answers[2] || '',
+      fase: answers[3] || '',
+      desafio: answers[4] || '',
+      quando: answers[5] || '',
+      faturamento: answers[6] || '',
+      whatsapp: answers[7] || ''
+    };
+    fetch('https://formspree.io/f/mbdvabrk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function() { /* silent – WhatsApp fallback disponível */ });
   }
 
   /* ── Eventos ─────────────────────────────────────────────── */
