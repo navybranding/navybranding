@@ -1,6 +1,6 @@
 /* ─────────────────────────────────────────────────────────────────────────
-   Navy — Case Pages  ·  case.css v3
-   Referência: We Owners + BCC — 2-col label/content, editorial, dark
+   Navy — Case Pages  ·  case.css v4
+   Referência: We Owners + BCC — editorial, rounded, dark
 ───────────────────────────────────────────────────────────────────────── */
 
 :root {
@@ -10,8 +10,9 @@
   --muted:  rgba(244,234,224,.35);
   --border: rgba(244,234,224,.07);
   --glass:  rgba(10,0,6,.64);
-  --gap:    3px;
+  --radius: 14px;
   --px:     clamp(1.75rem, 6vw, 5rem);
+  --img-gap: 0.75rem;
 }
 
 /* ── Reset ───────────────────────────────────────────────────────────── */
@@ -31,7 +32,7 @@ ul    { list-style: none; }
 }
 .cn-nav::before {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(10,0,6,.85) 0%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(10,0,6,.9) 0%, transparent 100%);
   pointer-events: none;
 }
 .cn-nav > * { position: relative; z-index: 1; }
@@ -71,7 +72,7 @@ ul    { list-style: none; }
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(to top,
     rgba(10,0,6,.98) 0%,
-    rgba(10,0,6,.48) 45%,
+    rgba(10,0,6,.50) 45%,
     rgba(10,0,6,.08) 100%);
 }
 
@@ -100,6 +101,7 @@ ul    { list-style: none; }
   background: var(--glass);
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border);
+  border-radius: 6px;
   display: flex; flex-direction: column;
 }
 .cn-card-label {
@@ -115,7 +117,7 @@ ul    { list-style: none; }
   font-size: 0.67rem; line-height: 2.1; color: var(--muted);
 }
 
-/* ── Label — shared (coluna esquerda / topo mobile) ─────────────────── */
+/* ── Label — coluna esquerda / topo mobile ───────────────────────────── */
 .cn-label {
   font-size: 0.56rem; letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--muted);
@@ -147,21 +149,30 @@ ul    { list-style: none; }
 }
 .cn-body strong { color: var(--fg); font-weight: 600; }
 
-/* ── Imagens — full-bleed ────────────────────────────────────────────── */
-.cn-full { width: 100%; overflow: hidden; }
+/* ── Imagens — cantos arredondados (We Owners) ───────────────────────── */
+
+/* Full-bleed com padding lateral + cantos */
+.cn-full {
+  padding: 0 var(--px);
+}
 .cn-full img {
   width: 100%; object-fit: cover; object-position: center;
   height: 62svh; min-height: 360px; display: block;
+  border-radius: var(--radius);
 }
 .cn-full.tall  img { height: 78svh; }
 .cn-full.short img { height: 46svh; }
 
-/* ── Imagens — grid 2 colunas (gap 3px) ─────────────────────────────── */
+/* Grid 2 colunas com cantos */
 .cn-row {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: var(--gap); width: 100%;
+  gap: var(--img-gap);
+  padding: 0 var(--px);
 }
-.cn-row img         { width: 100%; object-fit: cover; aspect-ratio: 4/3; }
+.cn-row img {
+  width: 100%; object-fit: cover; aspect-ratio: 4/3;
+  border-radius: var(--radius);
+}
 .cn-row.port    img { aspect-ratio: 3/4; }
 .cn-row.wide-l      { grid-template-columns: 3fr 2fr; }
 .cn-row.wide-r      { grid-template-columns: 2fr 3fr; }
@@ -169,14 +180,14 @@ ul    { list-style: none; }
 .cn-row.wide-r img  { aspect-ratio: unset; height: 58svh; min-height: 320px; }
 .cn-row.sq     img  { aspect-ratio: 1; }
 
-/* ── Imagens — contidas (com padding) ───────────────────────────────── */
+/* Contidas: já têm padding, só adicionamos cantos */
 .cn-pad         { padding: 0 var(--px); }
-.cn-pad img     { width: 100%; object-fit: cover; aspect-ratio: 16/9; }
+.cn-pad img     { width: 100%; object-fit: cover; aspect-ratio: 16/9; border-radius: var(--radius); }
 .cn-pad.sq  img { aspect-ratio: 1; max-width: 60%; }
 .cn-pad.port img{ aspect-ratio: 2/3; max-width: 46%; }
 
-/* ── Espaçador fino entre grupos de imagem ───────────────────────────── */
-.cn-gap { height: var(--gap); }
+/* Espaçador entre grupos de imagem */
+.cn-gap { height: var(--img-gap); }
 
 /* ── Services — 2 colunas ────────────────────────────────────────────── */
 .cn-services {
@@ -241,6 +252,93 @@ ul    { list-style: none; }
   transition: background .25s ease;
 }
 
+/* ── Casos Relacionados (We Owners style) ────────────────────────────── */
+.cn-related {
+  padding: clamp(4rem, 10svh, 8rem) var(--px) clamp(3rem, 7svh, 6rem);
+  border-top: 1px solid var(--border);
+}
+
+.cn-related-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: clamp(2rem, 4svh, 3.5rem);
+}
+
+.cn-related-title {
+  font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-transform: lowercase;
+  color: var(--fg);
+}
+
+.cn-related-all {
+  font-size: 0.56rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .2s;
+  display: flex; align-items: center; gap: 0.4rem;
+  flex-shrink: 0;
+}
+.cn-related-all:hover { color: var(--fg); }
+
+.cn-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.cn-related-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  cursor: pointer;
+}
+
+.cn-related-img {
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: rgba(244,234,224,.04);
+}
+.cn-related-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .6s cubic-bezier(.25,.46,.45,.94);
+}
+.cn-related-card:hover .cn-related-img img {
+  transform: scale(1.04);
+}
+
+.cn-related-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+.cn-related-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+}
+.cn-related-name {
+  font-size: clamp(1rem, 1.8vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  line-height: 1.1;
+}
+.cn-related-scope {
+  font-size: 0.54rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
 /* ── Footer ──────────────────────────────────────────────────────────── */
 .cn-footer {
   padding: 1.75rem var(--px);
@@ -253,7 +351,7 @@ ul    { list-style: none; }
 
 /* ── Mobile ──────────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
-  :root { --px: 1.25rem; }
+  :root { --px: 1.25rem; --radius: 10px; }
 
   /* Hero */
   .cn-hero-floor { grid-template-columns: 1fr; gap: 1.25rem; padding-bottom: 2rem; }
@@ -261,7 +359,7 @@ ul    { list-style: none; }
   .cn-hero-card  { max-width: 100%; flex-direction: row; flex-wrap: wrap; gap: .5rem 1.5rem; padding: 1rem 1.25rem; }
   .cn-card-div   { display: none; }
 
-  /* Text blocks: empilha (1 coluna) */
+  /* Text blocks */
   .cn-text { grid-template-columns: 1fr; gap: 1rem; }
   .cn-label { padding-top: 0; }
 
@@ -281,6 +379,14 @@ ul    { list-style: none; }
     border-top: 1px solid var(--border);
   }
 
+  /* Related */
+  .cn-related-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .cn-related-title { font-size: clamp(1.3rem, 6vw, 2rem); }
+
   /* Footer */
   .cn-footer { gap: 1.5rem; }
+}
+
+@media (max-width: 479px) {
+  .cn-related-grid { grid-template-columns: 1fr; }
 }

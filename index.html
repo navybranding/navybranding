@@ -478,7 +478,7 @@ html.lenis, html.lenis body {
 }
 </style><script src="js/bundle.js?v=3"></script><script>(function(){function killHowlerBGM(){if(typeof Howler==='undefined'||!Howler._howls)return;Howler._howls.forEach(function(h){if(h._html5||(h._src&&h._src[0]&&h._src[0].indexOf('bgm')>-1)){h.volume(0);try{h.pause();}catch(e){}h.on('play',function(){h.volume(0);});}});}setTimeout(killHowlerBGM,100);setTimeout(killHowlerBGM,500);setTimeout(killHowlerBGM,2000);})();</script><style id="navy-fix">
 /* Animações GSAP travadas offline */
-.navbar_wrap { opacity: 1 !important; }
+.navbar_wrap { opacity: 1 !important; pointer-events: auto !important; visibility: visible !important; }
 /* Hero logo (img): GSAP não acessa paths internos — força visível */
 .hero_home_svg {
   opacity: 1 !important; display: block !important;
@@ -794,7 +794,7 @@ body::after {
 .hero_home_img { display: none !important; }
 
 /* ── Hero overlay: lighten hero background ───────────────────────────── */
-.hero_home_overlay { opacity: 0.3 !important; }
+.hero_home_overlay { opacity: 0.25 !important; }
 
 /* ── Footer: warm gradient overlay above the Three.js halftone canvas ── */
 /* ── 5. FOOTER ────────────────────────────────────────────────────────── */
@@ -1109,6 +1109,18 @@ button, input, textarea, select, label,
     gap: 1rem !important;
   }
 
+  /* ── CTA heading: tamanhos mobile ── */
+  .cta_home_heading {
+    font-size: clamp(2rem, 10vw, 3.5rem) !important;
+    line-height: 0.92 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+  }
+  .cta_home_wrap {
+    margin: 0 0.6rem 0.6rem !important;
+    border-radius: 0.5rem !important;
+  }
+
   /* ── Process ── */
   .process_home_heading {
     font-size: 8.5vw !important;
@@ -1147,6 +1159,7 @@ button, input, textarea, select, label,
 
 /* ── Cases: glass hover + indicador de abertura ─────────────────────── */
 .works_home_link {
+  pointer-events: auto !important;
   position: relative;
 }
 .works_home_cover::after {
