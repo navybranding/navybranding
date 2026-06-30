@@ -522,25 +522,16 @@ body, p, h1,h2,h3,h4,h5,h6, a, span, div, li, button, input, textarea, select, l
 }
 [class*="w-icon"]:before, .w-icon:before { font-family: webflow-icons !important; }
 
-/* ── 2. LETTER-SPACING — apertado, editorial ─────────────────────── */
-/* Display / títulos grandes: tracking negativo */
-.u-text-style-display,
-.u-text-style-h1, .u-text-style-h2, .u-text-style-h3 {
-  letter-spacing: -0.02em !important;
-  font-weight: 700 !important;
-}
-/* Subtítulos */
-.u-text-style-h4, .u-text-style-h5, .u-text-style-h6 {
-  letter-spacing: -0.01em !important;
-}
-/* Corpo de texto: natural, sem espaçamento exagerado */
+/* ── 2. LETTER-SPACING — original do template ────────────────────── */
 body, p, li,
 .u-text-style-main, .u-text-style-small, .u-text-style-large {
-  letter-spacing: 0.01em !important;
+  letter-spacing: 0.07em !important;
 }
-/* Micro / labels uppercase: espaçamento moderado */
-.u-text-style-micro, .u-text-mono,
-.g_eyebrow_text { letter-spacing: 0.10em !important; }
+.u-text-style-display,
+.u-text-style-h1, .u-text-style-h2, .u-text-style-h3,
+.u-text-style-h4, .u-text-style-h5, .u-text-style-h6 {
+  letter-spacing: 0.03em !important;
+}
 
 /* ── 3. COR DE FUNDO — flat, sem gradientes pesados ─────────────── */
 /* Fundo global já definido pelo template como #1C0010 */
