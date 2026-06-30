@@ -477,725 +477,287 @@ html.lenis, html.lenis body {
   }
 }
 </style><script src="js/bundle.js?v=3"></script><script>(function(){function killHowlerBGM(){if(typeof Howler==='undefined'||!Howler._howls)return;Howler._howls.forEach(function(h){if(h._html5||(h._src&&h._src[0]&&h._src[0].indexOf('bgm')>-1)){h.volume(0);try{h.pause();}catch(e){}h.on('play',function(){h.volume(0);});}});}setTimeout(killHowlerBGM,100);setTimeout(killHowlerBGM,500);setTimeout(killHowlerBGM,2000);})();</script><style id="navy-fix">
-/* Animações GSAP travadas offline */
-.navbar_wrap { opacity: 1 !important; pointer-events: auto !important; visibility: visible !important; }
-/* Hero logo (img): GSAP não acessa paths internos — força visível */
-.hero_home_svg {
-  opacity: 1 !important; display: block !important;
-  width: 40% !important; height: auto !important;
-  max-width: 560px !important;
-  margin: 0 auto !important;
-}
-/* Centra o container do logo hero */
-.hero_home_bottom {
-  align-items: center !important;
-  justify-content: center !important;
-}
-.problems_home_wrap { opacity: 1 !important; transform: translate(0%,0%) !important; }
-.problem_home_stat-item { opacity: 1 !important; transform: translate(0%,0%) !important; }
-.problem_home_stat-num { opacity: 1 !important; transform: translate(0%,0%) !important; }
-.gap_home_image { transition: opacity 0.9s ease !important; }
-.lines-split .line { transform: none !important; opacity: 1 !important; }
-/* Services: elements frozen by GSAP at opacity 0 */
-.services_home_item       { opacity: 1 !important; transform: none !important; }
-.services_home_testimonee { opacity: 1 !important; transform: none !important; }
-.services_home_service_item { opacity: 1 !important; }
-/* services_home_img mantido em opacity:0 — são imagens de hover controladas por JS */
-/* Headshots removidos — clientes e founder do studio */
-.gap_home_headshot,
-.services_home_headshot,
-.problems_home_headshot,
-.faq_home_headshot        { display: none !important; }
+/* ════════════════════════════════════════════════════════════════════
+   NAVY — design system override  ·  clean / minimal / editorial
+   ════════════════════════════════════════════════════════════════════ */
 
-/* Gap vazio entre hero e seção 2 */
-[class*="home_spacer"],
-[class*="spacer_block"],
-[class*="hero_spacer"] { display: none !important; }
+/* ── 0. GSAP / Webflow animation unlocks ─────────────────────────── */
+.navbar_wrap              { opacity:1!important; pointer-events:auto!important; visibility:visible!important; }
+.lines-split .line        { transform:none!important; opacity:1!important; }
+.cta_heading_inner        { transform:none!important; translate:none!important; }
+.problems_home_wrap       { opacity:1!important; transform:translate(0%,0%)!important; }
+.problem_home_stat-item   { opacity:1!important; transform:translate(0%,0%)!important; }
+.problem_home_stat-num    { opacity:1!important; transform:translate(0%,0%)!important; }
+.problem_home_stat-p      { transform:none!important; opacity:1!important; }
+.services_home_item       { opacity:1!important; transform:none!important; }
+.services_home_testimonee { opacity:1!important; transform:none!important; }
+.services_home_service_item { opacity:1!important; }
+.services_home_message,
+.services_home_message *  { opacity:1!important; transform:none!important; clip-path:none!important; visibility:visible!important; }
+.services_home_message .lines-split-mask { overflow:visible!important; }
+.services_home_message .lines-split { transform:none!important; opacity:1!important; }
+.gap_home_image           { transition:opacity 0.9s ease!important; }
+html, body                { overflow-x:hidden!important; }
+footer                    { margin-bottom:0!important; padding-bottom:0!important; }
 
-/* Footer colado no chão */
-footer { margin-bottom: 0 !important; padding-bottom: 0 !important; }
-
-
-/* ── Fonte: Owners no lugar de Khteka e Animo ─────────────────────── */
+/* ── 1. FONTE ─────────────────────────────────────────────────────── */
 :root {
-  --_typography---font--primary-family: "owners", Arial, sans-serif !important;
-  --swatch--black-400: #1C0010;
-  --swatch--card-bg: #140009;
-}
-/* display (WE CLOSE / VAMOS CONSTRUIR) e explicit bold ficam em 700 */
-.u-weight-bold,
-.u-text-style-display { font-weight: 700 !important; }
-/* Headings: original usava Khteka weight 500 — Owners 400 é o mais próximo */
-.u-text-style-h1, .u-text-style-h2, .u-text-style-h3,
-.u-text-style-h4, .u-text-style-h5, .u-text-style-h6,
-.u-text-style-main, .u-text-style-small,
-.u-text-style-large, .u-text-style-micro { font-weight: 400 !important; }
-
-/* ── Letter-spacing por categoria ──────────────────────────────────── */
-.u-text-style-h1, .u-text-style-h2, .u-text-style-h3,
-.u-text-style-display { letter-spacing: 0.03em !important; }
-.u-text-style-h4, .u-text-style-h5, .u-text-style-h6 { letter-spacing: 0.05em !important; }
-body, p, li,
-.u-text-style-main, .u-text-style-small,
-.u-text-style-large, .u-text-style-micro { letter-spacing: 0.07em !important; }
-
-/* ── All covers: fill their 7-column grid area (place-items:start shrinks otherwise) */
-.works_home_cover.u-ratio-1-1 {
-  justify-self: stretch !important;
-  width: 100% !important;
-}
-
-/* ── Cover photos: fill card (object-fit needed for portrait PNGs) ──── */
-.works_home_image {
-  width: 100% !important;
-  object-fit: cover !important;
-}
-
-/* ── Cases: floating window hover (approved state) ───────────────────── */
-/* position:absolute is safe here because cover now has definite size from grid */
-.reel_home_cover:has(.case-reel-slideshow) {
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 5 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: rgba(28,0,16,0.72) !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  border-radius: inherit !important;
-}
-.case-reel-slideshow {
-  position: relative !important;
-  width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 3/2 !important;
-  overflow: hidden !important;
-  border-radius: 6px !important;
-  box-shadow: 0 12px 48px rgba(0,0,0,0.55) !important;
-  flex-shrink: 0 !important;
-}
-.case-slide {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.case-slide.is-first { opacity: 1; }
-
-/* ── The NAVY Method section header ────────────────────────────────── */
-.process_heading_svg { display: none !important; }
-
-/* Unhide and style the sr-only h2 as a full-width single-line display heading */
-.process_home_heading {
-  position: static !important;
-  width: 100% !important;
-  height: auto !important;
-  padding: 0 !important;
-  margin: 0 0 2rem 0 !important;
-  overflow: visible !important;
-  clip: auto !important;
-  -webkit-clip-path: none !important;
-  clip-path: none !important;
-  white-space: nowrap !important;
-  font-size: 10.15vw !important;
-  line-height: 0.92 !important;
-  letter-spacing: -0.01em !important;
-  text-transform: uppercase !important;
-  display: block !important;
-  color: currentColor !important;
-  opacity: 1 !important;
-}
-
-/* ── Stats: slider um de cada vez (cross-fade) ───────────────────────── */
-.problem_home_stat-list { display: grid !important; position: relative !important; }
-.problem_home_stat-item {
-  grid-area: 1/1 !important; display: flex !important; flex-flow: column !important;
-  opacity: 0 !important; transition: opacity 0.5s ease !important;
-  pointer-events: none !important; transform: none !important;
-}
-.problem_home_stat-item.is-active {
-  opacity: 1 !important; pointer-events: auto !important;
-}
-.problem_home_stat-num, .problem_home_stat-num .lines-split {
-  transform: none !important; translate: none !important; opacity: 1 !important;
-}
-.problem_home_stat-p { transform: none !important; opacity: 1 !important; }
-
-/* ── Services: slider um de cada vez (cross-fade) ───────────────────── */
-.services_home_list { display: grid !important; position: relative !important; }
-.services_home_item {
-  grid-area: 1/1 !important; display: flex !important; flex-flow: column !important;
-  opacity: 0 !important; transition: opacity 0.5s ease !important;
-  pointer-events: none !important; transform: none !important;
-}
-.services_home_item.is-active {
-  opacity: 1 !important; pointer-events: auto !important;
-}
-.services_home_testimonee {
-  transform: none !important; translate: none !important; opacity: 1 !important;
-}
-.services_home_message {
-  transform: none !important; translate: none !important; opacity: 1 !important;
-}
-.services_home_message, .services_home_message * {
-  color: white !important; opacity: 1 !important; transform: none !important;
-  translate: none !important; clip-path: none !important; visibility: visible !important;
-}
-.services_home_message .lines-split-mask { overflow: visible !important; }
-.services_home_message .lines-split { transform: none !important; opacity: 1 !important; }
-
-/* ── CTA heading: reset off-screen GSAP offset ──────────────────────── */
-.cta_heading_inner { transform: none !important; translate: none !important; }
-
-/* ── CTA: imagem de fundo (silhuetas vermelho) ───────────────────────── */
-.cta_home_overlay { opacity: 0.25 !important; }
-.cta_home_visual {
-  object-fit: cover !important;
-  object-position: center center !important;
-  width: 100% !important;
-  height: 100% !important;
-  filter: brightness(0.85) saturate(0.9) !important;
-}
-.cta_home_bg-overlay {
-  background:
-    linear-gradient(to bottom,
-      rgba(28,0,16,0.50) 0%,
-      transparent 30%,
-      transparent 70%,
-      rgba(28,0,16,0.55) 100%
-    ) !important;
-}
-
-/* ── 1. GRAIN GLOBAL — noise sobre toda a página ────────────────────── */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-}
-
-/* ── 2. HERO — gradiente assimétrico, mancha deslocada ──────────────── */
-.hero_home_wrap {
-  position: relative;
-  background:
-    radial-gradient(
-      ellipse 65% 55% at 45% 70%,
-      rgba(181, 6, 66, 0.38) 0%,
-      rgba(100, 0, 30, 0.22) 45%,
-      transparent 100%
-    ),
-    radial-gradient(
-      ellipse 40% 30% at 70% 40%,
-      rgba(140, 0, 50, 0.15) 0%,
-      transparent 100%
-    ),
-    #1C0010 !important;
-}
-
-
-
-/* ── 4. CASES (bege) — grain para coesão visual ─────────────────────── */
-.works_home_wrap.u-theme-light {
-  position: relative;
-}
-.works_home_wrap.u-theme-light::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.06;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  border-radius: inherit;
-  z-index: 0;
-}
-
-/* ── 6. "O QUE CONSTRUÍMOS" — gradiente centralizado (sem sangrar nas bordas laterais) */
-.services_home_wrap {
-  background:
-    radial-gradient(
-      ellipse 70% 60% at 75% 50%,
-      rgba(181, 6, 66, 0.12) 0%,
-      transparent 80%
-    ),
-    var(--swatch--black-400) !important;
-}
-
-/* ── 7. "THE NAVY METHOD" — gradiente centralizado (sem sangrar nas bordas laterais) */
-.process_home_wrap {
-  background:
-    radial-gradient(
-      ellipse 60% 60% at 25% 50%,
-      rgba(181, 6, 66, 0.12) 0%,
-      transparent 80%
-    ),
-    var(--swatch--black-400) !important;
-}
-/* Remover background dos content-items — evita "caixas" visíveis contra o fundo */
-.process_home_content-item { background-color: transparent !important; }
-
-/* ── Subtítulo "o que construímos" ────────────────────────────────────── */
-.services_home_subtitle {
-  margin-top: 0.75rem;
-  max-width: 28ch;
-  color: var(--swatch--black-50);
-}
-
-/* ── CTA inline dentro de uma resposta do FAQ ───────────────────────── */
-.faq_inline_cta {
-  display: inline-flex;
-  margin-top: 0.75rem;
-  color: var(--swatch--accent-2);
-  text-decoration: none;
-  font-weight: 500;
-}
-.faq_inline_cta:hover { color: var(--swatch--brand-text); }
-
-/* ── Halo do método: círculos concêntricos (negócio → audiência → valores → história → sua marca) ── */
-.process_home_halo {
-  display: flex;
-  justify-content: center;
-  margin: 0 0 var(--_spacing---section-space--small) 0;
-}
-.process_home_halo_svg {
-  width: min(30rem, 72vw);
-  height: auto;
-  filter: drop-shadow(0 0 4rem rgba(181, 6, 66, 0.25));
-}
-@media screen and (max-width: 767px) {
-  .process_home_halo_svg { width: min(22rem, 84vw); }
-}
-
-/* ── CTA — remover clip lateral que criava bordas visíveis ───────────── */
-.cta_home_wrap {
-  clip-path: inset(0 0 1.25% round 0.35rem) !important;
-}
-/* Grain overlay via pseudo-element — sits above background, below globe+text */
-.hero_home_wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: 0;
-}
-/* Globe canvas cover: keep webflow's position:absolute, just lift above grain */
-.hero_home_cover { z-index: 1 !important; }
-/* Text content: position:relative already from webflow, lift above grain */
-.hero_home_contain { z-index: 1 !important; }
-/* Hide the original background image */
-.hero_home_img { display: none !important; }
-
-/* ── Hero overlay: lighten hero background ───────────────────────────── */
-.hero_home_overlay { opacity: 0.25 !important; }
-
-/* ── Footer: warm gradient overlay above the Three.js halftone canvas ── */
-/* ── 5. FOOTER ────────────────────────────────────────────────────────── */
-.footer_canvas_bottom {
-  position: relative;
-}
-.footer_canvas_bottom::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    radial-gradient(
-      ellipse 80% 70% at 25% 60%,
-      rgba(181, 6, 66, 0.35) 0%,
-      rgba(100, 0, 30, 0.18) 50%,
-      transparent 100%
-    ),
-    radial-gradient(
-      ellipse 50% 40% at 80% 30%,
-      rgba(140, 0, 50, 0.12) 0%,
-      transparent 100%
-    );
-  mix-blend-mode: screen;
-}
-/* Texto do footer acima do overlay */
-.footer_canvas_content { z-index: 2 !important; }
-
-/* ── Logos grid — espaçamento e alinhamento ─────────────────────────── */
-.problems_home_collection { width: 75% !important; }
-.problems_home_left { width: 22% !important; flex-shrink: 0 !important; margin-top: 0 !important; padding-top: 8px !important; }
-.problems_home_bottom { align-items: flex-start !important; gap: 3% !important; }
-
-.problems_home_list.u-grid-custom {
-  grid-column-gap: 2.5rem !important;
-  grid-row-gap: 3.5rem !important;
-}
-
-.problems_home_item {
-  padding: 0 !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 0 !important;
-}
-
-div.problems_home_image {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 100% !important;
-  min-height: 80px !important;
-  padding: 12px 16px !important;
-}
-
-div.problems_home_image svg {
-  height: 56px !important;
-  width: auto !important;
-  max-width: 200px !important;
-  flex-shrink: 0 !important;
-}
-
-.problems_home_label {
-  position: static !important;
-  inset: unset !important;
-  margin-top: 10px !important;
-  text-align: center !important;
-  width: 100% !important;
-}
-
-/* ── Hero text: ~20% wider than original 27ch ───────────────────────── */
-.hero_home_content_p.u-text-style-h4 { max-width: 34ch !important; }
-
-/* ── Prevent horizontal overflow globally ────────────────────────────── */
-html, body { overflow-x: hidden !important; }
-
-/* ── 991px: tablet — works covers landscape, not square ─────────────── */
-@media screen and (max-width: 991px) {
-  .works_home_cover.u-ratio-1-1 { aspect-ratio: 16/9 !important; height: auto !important; }
-}
-
-/* ── 767px: tablet / small mobile ───────────────────────────────────── */
-@media screen and (max-width: 767px) {
-  /* ─ Logos: restore column layout blocked by our desktop !importants ─ */
-  .problems_home_left        { width: 100% !important; flex-shrink: unset !important; padding-top: 0 !important; margin-top: 0 !important; }
-  .problems_home_collection  { width: 100% !important; margin-left: 0 !important; }
-  .problems_home_bottom      { flex-flow: column !important; align-items: stretch !important; gap: 0 !important; }
-
-  /* ─ Logo grid: tighten gaps (3.5rem was enormous on narrow screens) ─ */
-  .problems_home_list.u-grid-custom { grid-column-gap: 1.25rem !important; grid-row-gap: 2rem !important; }
-
-  /* ─ Logo cells: smaller container, prevent SVG overflow ─────────── */
-  div.problems_home_image    { min-height: 64px !important; padding: 8px 10px !important; }
-  div.problems_home_image svg { max-width: 100% !important; }
-
-  /* ─ Gap section: headings are position:absolute, column-stacked ──── */
-  /* content div is full-width so heading text needs explicit centering */
-  .gap_home_inner_heading-contain { width: 100% !important; }
-  .gap_home_inner_heading    { white-space: normal !important; text-align: center !important; }
-
-  /* ─ Works: landscape covers on tablet too ────────────────────────── */
-  .works_home_cover.u-ratio-1-1 { aspect-ratio: 16/9 !important; height: auto !important; }
-
-  /* ─ Services: full-width in column layout (no offset margin) ────── */
-  .services_home_stats { width: 100% !important; max-width: 100% !important; }
-  .services_home_top   { width: 100% !important; margin-left: 0 !important; }
-}
-
-/* ── 479px: mobile ───────────────────────────────────────────────────── */
-@media screen and (max-width: 479px) {
-  /* ─ Logo grid: tight mobile grid ────────────────────────────────── */
-  .problems_home_list.u-grid-custom { grid-column-gap: 0.75rem !important; grid-row-gap: 1.25rem !important; }
-
-  /* ─ Logo cells: compact height, uniform SVG, no overflow ────────── */
-  div.problems_home_image    { min-height: 52px !important; padding: 4px 6px !important; }
-  div.problems_home_image svg { height: 32px !important; max-width: 100% !important; }
-
-  /* ─ Gap heading: slightly smaller for narrow viewports ──────────── */
-  .gap_home_inner_heading    { font-size: clamp(2.5rem, 11vw, 5rem) !important; }
-
-  /* ─ Works: stack cover above content ────────────────────────────── */
-  .works_home_link.u-grid-custom { display: flex !important; flex-flow: column !important; }
-  .works_home_cover.u-ratio-1-1  { aspect-ratio: 16/9 !important; height: auto !important; width: 100% !important; }
-}
-
-/* ── OWNERS: única família tipográfica da NAVY ───────────── */
-:root {
-  --_typography---font--primary-family: "owners", Arial, sans-serif;
+  --_typography---font--primary-family:   "owners", Arial, sans-serif;
   --_typography---font--secondary-family: "owners", Arial, sans-serif;
-  --_typography---font--tertiary-family: "owners", Arial, sans-serif;
+  --_typography---font--tertiary-family:  "owners", Arial, sans-serif;
+  --swatch--black-400: #1C0010;
+  --swatch--card-bg:   #140009;
 }
-body,
-p, h1, h2, h3, h4, h5, h6,
-a, span, div, li,
-button, input, textarea, select, label,
-.u-text-style-display, .u-text-style-h1, .u-text-style-h2,
-.u-text-style-h3, .u-text-style-h4, .u-text-style-h5,
-.u-text-style-large, .u-text-style-main, .u-text-style-small,
-.u-text-style-micro, .u-rich-text,
-.footer_nav_span, .g_eyebrow_text,
-.about_modal_p, .about_modal_heading,
-.works_home_inner_title, .works_home_p,
-.faq_home_heading, .accordion_css_item_heading,
-.accordion_css_bottom_rich,
-.services_home_heading, .services_home_message,
-.services_home_testimonee, .services_home_subtitle,
-.about_values_heading, .about_values_p,
-.process_home_heading, .testimonial_home_message,
+body, p, h1,h2,h3,h4,h5,h6, a, span, div, li, button, input, textarea, select, label,
+.u-text-style-display, .u-text-style-h1, .u-text-style-h2, .u-text-style-h3,
+.u-text-style-h4, .u-text-style-h5, .u-text-style-h6,
+.u-text-style-large, .u-text-style-main, .u-text-style-small, .u-text-style-micro,
+.u-rich-text, .footer_nav_span, .g_eyebrow_text, .about_modal_p, .about_modal_heading,
+.works_home_inner_title, .works_home_p, .faq_home_heading, .accordion_css_item_heading,
+.accordion_css_bottom_rich, .services_home_heading, .services_home_message,
+.services_home_testimonee, .services_home_subtitle, .about_values_heading,
+.about_values_p, .process_home_heading, .testimonial_home_message,
 .cta_home_heading, .hero_home_content_p {
   font-family: "owners", Arial, sans-serif !important;
 }
-/* ── Minimalismo: respiração geral entre seções ─────────────────────── */
-/* Mais espaço entre sections dark/light para ritmo editorial */
-.problems_home_wrap {
-  padding-top:    clamp(5rem, 12vh, 10rem) !important;
-  padding-bottom: clamp(5rem, 12vh, 10rem) !important;
-}
-.services_home_contain {
-  padding-top:    clamp(5rem, 12vh, 10rem) !important;
-  padding-bottom: clamp(4rem, 8vh, 7rem)  !important;
-}
-.process_home_wrap {
-  padding-top:    clamp(5rem, 10vh, 9rem)  !important;
-}
-.faq_home_wrap {
-  padding-top:    clamp(4rem, 10vh, 8rem)  !important;
-  padding-bottom: clamp(4rem, 8vh, 7rem)   !important;
-}
+[class*="w-icon"]:before, .w-icon:before { font-family: webflow-icons !important; }
 
-/* ── Works/Cases: header visível + tipografia editorial ─────────────── */
-.works_home_header {
-  display: flex !important;
-  align-items: baseline !important;
-  justify-content: space-between !important;
-  padding-bottom: clamp(2rem, 4vh, 3.5rem) !important;
-  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
-  margin-bottom: clamp(2.5rem, 5vh, 4rem)  !important;
-}
-.works_home_heading.u-text-style-display {
-  font-size:      clamp(1.8rem, 3.5vw, 3rem) !important;
-  font-weight:    700 !important;
-  letter-spacing: -0.025em !important;
-  text-transform: uppercase !important;
-  line-height:    1 !important;
-}
-/* Nomes dos cases maiores e mais impactantes */
-.works_home_inner_title {
-  font-size:      clamp(1.4rem, 2.6vw, 2.4rem) !important;
-  font-weight:    700 !important;
+/* ── 2. LETTER-SPACING — apertado, editorial ─────────────────────── */
+/* Display / títulos grandes: tracking negativo */
+.u-text-style-display,
+.u-text-style-h1, .u-text-style-h2, .u-text-style-h3 {
   letter-spacing: -0.02em !important;
-  line-height:    1.05 !important;
+  font-weight: 700 !important;
 }
-/* Descrição dos cases: leve e legível */
-.works_home_p {
-  font-size:   clamp(0.78rem, 1.1vw, 0.9rem) !important;
-  line-height: 1.65 !important;
-  opacity:     0.62 !important;
-}
-/* Tag de resultado */
-.works_home_result_value {
-  font-size:      clamp(0.85rem, 1.2vw, 1.05rem) !important;
-  font-weight:    700 !important;
-  letter-spacing: 0.01em !important;
-}
-.works_home_result_label {
-  font-size:   clamp(0.72rem, 1vw, 0.85rem) !important;
-  line-height: 1.5 !important;
-  opacity:     0.6 !important;
-}
-
-/* ── Números de stats: mais dramáticos ──────────────────────────────── */
-.problem_home_stat-num .u-text-style-display {
-  font-size:      clamp(4.5rem, 10vw, 9rem) !important;
-  font-weight:    700 !important;
-  letter-spacing: -0.04em !important;
-  line-height:    0.88 !important;
-}
-
-/* ── FAQ: mais minimal ───────────────────────────────────────────────── */
-.faq_home_question {
-  font-size:      clamp(1rem, 1.8vw, 1.35rem) !important;
-  font-weight:    400 !important;
+/* Subtítulos */
+.u-text-style-h4, .u-text-style-h5, .u-text-style-h6 {
   letter-spacing: -0.01em !important;
 }
-.faq_home_answer {
-  font-size:   clamp(0.82rem, 1.2vw, 0.95rem) !important;
-  line-height: 1.7 !important;
-  opacity:     0.7 !important;
+/* Corpo de texto: natural, sem espaçamento exagerado */
+body, p, li,
+.u-text-style-main, .u-text-style-small, .u-text-style-large {
+  letter-spacing: 0.01em !important;
 }
+/* Micro / labels uppercase: espaçamento moderado */
+.u-text-style-micro, .u-text-mono,
+.g_eyebrow_text { letter-spacing: 0.10em !important; }
 
-/* ── Services: nomes dos serviços maiores ───────────────────────────── */
-.services_home_service_item .u-text-style-h4,
-.services_home_service_item .u-text-style-h3 {
-  font-size:      clamp(1.1rem, 2vw, 1.7rem) !important;
-  font-weight:    700 !important;
-  letter-spacing: -0.015em !important;
-}
-
-
-/* Exceção: ícones do Webflow */
-[class*="w-icon"]:before,
-.w-icon:before {
-  font-family: webflow-icons !important;
-}
-
-/* ─── Responsivo global ─────────────────────────────────────────────────
-
-/* ── @991px: tablet ─────────────────────────────────────────────────── */
-@media screen and (max-width: 991px) {
-  /* Logo hero: um pouco maior no tablet */
-  .hero_home_svg { width: 55% !important; max-width: 480px !important; }
-
-  /* Works: cards com largura total */
-  .works_home_link { flex-wrap: wrap !important; }
-}
-
-/* ── @767px: mobile ──────────────────────────────────────────────────── */
-@media screen and (max-width: 767px) {
-
-  /* ── Hero ── */
-  .hero_home_svg {
-    width: 72% !important;
-    max-width: 340px !important;
-  }
-  .hero_home_wrap {
-    padding: 1.25rem !important;
-  }
-
-  /* ── Works/Cases: empilha cover + conteúdo ── */
-  .works_home_link {
-    flex-direction: column !important;
-    gap: 1rem !important;
-  }
-  .works_home_cover.u-ratio-1-1 {
-    width: 100% !important;
-    padding-bottom: 66% !important; /* aspect ratio 3:2 */
-    position: relative !important;
-  }
-  .works_home_content {
-    max-width: 100% !important;
-    width: 100% !important;
-    padding: 0 !important;
-  }
-  .works_home_inner_title {
-    font-size: clamp(1.4rem, 6vw, 2rem) !important;
-  }
-  .works_home_p {
-    font-size: 0.85rem !important;
-  }
-  /* Previa de hover: esconde no mobile (não tem hover em touch) */
-  .reel_home_cover { display: none !important; }
-
-  /* ── Problems: stats em coluna única ── */
-  .problems_home_header {
-    flex-direction: column !important;
-    gap: 1.5rem !important;
-  }
-  .problems_home_collection {
-    width: 100% !important;
-  }
-  .problem_home_stat-num .u-text-style-display {
-    font-size: clamp(3.5rem, 18vw, 6rem) !important;
-  }
-
-  /* ── Services ── */
-  .services_home_contain {
-    padding-left:  1.25rem !important;
-    padding-right: 1.25rem !important;
-  }
-  .services_home_header {
-    flex-direction: column !important;
-    gap: 1rem !important;
-  }
-
-  /* ── CTA heading: tamanhos mobile ── */
-  .cta_home_heading {
-    font-size: clamp(2rem, 10vw, 3.5rem) !important;
-    line-height: 0.92 !important;
-    white-space: normal !important;
-    word-break: break-word !important;
-  }
-  .cta_home_wrap {
-    margin: 0 0.6rem 0.6rem !important;
-    border-radius: 0.5rem !important;
-  }
-
-  /* ── Process ── */
-  .process_home_heading {
-    font-size: 8.5vw !important;
-    white-space: normal !important;
-    word-break: break-word !important;
-  }
-
-  /* ── FAQ ── */
-  .faq_home_wrap {
-    padding-left:  1.25rem !important;
-    padding-right: 1.25rem !important;
-    grid-template-columns: 1fr !important;
-  }
-  .faq_home_question {
-    font-size: 0.95rem !important;
-  }
-
-  /* ── Footer / Global padding ── */
-  [class*="_home_wrap"]:not(.cta_home_wrap) {
-    padding-left:  1.25rem !important;
-    padding-right: 1.25rem !important;
-  }
-  .works_home_wrap.u-theme-light {
-    padding: 3rem 1.25rem !important;
-  }
-}
-
-/* ── @479px: mobile pequeno ──────────────────────────────────────────── */
-@media screen and (max-width: 479px) {
-  .hero_home_svg { width: 85% !important; max-width: 300px !important; }
-
-  .works_home_inner_title {
-    font-size: clamp(1.25rem, 7vw, 1.8rem) !important;
-  }
-}
-
-/* ── Cases: glass hover + indicador de abertura ─────────────────────── */
-.works_home_link {
-  pointer-events: auto !important;
+/* ── 3. COR DE FUNDO — flat, sem gradientes pesados ─────────────── */
+/* Fundo global já definido pelo template como #1C0010 */
+/* Hero: só um brilho vermelho muito sutil no canto inferior */
+.hero_home_wrap {
   position: relative;
+  background:
+    radial-gradient(ellipse 50% 35% at 38% 88%, rgba(181,6,66,.18) 0%, transparent 70%),
+    #1C0010 !important;
 }
+/* Remove imagem de fundo original do hero */
+.hero_home_img { display: none !important; }
+
+/* Seções escuras: fundo flat sem gradiente decorativo */
+.services_home_wrap { background: var(--swatch--black-400) !important; }
+.process_home_wrap  { background: var(--swatch--black-400) !important; }
+.gap_home_wrap      { background: var(--swatch--black-400) !important; }
+.problems_home_wrap { background: var(--swatch--black-400) !important; }
+
+/* ── 4. HERO ─────────────────────────────────────────────────────── */
+.hero_home_svg {
+  opacity:1!important; display:block!important;
+  width:40%!important; height:auto!important;
+  max-width:560px!important; margin:0 auto!important;
+}
+.hero_home_bottom  { align-items:center!important; justify-content:center!important; }
+.hero_home_overlay { opacity:0.15!important; }
+.hero_home_cover   { z-index:1!important; }
+.hero_home_contain { z-index:1!important; }
+.hero_home_content_p.u-text-style-h4 { max-width:34ch!important; }
+
+/* ── 5. HEADSHOTS: remover avatares ─────────────────────────────── */
+.gap_home_headshot,
+.services_home_headshot,
+.problems_home_headshot,
+.faq_home_headshot { display:none!important; }
+
+/* ── 6. THE NAVY METHOD ──────────────────────────────────────────── */
+.process_heading_svg { display:none!important; }
+.process_home_heading {
+  position:static!important; width:100%!important; height:auto!important;
+  padding:0!important; margin:0 0 2rem 0!important;
+  overflow:visible!important; clip:auto!important;
+  -webkit-clip-path:none!important; clip-path:none!important;
+  white-space:nowrap!important; font-size:10.15vw!important;
+  line-height:0.92!important; letter-spacing:-0.03em!important;
+  text-transform:uppercase!important; display:block!important;
+  color:currentColor!important; opacity:1!important;
+}
+.process_home_content-item  { background-color:transparent!important; }
+.process_home_halo {
+  display:flex; justify-content:center;
+  margin:0 0 var(--_spacing---section-space--small) 0;
+}
+.process_home_halo_svg {
+  width:min(28rem,68vw); height:auto;
+  filter:drop-shadow(0 0 3rem rgba(181,6,66,.20));
+}
+
+/* ── 7. STATS: cross-fade ────────────────────────────────────────── */
+.problem_home_stat-list { display:grid!important; position:relative!important; }
+.problem_home_stat-item {
+  grid-area:1/1!important; display:flex!important; flex-flow:column!important;
+  opacity:0!important; transition:opacity 0.5s ease!important;
+  pointer-events:none!important; transform:none!important;
+}
+.problem_home_stat-item.is-active { opacity:1!important; pointer-events:auto!important; }
+.problem_home_stat-num, .problem_home_stat-num .lines-split {
+  transform:none!important; translate:none!important; opacity:1!important;
+}
+/* Número de stats: impactante */
+.problem_home_stat-num .u-text-style-display {
+  font-size:clamp(4.5rem,10vw,9rem)!important;
+  font-weight:700!important; letter-spacing:-0.04em!important; line-height:.88!important;
+}
+
+/* ── 8. SERVICES: cross-fade ─────────────────────────────────────── */
+.services_home_list { display:grid!important; position:relative!important; }
+.services_home_item {
+  grid-area:1/1!important; display:flex!important; flex-flow:column!important;
+  opacity:0!important; transition:opacity 0.5s ease!important;
+  pointer-events:none!important; transform:none!important;
+}
+.services_home_item.is-active { opacity:1!important; pointer-events:auto!important; }
+.services_home_testimonee {
+  transform:none!important; translate:none!important; opacity:1!important;
+}
+
+/* ── 9. WORKS/CASES ──────────────────────────────────────────────── */
+.works_home_cover.u-ratio-1-1 {
+  justify-self:stretch!important; width:100%!important;
+}
+.works_home_image { width:100%!important; object-fit:cover!important; }
+
+/* Hover: simples, sem glass pesado */
+.works_home_cover { position:relative; }
 .works_home_cover::after {
-  content: '';
-  position: absolute; inset: 0; z-index: 2;
-  background: rgba(13,0,8,0.0);
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-  transition: background 0.4s ease, backdrop-filter 0.4s ease;
-  pointer-events: none;
+  content:''; position:absolute; inset:0; z-index:2;
+  background:rgba(13,0,8,0);
+  transition:background 0.35s ease;
+  pointer-events:none;
 }
 .works_home_link:hover .works_home_cover::after {
-  background: rgba(13,0,8,0.45);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background:rgba(13,0,8,0.38);
 }
-/* Tag "ver case" aparece no canto inferior direito ao hover */
-.works_home_cover {
-  position: relative;
+
+/* Reel hover preview */
+.reel_home_cover:has(.case-reel-slideshow) {
+  position:absolute!important; inset:0!important; z-index:5!important;
+  display:flex!important; align-items:center!important; justify-content:center!important;
+  background:rgba(28,0,16,0.68)!important; overflow:hidden!important;
+  padding:0!important; border-radius:inherit!important;
 }
-.works_home_cover .cn-open-tag {
-  position: absolute; bottom: 1.25rem; right: 1.25rem; z-index: 3;
-  font-family: "owners", sans-serif;
-  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--swatch--beige-100);
-  background: rgba(13,0,8,0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(244,234,224,0.12);
-  padding: 0.45rem 0.85rem;
-  opacity: 0; transform: translateY(6px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  pointer-events: none;
+.case-reel-slideshow {
+  position:relative!important; width:100%!important;
+  height:auto!important; aspect-ratio:3/2!important;
+  overflow:hidden!important; border-radius:4px!important;
+  box-shadow:0 8px 36px rgba(0,0,0,0.45)!important; flex-shrink:0!important;
 }
-.works_home_link:hover .cn-open-tag {
-  opacity: 1; transform: translateY(0);
+.case-slide {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; opacity:0; transition:opacity 0.5s ease;
+}
+.case-slide.is-first { opacity:1; }
+
+/* Header dos cases: espaçamento limpo */
+.works_home_header {
+  display:flex!important; align-items:baseline!important;
+  justify-content:space-between!important;
+  padding-bottom:clamp(1.5rem,3vh,2.5rem)!important;
+  border-bottom:1px solid rgba(0,0,0,0.08)!important;
+  margin-bottom:clamp(2rem,4vh,3rem)!important;
+}
+.works_home_heading.u-text-style-display {
+  font-size:clamp(1.6rem,3vw,2.6rem)!important; font-weight:700!important;
+  letter-spacing:-0.025em!important; text-transform:uppercase!important; line-height:1!important;
+}
+.works_home_inner_title {
+  font-size:clamp(1.3rem,2.4vw,2.2rem)!important; font-weight:700!important;
+  letter-spacing:-0.02em!important; line-height:1.05!important;
+}
+.works_home_p {
+  font-size:clamp(0.78rem,1.1vw,0.88rem)!important; line-height:1.65!important; opacity:.6!important;
+}
+
+/* ── 10. CTA ─────────────────────────────────────────────────────── */
+.cta_home_overlay { opacity:0.20!important; }
+.cta_home_visual  { object-fit:cover!important; object-position:center!important; width:100%!important; height:100%!important; filter:brightness(.8) saturate(.9)!important; }
+.cta_home_bg-overlay {
+  background:linear-gradient(to bottom, rgba(28,0,16,.45) 0%, transparent 30%, transparent 70%, rgba(28,0,16,.5) 100%)!important;
+}
+.cta_home_wrap { clip-path:inset(0 0 1.25% round 0.35rem)!important; }
+
+/* ── 11. LOGOS GRID ──────────────────────────────────────────────── */
+.problems_home_collection { width:75%!important; }
+.problems_home_left       { width:22%!important; flex-shrink:0!important; margin-top:0!important; padding-top:8px!important; }
+.problems_home_bottom     { align-items:flex-start!important; gap:3%!important; }
+.problems_home_list.u-grid-custom { grid-column-gap:2.5rem!important; grid-row-gap:3.5rem!important; }
+.problems_home_item       { padding:0!important; align-items:center!important; justify-content:flex-start!important; gap:0!important; }
+div.problems_home_image   { display:flex!important; align-items:center!important; justify-content:center!important; width:100%!important; min-height:80px!important; padding:12px 16px!important; }
+div.problems_home_image svg { height:56px!important; width:auto!important; max-width:200px!important; flex-shrink:0!important; }
+.problems_home_label      { position:static!important; inset:unset!important; margin-top:10px!important; text-align:center!important; width:100%!important; }
+
+/* ── 12. ESPAÇAMENTO DE SEÇÕES ───────────────────────────────────── */
+.problems_home_wrap  { padding-top:clamp(4rem,10vh,8rem)!important; padding-bottom:clamp(4rem,10vh,8rem)!important; }
+.services_home_contain { padding-top:clamp(4rem,10vh,8rem)!important; padding-bottom:clamp(3rem,7vh,6rem)!important; }
+.process_home_wrap   { padding-top:clamp(4rem,9vh,8rem)!important; }
+.faq_home_wrap       { padding-top:clamp(3rem,8vh,7rem)!important; padding-bottom:clamp(3rem,7vh,6rem)!important; }
+
+/* ── 13. RESPONSIVO ──────────────────────────────────────────────── */
+@media screen and (max-width:991px) {
+  .hero_home_svg { width:55%!important; max-width:480px!important; }
+  .works_home_cover.u-ratio-1-1 { aspect-ratio:16/9!important; height:auto!important; }
+  .works_home_link { flex-wrap:wrap!important; }
+}
+@media screen and (max-width:767px) {
+  .hero_home_svg  { width:72%!important; max-width:340px!important; }
+  .hero_home_wrap { padding:1.25rem!important; }
+  .works_home_link { flex-direction:column!important; gap:1rem!important; }
+  .works_home_cover.u-ratio-1-1 { width:100%!important; padding-bottom:66%!important; position:relative!important; }
+  .works_home_content { max-width:100%!important; width:100%!important; padding:0!important; }
+  .works_home_inner_title { font-size:clamp(1.3rem,6vw,1.9rem)!important; }
+  .works_home_p { font-size:.85rem!important; }
+  .reel_home_cover { display:none!important; }
+  .problems_home_left { width:100%!important; flex-shrink:unset!important; padding-top:0!important; margin-top:0!important; }
+  .problems_home_collection { width:100%!important; margin-left:0!important; }
+  .problems_home_bottom { flex-flow:column!important; align-items:stretch!important; gap:0!important; }
+  .problems_home_list.u-grid-custom { grid-column-gap:1.25rem!important; grid-row-gap:2rem!important; }
+  div.problems_home_image { min-height:64px!important; padding:8px 10px!important; }
+  div.problems_home_image svg { max-width:100%!important; }
+  .gap_home_inner_heading-contain { width:100%!important; }
+  .gap_home_inner_heading { white-space:normal!important; text-align:center!important; }
+  .services_home_contain { padding-left:1.25rem!important; padding-right:1.25rem!important; }
+  .services_home_header { flex-direction:column!important; gap:1rem!important; }
+  .services_home_stats  { width:100%!important; max-width:100%!important; }
+  .services_home_top    { width:100%!important; margin-left:0!important; }
+  .cta_home_heading {
+    font-size:clamp(2rem,10vw,3.5rem)!important; line-height:.92!important;
+    white-space:normal!important; word-break:break-word!important;
+  }
+  .cta_home_wrap { margin:0 .6rem .6rem!important; border-radius:.5rem!important; }
+  .process_home_heading { font-size:8.5vw!important; white-space:normal!important; word-break:break-word!important; }
+  .faq_home_wrap { padding-left:1.25rem!important; padding-right:1.25rem!important; grid-template-columns:1fr!important; }
+  [class*="_home_wrap"]:not(.cta_home_wrap) { padding-left:1.25rem!important; padding-right:1.25rem!important; }
+  .works_home_wrap.u-theme-light { padding:3rem 1.25rem!important; }
+  .problem_home_stat-num .u-text-style-display { font-size:clamp(3.5rem,18vw,6rem)!important; }
+  .process_home_halo_svg { width:min(20rem,84vw)!important; }
+}
+@media screen and (max-width:479px) {
+  .hero_home_svg { width:85%!important; max-width:300px!important; }
+  .works_home_inner_title { font-size:clamp(1.2rem,7vw,1.7rem)!important; }
+  .problems_home_list.u-grid-custom { grid-column-gap:.75rem!important; grid-row-gap:1.25rem!important; }
+  div.problems_home_image { min-height:52px!important; padding:4px 6px!important; }
+  div.problems_home_image svg { height:32px!important; max-width:100%!important; }
+  .gap_home_inner_heading { font-size:clamp(2.5rem,11vw,5rem)!important; }
+  .works_home_link.u-grid-custom { display:flex!important; flex-flow:column!important; }
+  .works_home_cover.u-ratio-1-1  { aspect-ratio:16/9!important; height:auto!important; width:100%!important; }
 }
 </style>
 <script>
