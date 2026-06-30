@@ -451,15 +451,18 @@ html.lenis, html.lenis body {
     transform: none !important;
     white-space: nowrap !important;
   }
-  /* Reduz altura excessiva da seção CTA (era 150svh) */
+  /* CTA: altura suficiente pro conteúdo mas sem o 150svh excessivo */
   .cta_home_wrap,
   .cta_home_contain {
-    min-height: auto !important;
+    min-height: min(90svh, 700px) !important;
+    padding-top: 5rem !important;
+    padding-bottom: 4rem !important;
   }
-  /* CTA button: não esticar full width */
+  /* CTA button: não esticar full width, mas com largura mínima confortável */
   .cta_home_header .g_btn_main {
     width: auto !important;
-    align-self: flex-start !important;
+    align-self: center !important;
+    min-width: 0 !important;
   }
 }
 </style><script src="js/bundle.js?v=3"></script><script>(function(){function killHowlerBGM(){if(typeof Howler==='undefined'||!Howler._howls)return;Howler._howls.forEach(function(h){if(h._html5||(h._src&&h._src[0]&&h._src[0].indexOf('bgm')>-1)){h.volume(0);try{h.pause();}catch(e){}h.on('play',function(){h.volume(0);});}});}setTimeout(killHowlerBGM,100);setTimeout(killHowlerBGM,500);setTimeout(killHowlerBGM,2000);})();</script><style id="navy-fix">
@@ -2145,6 +2148,25 @@ document.querySelectorAll('.case-reel-slideshow').forEach(function(reel) {
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncBtn);
   else syncBtn();
+
+  /* ── Fix navbar sound btn alignment ─────────────────────────────────
+     GSAP deixa transforms residuais em navbar_cta_contain e sound_btn.
+     removeProperty é mais confiável que CSS !important contra GSAP ticks.
+  ─────────────────────────────────────────────────────────────────── */
+  function fixNavbarAlign() {
+    var wrap = document.querySelector('.navbar_cta_wrap');
+    var cta  = document.querySelector('.navbar_cta_contain');
+    var snd  = document.querySelector('.navbar_left_sound_btn');
+    if (wrap) {
+      wrap.style.setProperty('display',        'flex',   'important');
+      wrap.style.setProperty('flex-direction', 'row',    'important');
+      wrap.style.setProperty('align-items',    'center', 'important');
+    }
+    if (cta) { cta.style.removeProperty('transform'); cta.style.removeProperty('translate'); }
+    if (snd) { snd.style.removeProperty('transform'); snd.style.removeProperty('translate'); snd.style.setProperty('align-self','center','important'); }
+  }
+  /* Roda em 3 momentos para cobrir o intro animation do GSAP (~1.075s) */
+  [300, 800, 1600].forEach(function(t){ setTimeout(fixNavbarAlign, t); });
 })();
 </script>
 
