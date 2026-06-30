@@ -1205,6 +1205,16 @@ button, input, textarea, select, label,
   document.addEventListener('DOMContentLoaded', function() {
     initSlider('.problem_home_stat-list', 3500);
     initSlider('.services_home_list', 4000);
+
+    // Força navegação dos cards de cases (bypass Webflow IX2)
+    document.querySelectorAll('.works_home_link').forEach(function(el) {
+      var href = el.getAttribute('href');
+      if (!href || !href.includes('/cases/')) return;
+      el.addEventListener('click', function(e) {
+        e.stopImmediatePropagation();
+        window.location.href = href;
+      }, true);
+    });
   });
 })();
 </script>

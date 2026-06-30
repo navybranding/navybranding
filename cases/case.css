@@ -1,20 +1,20 @@
 /* ─────────────────────────────────────────────────────────────────────────
-   Navy — Case Pages  ·  case.css v2
-   Referência: BCC / Blnks Case Company — editorial, dark, minimalista
+   Navy — Case Pages  ·  case.css v3
+   Referência: We Owners + BCC — 2-col label/content, editorial, dark
 ───────────────────────────────────────────────────────────────────────── */
 
 :root {
   --bg:     #0A0006;
   --fg:     #F4EAE0;
   --accent: #B50642;
-  --muted:  rgba(244,234,224,.38);
+  --muted:  rgba(244,234,224,.35);
   --border: rgba(244,234,224,.07);
   --glass:  rgba(10,0,6,.64);
   --gap:    3px;
   --px:     clamp(1.75rem, 6vw, 5rem);
 }
 
-/* ── Reset ─────────────────────────────────────────────────────────────── */
+/* ── Reset ───────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html  { background: var(--bg); color: var(--fg); scroll-behavior: smooth; overflow-x: hidden; }
 body  { font-family: "owners", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -22,7 +22,7 @@ img   { display: block; max-width: 100%; }
 a     { color: inherit; text-decoration: none; }
 ul    { list-style: none; }
 
-/* ── Nav ───────────────────────────────────────────────────────────────── */
+/* ── Nav ─────────────────────────────────────────────────────────────── */
 .cn-nav {
   position: fixed; top: 0; inset-inline: 0; z-index: 100;
   display: grid; grid-template-columns: 1fr auto 1fr;
@@ -37,42 +37,42 @@ ul    { list-style: none; }
 .cn-nav > * { position: relative; z-index: 1; }
 
 .cn-nav-back {
-  font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase;
+  font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase;
   color: var(--muted); display: flex; align-items: center; gap: 0.5rem;
   transition: color .2s; justify-self: start;
 }
-.cn-nav-back::before { content: '←'; transition: opacity .2s; }
+.cn-nav-back::before { content: '←'; }
 .cn-nav-back:hover   { color: var(--fg); }
 
 .cn-nav-logo {
   font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em;
-  text-transform: uppercase; color: rgba(244,234,224,.75); justify-self: center;
+  text-transform: uppercase; color: rgba(244,234,224,.65); justify-self: center;
   transition: color .2s;
 }
 .cn-nav-logo:hover { color: var(--fg); }
 
 .cn-nav-next {
-  font-size: 0.6rem; letter-spacing: 0.24em; text-transform: uppercase;
+  font-size: 0.58rem; letter-spacing: 0.26em; text-transform: uppercase;
   color: var(--muted); display: flex; align-items: center; gap: 0.5rem;
   transition: color .2s; justify-self: end;
 }
 .cn-nav-next::after { content: '→'; }
 .cn-nav-next:hover  { color: var(--fg); }
 
-/* ── Hero ──────────────────────────────────────────────────────────────── */
+/* ── Hero ────────────────────────────────────────────────────────────── */
 .cn-hero {
   position: relative; height: 100svh; min-height: 640px;
   display: flex; flex-direction: column; justify-content: flex-end;
   overflow: hidden;
 }
-.cn-hero-bg               { position: absolute; inset: 0; }
-.cn-hero-bg img           { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+.cn-hero-bg           { position: absolute; inset: 0; }
+.cn-hero-bg img       { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
 .cn-hero-bg::after {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(to top,
-    rgba(10,0,6,.97) 0%,
-    rgba(10,0,6,.50) 45%,
-    rgba(10,0,6,.10) 100%);
+    rgba(10,0,6,.98) 0%,
+    rgba(10,0,6,.48) 45%,
+    rgba(10,0,6,.08) 100%);
 }
 
 .cn-hero-floor {
@@ -81,9 +81,10 @@ ul    { list-style: none; }
   align-items: end; gap: 1.5rem 3rem;
   padding: 0 var(--px) clamp(2.5rem, 6svh, 5rem);
 }
-.cn-hero-left  { display: flex; flex-direction: column; gap: 1.25rem; }
+.cn-hero-left { display: flex; flex-direction: column; gap: 1.25rem; }
+
 .cn-hero-index {
-  font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+  font-size: 0.58rem; letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--muted);
 }
 .cn-hero-title {
@@ -99,11 +100,11 @@ ul    { list-style: none; }
   background: var(--glass);
   backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border);
-  display: flex; flex-direction: column; gap: 0;
+  display: flex; flex-direction: column;
 }
 .cn-card-label {
-  font-size: 0.54rem; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: .55rem;
+  font-size: 0.52rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: .5rem;
 }
 .cn-card-scope {
   font-size: 0.76rem; font-weight: 600; letter-spacing: .04em;
@@ -111,53 +112,56 @@ ul    { list-style: none; }
 }
 .cn-card-div   { height: 1px; background: var(--border); margin: 1.1rem 0; }
 .cn-card-services {
-  font-size: 0.67rem; line-height: 2; color: var(--muted);
+  font-size: 0.67rem; line-height: 2.1; color: var(--muted);
 }
 
-/* ── Text blocks ───────────────────────────────────────────────────────── */
+/* ── Label — shared (coluna esquerda / topo mobile) ─────────────────── */
+.cn-label {
+  font-size: 0.56rem; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 0.3rem;
+}
+
+/* ── Text blocks — padrão We Owners: label esq. + conteúdo dir. ─────── */
 .cn-text {
-  padding: clamp(5rem, 11svh, 9rem) var(--px);
-  max-width: 920px;
+  display: grid;
+  grid-template-columns: clamp(8rem, 28%, 18rem) 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  padding: clamp(3.5rem, 8svh, 7rem) var(--px);
+  border-top: 1px solid var(--border);
+  align-items: start;
 }
 .cn-text.sm {
-  padding-top:    clamp(3.5rem, 7svh, 6.5rem);
-  padding-bottom: clamp(3.5rem, 7svh, 6.5rem);
+  padding-top:    clamp(3rem, 6svh, 5.5rem);
+  padding-bottom: clamp(3rem, 6svh, 5.5rem);
 }
 
-.cn-label {
-  font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 2rem;
-  display: flex; align-items: center; gap: 1.25rem;
-}
-.cn-label::after {
-  content: ''; flex: 0 0 4rem; height: 1px; background: var(--border);
-}
-
+/* Corpo — coluna direita */
 .cn-body-lg {
   font-size: clamp(1.55rem, 3vw, 2.65rem); font-weight: 400;
-  line-height: 1.28; letter-spacing: -.012em; color: var(--fg);
+  line-height: 1.3; letter-spacing: -.012em; color: var(--fg);
 }
 .cn-body {
-  font-size: clamp(.98rem, 1.7vw, 1.3rem); font-weight: 400;
-  line-height: 1.6; color: rgba(244,234,224,.72); max-width: 54ch;
+  font-size: clamp(1rem, 1.7vw, 1.3rem); font-weight: 400;
+  line-height: 1.75; color: rgba(244,234,224,.68);
 }
+.cn-body strong { color: var(--fg); font-weight: 600; }
 
-/* ── Images — full-bleed (no padding) ─────────────────────────────────── */
+/* ── Imagens — full-bleed ────────────────────────────────────────────── */
 .cn-full { width: 100%; overflow: hidden; }
 .cn-full img {
   width: 100%; object-fit: cover; object-position: center;
-  height: 62svh; min-height: 360px;
-  display: block;
+  height: 62svh; min-height: 360px; display: block;
 }
 .cn-full.tall  img { height: 78svh; }
 .cn-full.short img { height: 46svh; }
 
-/* ── Images — 2-column row (full-bleed, 3px gap) ──────────────────────── */
+/* ── Imagens — grid 2 colunas (gap 3px) ─────────────────────────────── */
 .cn-row {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: var(--gap); width: 100%;
 }
-.cn-row img { width: 100%; object-fit: cover; aspect-ratio: 4/3; }
+.cn-row img         { width: 100%; object-fit: cover; aspect-ratio: 4/3; }
 .cn-row.port    img { aspect-ratio: 3/4; }
 .cn-row.wide-l      { grid-template-columns: 3fr 2fr; }
 .cn-row.wide-r      { grid-template-columns: 2fr 3fr; }
@@ -165,16 +169,16 @@ ul    { list-style: none; }
 .cn-row.wide-r img  { aspect-ratio: unset; height: 58svh; min-height: 320px; }
 .cn-row.sq     img  { aspect-ratio: 1; }
 
-/* ── Images — contained (has side padding, editorial float feel) ──────── */
-.cn-pad { padding: 0 var(--px); }
-.cn-pad img { width: 100%; object-fit: cover; aspect-ratio: 16/9; }
+/* ── Imagens — contidas (com padding) ───────────────────────────────── */
+.cn-pad         { padding: 0 var(--px); }
+.cn-pad img     { width: 100%; object-fit: cover; aspect-ratio: 16/9; }
 .cn-pad.sq  img { aspect-ratio: 1; max-width: 60%; }
-.cn-pad.port img { aspect-ratio: 2/3; max-width: 46%; }
+.cn-pad.port img{ aspect-ratio: 2/3; max-width: 46%; }
 
-/* ── Thin spacer between image groups ─────────────────────────────────── */
+/* ── Espaçador fino entre grupos de imagem ───────────────────────────── */
 .cn-gap { height: var(--gap); }
 
-/* ── Services ──────────────────────────────────────────────────────────── */
+/* ── Services — 2 colunas ────────────────────────────────────────────── */
 .cn-services {
   display: grid; grid-template-columns: 1fr 1fr;
   padding: 0 var(--px);
@@ -185,21 +189,29 @@ ul    { list-style: none; }
   padding-left: clamp(2rem, 5vw, 4.5rem);
   border-left: 1px solid var(--border);
 }
-.cn-services-col .cn-label { margin-bottom: 1.5rem; }
+.cn-services-col .cn-label {
+  padding-top: 0;
+  margin-bottom: 1.75rem;
+}
 .cn-services-list li {
   font-size: clamp(.9rem, 1.6vw, 1.18rem); color: var(--fg); font-weight: 400;
   padding: .65rem 0; border-bottom: 1px solid var(--border);
 }
 .cn-services-list li:first-child { border-top: 1px solid var(--border); }
 
-/* ── CTA ───────────────────────────────────────────────────────────────── */
+/* ── CTA ─────────────────────────────────────────────────────────────── */
 .cn-cta {
   padding: clamp(6rem, 15svh, 13rem) var(--px) clamp(5rem, 10svh, 9rem);
-  text-align: center; border-top: 1px solid var(--border);
+  text-align: center;
+  border-top: 1px solid var(--border);
 }
-.cn-cta .cn-label { justify-content: center; }
-.cn-cta .cn-label::after { flex: 0; }
-
+.cn-cta .cn-label {
+  color: var(--accent);
+  letter-spacing: 0.28em;
+  padding-top: 0;
+  display: block;
+  margin-bottom: 2rem;
+}
 .cn-cta-title {
   font-size: clamp(3rem, 8vw, 7rem); font-weight: 700;
   letter-spacing: -.04em; text-transform: uppercase;
@@ -207,7 +219,6 @@ ul    { list-style: none; }
   margin: 0 auto clamp(3rem, 5svh, 4.5rem);
 }
 
-/* Botão estilo main site: texto à esquerda + bloco de seta separado */
 .cn-cta-btn {
   display: inline-flex; align-items: center;
   padding: 0.3rem 0.3rem 0.3rem 1.4rem;
@@ -217,7 +228,6 @@ ul    { list-style: none; }
   font-size: 0.75rem; letter-spacing: 0.03em;
   font-weight: 500; color: var(--bg);
   transition: background .25s ease;
-  text-transform: none;
 }
 .cn-cta-btn:hover { background: var(--accent); color: var(--fg); }
 .cn-cta-btn:hover .cn-btn-arrow { background: rgba(0,0,0,.18); }
@@ -231,35 +241,46 @@ ul    { list-style: none; }
   transition: background .25s ease;
 }
 
-/* ── Footer ────────────────────────────────────────────────────────────── */
+/* ── Footer ──────────────────────────────────────────────────────────── */
 .cn-footer {
   padding: 1.75rem var(--px);
   display: flex; justify-content: space-between; align-items: center;
   border-top: 1px solid var(--border);
-  font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+  font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
   color: var(--muted);
 }
 .cn-footer a:hover { color: var(--fg); }
 
-/* ── Mobile ────────────────────────────────────────────────────────────── */
+/* ── Mobile ──────────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
   :root { --px: 1.25rem; }
 
-  .cn-hero-floor   { grid-template-columns: 1fr; gap: 1.25rem; padding-bottom: 2rem; }
-  .cn-hero-title   { font-size: clamp(3.2rem, 17vw, 5.5rem); }
-  .cn-hero-card    { max-width: 100%; flex-direction: row; flex-wrap: wrap; gap: .5rem 1.5rem; padding: 1rem 1.25rem; }
-  .cn-card-div     { display: none; }
+  /* Hero */
+  .cn-hero-floor { grid-template-columns: 1fr; gap: 1.25rem; padding-bottom: 2rem; }
+  .cn-hero-title { font-size: clamp(3.2rem, 17vw, 5.5rem); }
+  .cn-hero-card  { max-width: 100%; flex-direction: row; flex-wrap: wrap; gap: .5rem 1.5rem; padding: 1rem 1.25rem; }
+  .cn-card-div   { display: none; }
 
-  .cn-row                   { grid-template-columns: 1fr; }
-  .cn-row img               { aspect-ratio: 4/3 !important; }
+  /* Text blocks: empilha (1 coluna) */
+  .cn-text { grid-template-columns: 1fr; gap: 1rem; }
+  .cn-label { padding-top: 0; }
+
+  /* Imagens */
+  .cn-row                { grid-template-columns: 1fr; }
+  .cn-row img            { aspect-ratio: 4/3 !important; }
   .cn-row.wide-l img,
-  .cn-row.wide-r img        { height: auto; }
+  .cn-row.wide-r img     { height: auto; }
+  .cn-full img           { height: 50svh; }
+  .cn-full.tall img      { height: 60svh; }
+  .cn-pad img            { max-width: 100% !important; }
 
-  .cn-full img              { height: 50svh; }
-  .cn-full.tall img         { height: 60svh; }
+  /* Services */
+  .cn-services { grid-template-columns: 1fr; }
+  .cn-services-col + .cn-services-col {
+    padding-left: 0; border-left: none;
+    border-top: 1px solid var(--border);
+  }
 
-  .cn-services              { grid-template-columns: 1fr; }
-  .cn-services-col + .cn-services-col { padding-left: 0; border-left: none; border-top: 1px solid var(--border); }
-
-  .cn-pad img               { max-width: 100% !important; }
+  /* Footer */
+  .cn-footer { gap: 1.5rem; }
 }
