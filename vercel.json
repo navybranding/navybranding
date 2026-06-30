@@ -1,4 +1,8 @@
 {
+  "rewrites": [
+    { "source": "/cases", "destination": "/cases/index.html" },
+    { "source": "/cases/:slug", "destination": "/cases/:slug.html" }
+  ],
   "headers": [
     {
       "source": "/fonts/(.*)",
