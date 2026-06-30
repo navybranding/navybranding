@@ -206,14 +206,30 @@ ul    { list-style: none; }
   line-height: .9; color: var(--fg);
   margin: 0 auto clamp(3rem, 5svh, 4.5rem);
 }
+
+/* Botão estilo main site: texto à esquerda + bloco de seta separado */
 .cn-cta-btn {
-  display: inline-flex; align-items: center; gap: .8rem;
-  font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
-  font-weight: 600; color: var(--bg); background: var(--fg);
-  padding: 1.1rem 2.4rem;
-  transition: background .25s, color .25s;
+  display: inline-flex; align-items: center;
+  padding: 0.3rem 0.3rem 0.3rem 1.4rem;
+  gap: 1rem;
+  background: var(--fg);
+  border-radius: 6px;
+  font-size: 0.75rem; letter-spacing: 0.03em;
+  font-weight: 500; color: var(--bg);
+  transition: background .25s ease;
+  text-transform: none;
 }
 .cn-cta-btn:hover { background: var(--accent); color: var(--fg); }
+.cn-cta-btn:hover .cn-btn-arrow { background: rgba(0,0,0,.18); }
+
+.cn-btn-arrow {
+  display: flex; align-items: center; justify-content: center;
+  width: 2.75rem; height: 2.75rem;
+  background: rgba(10,0,6,.10);
+  border-radius: 4px;
+  font-size: 1.1rem; flex-shrink: 0;
+  transition: background .25s ease;
+}
 
 /* ── Footer ────────────────────────────────────────────────────────────── */
 .cn-footer {
