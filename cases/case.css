@@ -10,7 +10,7 @@
   --muted:  rgba(244,234,224,.35);
   --border: rgba(244,234,224,.07);
   --glass:  rgba(10,0,6,.64);
-  --radius: 14px;
+  --radius: 20px;
   --px:     clamp(1.75rem, 6vw, 5rem);
   --img-gap: 0.75rem;
 }
@@ -140,8 +140,8 @@ ul    { list-style: none; }
 
 /* Corpo — coluna direita */
 .cn-body-lg {
-  font-size: clamp(1.55rem, 3vw, 2.65rem); font-weight: 400;
-  line-height: 1.3; letter-spacing: -.012em; color: var(--fg);
+  font-size: clamp(1.7rem, 3.4vw, 3.1rem); font-weight: 400;
+  line-height: 1.25; letter-spacing: -.018em; color: var(--fg);
 }
 .cn-body {
   font-size: clamp(1rem, 1.7vw, 1.3rem); font-weight: 400;
@@ -157,10 +157,10 @@ ul    { list-style: none; }
 }
 .cn-full img {
   width: 100%; object-fit: cover; object-position: center;
-  height: 62svh; min-height: 360px; display: block;
+  height: 68svh; min-height: 360px; display: block;
   border-radius: var(--radius);
 }
-.cn-full.tall  img { height: 78svh; }
+.cn-full.tall  img { height: 86svh; }
 .cn-full.short img { height: 46svh; }
 
 /* Grid 2 colunas com cantos */
@@ -351,7 +351,7 @@ ul    { list-style: none; }
 
 /* ── Mobile ──────────────────────────────────────────────────────────── */
 @media (max-width: 767px) {
-  :root { --px: 1.25rem; --radius: 10px; }
+  :root { --px: 1.25rem; --radius: 12px; }
 
   /* Hero */
   .cn-hero-floor { grid-template-columns: 1fr; gap: 1.25rem; padding-bottom: 2rem; }
@@ -368,8 +368,8 @@ ul    { list-style: none; }
   .cn-row img            { aspect-ratio: 4/3 !important; }
   .cn-row.wide-l img,
   .cn-row.wide-r img     { height: auto; }
-  .cn-full img           { height: 50svh; }
-  .cn-full.tall img      { height: 60svh; }
+  .cn-full img           { height: 52svh; }
+  .cn-full.tall img      { height: 66svh; }
   .cn-pad img            { max-width: 100% !important; }
 
   /* Services */
