@@ -428,26 +428,24 @@ html.lenis, html.lenis body {
   .navbar_left_sound_btn { display: none !important; }
 }
 
-/* ── CTA mobile: seta + "NINGUÉM TROCA." alinhados, sem espaço vazio ── */
+/* ── CTA mobile: seta oculta, texto sem clipping ─────────────────────── */
 @media screen and (max-width: 767px) {
   /* Remove o translate(50%,0) que empurra o span pra fora do viewport */
   .cta_heading_inner {
     transform: none !important;
     translate: none !important;
     align-self: flex-start !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-    gap: 0.25em !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
   }
-  /* Seta e texto ficam na mesma linha */
+  /* Seta: oculta no mobile — fica minúscula e deslocada */
   .cta_home_heading.u-text-style-display.is-4.is-arrow {
-    align-self: center !important;
-    transform: none !important;
-    font-size: 0.55em !important;
+    display: none !important;
   }
+  /* "NINGUÉM TROCA." segue o mesmo tamanho dos outros headings */
   .cta_home_heading.u-text-style-display.is-4 {
-    align-self: center !important;
+    align-self: flex-start !important;
     transform: none !important;
   }
   /* CTA mobile: altura, padding e texto legível sem clipping */
@@ -639,22 +637,22 @@ body, p, li,
 /* ── CTA heading: reset off-screen GSAP offset ──────────────────────── */
 .cta_heading_inner { transform: none !important; translate: none !important; }
 
-/* ── CTA: nova imagem de fundo — overlay + tratamento de cor ─────────── */
-/* Overlay escuro base para contraste do texto */
-.cta_home_overlay { opacity: 0.45 !important; }
-/* Visual: saturação e contraste para o tom quente da foto */
+/* ── CTA: imagem de fundo (silhuetas vermelho) ───────────────────────── */
+.cta_home_overlay { opacity: 0.25 !important; }
 .cta_home_visual {
-  filter: saturate(1.15) contrast(1.05) brightness(0.90) !important;
-  object-position: 50% 30% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  width: 100% !important;
+  height: 100% !important;
+  filter: brightness(0.85) saturate(0.9) !important;
 }
-/* Gradiente escurecendo topo e base onde o texto aparece */
 .cta_home_bg-overlay {
   background:
     linear-gradient(to bottom,
-      rgba(28,0,16,0.55) 0%,
-      transparent 35%,
-      transparent 65%,
-      rgba(28,0,16,0.60) 100%
+      rgba(28,0,16,0.50) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(28,0,16,0.55) 100%
     ) !important;
 }
 
