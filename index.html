@@ -552,10 +552,41 @@ footer                      { margin-bottom:0!important; padding-bottom:0!import
   .process_home_heading  { white-space:normal!important; }
 }
 
-/* ── Letter-spacing: mínimo, só pra respirar ──────────────────────── */
+/* ── Letter-spacing ───────────────────────────────────────────────── */
 body, p, li, span,
 .u-text-style-main, .u-text-style-small,
 .u-text-style-large, .u-text-style-micro { letter-spacing:0.05em!important; }
+
+/* ── Logos: 60% menores, centralizadas ───────────────────────────── */
+.problems_home_wrap       { text-align:center!important; }
+.problems_home_bottom     { justify-content:center!important; }
+.problems_home_list.u-grid-custom { justify-items:center!important; justify-content:center!important; }
+.problems_home_item       { justify-content:center!important; align-items:center!important; }
+div.problems_home_image   { min-height:32px!important; padding:4px 6px!important; justify-content:center!important; }
+div.problems_home_image svg,
+div.problems_home_image img { height:20px!important; width:auto!important; max-width:72px!important; }
+@media (max-width:767px) {
+  div.problems_home_image svg,
+  div.problems_home_image img { height:16px!important; max-width:56px!important; }
+}
+
+/* ── Process heading: branco ──────────────────────────────────────── */
+.process_home_heading { color:#F4EAE0!important; }
+
+/* ── Services: line-height e hierarquia ───────────────────────────── */
+.services_home_subtitle.u-text-style-h5 { line-height:1.3!important; }
+.services_home_heading.u-text-style-h2  { line-height:1.05!important; }
+
+/* ── Font-weight hierarchy ────────────────────────────────────────── */
+.u-text-style-display,
+.u-text-style-h1, .u-text-style-h2 { font-weight:700!important; }
+.u-text-style-h3, .u-text-style-h4 { font-weight:500!important; }
+.u-text-style-h5, .u-text-style-h6 { font-weight:400!important; }
+.u-text-style-main, .u-text-style-small,
+.u-text-style-large                 { font-weight:300!important; }
+
+/* ── "Ver todos" cta: mesmo fundo da seção de works ──────────────── */
+.works_home_cta { background-color:var(--swatch--black-400,#1C0010)!important; }
 
 /* ── Stats cross-fade ─────────────────────────────────────────────── */
 .problem_home_stat-list { display:grid!important; position:relative!important; }
