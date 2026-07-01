@@ -376,8 +376,8 @@
       color: var(--beige);
     }
     .mv-outro-field { display: none; margin-top: 0.55rem; font-size: 0.88rem; }
-    #mv-step2 { display: none; }
-    #mv-step2 .mv-btn { margin-top: 1.75rem; }
+    #mv-step2a, #mv-step2b { display: none; }
+    #mv-step2a .mv-btn, #mv-step2b .mv-btn { margin-top: 1.75rem; }
 
     /* Sucesso */
     @keyframes fade-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
@@ -815,11 +815,12 @@
       </div>
     </div>
 
-    <!-- Step 2: qualificação do lead -->
-    <div id="mv-step2">
+    <!-- Step 2a: mercado + motivação -->
+    <div id="mv-step2a">
       <div class="mv-step-indicator">
         <span class="mv-step-dot mv-step-dot--done"></span>
         <span class="mv-step-dot mv-step-dot--active"></span>
+        <span class="mv-step-dot"></span>
       </div>
       <p class="mv-card-title" style="font-size:clamp(1.3rem,2.5vw,1.55rem)">Conta mais sobre a sua marca</p>
       <p class="mv-card-sub" style="margin-top:0.5rem">Assim chegamos mais preparados para a conversa.</p>
@@ -848,6 +849,26 @@
           </div>
           <input class="mv-input mv-outro-field" id="mv-fase-outro" type="text" placeholder="Conta o que te trouxe até aqui.">
         </div>
+
+      </div>
+
+      <button type="button" class="mv-btn" id="mv-next2a">
+        <span>Continuar</span>
+        <span class="mv-btn-icon">→</span>
+      </button>
+    </div>
+
+    <!-- Step 2b: faturamento + canal -->
+    <div id="mv-step2b">
+      <div class="mv-step-indicator">
+        <span class="mv-step-dot mv-step-dot--done"></span>
+        <span class="mv-step-dot mv-step-dot--done"></span>
+        <span class="mv-step-dot mv-step-dot--active"></span>
+      </div>
+      <p class="mv-card-title" style="font-size:clamp(1.3rem,2.5vw,1.55rem)">Mais dois pontos</p>
+      <p class="mv-card-sub" style="margin-top:0.5rem">E a gente já tem o que precisa.</p>
+
+      <div class="mv-questions">
 
         <div class="mv-question">
           <p class="mv-qlabel">Faturamento mensal</p>
@@ -1006,9 +1027,16 @@
     if(!nome || !email || !fone) return;
     _lead = { nome: nome, email: email, telefone: '+55 ' + fone };
     document.getElementById('mv-form-state').style.display = 'none';
-    var step2 = document.getElementById('mv-step2');
-    step2.style.display = 'block';
-    step2.style.animation = 'fade-in 0.3s ease both';
+    var step2a = document.getElementById('mv-step2a');
+    step2a.style.display = 'block';
+    step2a.style.animation = 'fade-in 0.3s ease both';
+  });
+
+  document.getElementById('mv-next2a').addEventListener('click', function(){
+    document.getElementById('mv-step2a').style.display = 'none';
+    var step2b = document.getElementById('mv-step2b');
+    step2b.style.display = 'block';
+    step2b.style.animation = 'fade-in 0.3s ease both';
   });
 
   ['tipo', 'fase', 'canal'].forEach(function(name) {
@@ -1055,7 +1083,7 @@
     })
     .then(function(res){
       if (res.ok) {
-        document.getElementById('mv-step2').style.display = 'none';
+        document.getElementById('mv-step2b').style.display = 'none';
         document.getElementById('mv-success').style.display = 'flex';
       } else {
         return res.json().then(function(data){
