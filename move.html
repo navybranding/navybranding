@@ -11,9 +11,6 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:      #07050e;
-      --card-bg: rgba(16, 10, 18, 0.88);
-      --input:   rgba(255,255,255,0.05);
       --beige:   #F4EAE0;
       --crimson: #B50642;
       --muted:   rgba(244,234,224,0.48);
@@ -25,22 +22,21 @@
       font-family: var(--font);
       color: var(--beige);
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      background-color: var(--bg);
+      background-color: #07050e;
     }
 
-    /* ── Blobs ── */
+    /* ── Blobs (Human Academy liquid-float pattern) ── */
     @keyframes liquid-float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25%       { transform: translate(30px, -20px) scale(1.05); }
-      50%       { transform: translate(-20px, 15px) scale(.95); }
-      75%       { transform: translate(15px, 25px) scale(1.02); }
+      0%, 100% { transform: translate(0,0) scale(1); }
+      25%       { transform: translate(30px,-20px) scale(1.05); }
+      50%       { transform: translate(-20px,15px) scale(.95); }
+      75%       { transform: translate(15px,25px) scale(1.02); }
     }
     @keyframes liquid-float-r {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      25%       { transform: translate(-25px, 20px) scale(.97); }
-      50%       { transform: translate(20px, -15px) scale(1.04); }
-      75%       { transform: translate(-10px, -25px) scale(.98); }
+      0%, 100% { transform: translate(0,0) scale(1); }
+      25%       { transform: translate(-25px,20px) scale(.97); }
+      50%       { transform: translate(20px,-15px) scale(1.04); }
+      75%       { transform: translate(-10px,-25px) scale(.98); }
     }
 
     .mv-bg {
@@ -53,295 +49,169 @@
     .mv-blob {
       position: absolute;
       border-radius: 50%;
-      filter: blur(80px);
       will-change: transform;
     }
     .mv-blob-1 {
-      width: 52vw; height: 52vw;
-      background: rgba(181,6,66,0.18);
-      top: -18%; left: -12%;
+      width: 55vw; height: 55vw;
+      background: rgba(181,6,66,0.22);
+      filter: blur(80px);
+      top: -20%; left: -15%;
       animation: liquid-float 20s ease-in-out infinite;
     }
     .mv-blob-2 {
-      width: 36vw; height: 36vw;
-      background: rgba(90,0,28,0.14);
-      bottom: -12%; right: -8%;
+      width: 40vw; height: 40vw;
+      background: rgba(90,0,28,0.16);
+      filter: blur(80px);
+      bottom: -15%; right: -10%;
       animation: liquid-float-r 25s ease-in-out infinite;
     }
     .mv-blob-3 {
-      width: 20vw; height: 20vw;
-      background: rgba(181,6,66,0.07);
-      top: 40%; right: 20%;
+      width: 22vw; height: 22vw;
+      background: rgba(181,6,66,0.09);
       filter: blur(50px);
+      top: 45%; right: 22%;
       animation: liquid-float 15s ease-in-out 4s infinite;
     }
 
-    /* ── Card glow (Human Academy pattern, cores navy) ── */
+    /* ── Card glow ── */
     @keyframes card-glow {
       0%, 100% {
         box-shadow:
           inset 0 1px rgba(255,255,255,0.22),
           inset 0 0 0 1px rgba(255,255,255,0.08),
           inset 0 -1px rgba(255,255,255,0.06),
-          0 24px 60px rgba(0,0,0,0.55),
-          0 0 20px rgba(181,6,66,0.08),
-          0 0 60px rgba(181,6,66,0.04);
+          0 24px 64px rgba(0,0,0,0.6),
+          0 0 24px rgba(181,6,66,0.08),
+          0 0 64px rgba(181,6,66,0.04);
       }
       50% {
         box-shadow:
           inset 0 1px rgba(255,255,255,0.3),
           inset 0 0 0 1px rgba(255,255,255,0.12),
           inset 0 -1px rgba(255,255,255,0.08),
-          0 28px 70px rgba(0,0,0,0.6),
-          0 0 30px rgba(181,6,66,0.15),
-          0 0 80px rgba(181,6,66,0.07);
+          0 28px 80px rgba(0,0,0,0.65),
+          0 0 36px rgba(181,6,66,0.16),
+          0 0 90px rgba(181,6,66,0.07);
       }
     }
 
-    /* ── Step transitions ── */
-    @keyframes step-in {
-      from { opacity: 0; transform: translateX(18px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes step-out {
-      from { opacity: 1; transform: translateX(0); }
-      to   { opacity: 0; transform: translateX(-18px); }
-    }
-
-    /* ── Layout ── */
+    /* ── Layout: centrado como Human Academy ── */
     .mv-page {
       position: relative;
       z-index: 1;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
-      min-height: 100dvh;
-    }
-
-    .mv-header {
-      display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 1.75rem 3.5rem;
-      flex-shrink: 0;
+      justify-content: center;
+      padding: 3rem 1.5rem;
     }
 
-    /* Logo navy — CSS text (mais confiável que SVG text) */
-    .mv-logo {
-      font-family: var(--font);
-      font-size: 1.55rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: rgba(244,234,224,0.88);
-      text-decoration: none;
-    }
-
+    /* Logo Move: acima do card */
     .mv-logo-move {
-      height: 22px;
+      display: block;
+      height: 30px;
       width: auto;
-      display: block;
+      margin-bottom: 2.25rem;
       filter: brightness(0) invert(1);
-      opacity: 0.35;
+      opacity: 0.72;
     }
 
-    .mv-main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 48fr 52fr;
-      column-gap: 4rem;
-      align-items: center;
-      padding: 1rem 3.5rem 3rem;
-      max-width: 1300px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    /* ── Esquerda ── */
-    .mv-left { display: flex; flex-direction: column; }
-
-    .mv-headline {
-      font-size: clamp(3.75rem, 8vw, 9.5rem);
-      font-weight: 400;
-      line-height: 1.02;
-      letter-spacing: 0.005em;
-      color: var(--beige);
-    }
-    .mv-dot {
-      display: inline-block;
-      width: 10px; height: 10px;
-      background: var(--crimson);
-      border-radius: 50%;
-      margin-left: 6px;
-      vertical-align: middle;
-      position: relative; top: -5px;
-    }
-
-    .mv-body {
-      margin-top: 2rem;
-      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
-      font-weight: 400;
-      line-height: 1.75;
-      letter-spacing: 0.02em;
-      color: var(--muted);
-      max-width: 44ch;
-    }
-
-    /* ── Card ── */
+    /* ── Card de vidro ── */
     .mv-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(24px) saturate(1.1);
-      -webkit-backdrop-filter: blur(24px) saturate(1.1);
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255,255,255,0.042);
+      backdrop-filter: blur(22px) saturate(1.15);
+      -webkit-backdrop-filter: blur(22px) saturate(1.15);
       border-radius: 20px;
-      padding: 2.5rem 2.4rem 2rem;
+      padding: 2.75rem 2.5rem 2.1rem;
       animation: card-glow 7s ease-in-out infinite;
-      overflow: hidden;
     }
 
-    /* ── Progress ── */
-    .mv-progress {
-      margin-bottom: 2rem;
-    }
-    .mv-progress-track {
-      height: 2px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .mv-progress-fill {
-      height: 100%;
-      background: var(--crimson);
-      border-radius: 2px;
-      transition: width 0.4s cubic-bezier(.23,1,.32,1);
-      width: 25%;
-    }
-
-    /* ── Steps ── */
-    .mv-step { display: none; }
-    .mv-step.active {
-      display: block;
-      animation: step-in 0.28s cubic-bezier(.23,1,.32,1) both;
-    }
-
-    .mv-step-eyebrow {
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(244,234,224,0.3);
-      margin-bottom: 0.6rem;
-    }
-    .mv-step-q {
-      font-size: clamp(1.3rem, 2vw, 1.55rem);
+    .mv-card-title {
+      font-size: clamp(1.7rem, 3.5vw, 2.2rem);
       font-weight: 400;
       letter-spacing: 0.01em;
-      line-height: 1.25;
+      text-align: center;
       color: var(--beige);
-      margin-bottom: 1.5rem;
     }
-
-    /* ── Opções (steps 2 e 3) ── */
-    .mv-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.6rem;
-      margin-bottom: 1.5rem;
-    }
-    .mv-opt {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 0.9rem 1rem;
-      font-family: var(--font);
-      font-size: 0.85rem;
+    .mv-card-sub {
+      margin-top: 0.65rem;
+      font-size: 0.92rem;
       font-weight: 400;
+      line-height: 1.65;
       letter-spacing: 0.02em;
-      line-height: 1.4;
-      color: rgba(244,234,224,0.65);
-      cursor: pointer;
-      text-align: left;
-      transition: border-color 0.15s, color 0.15s, background 0.15s;
-    }
-    .mv-opt:hover {
-      border-color: rgba(181,6,66,0.35);
-      color: var(--beige);
-      background: rgba(181,6,66,0.06);
-    }
-    .mv-opt.selected {
-      border-color: rgba(181,6,66,0.6);
-      color: var(--beige);
-      background: rgba(181,6,66,0.1);
-    }
-    .mv-opt-icon {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 0.4rem;
-      opacity: 0.7;
+      text-align: center;
+      color: var(--muted);
     }
 
-    /* ── Inputs ── */
-    .mv-field { display: flex; flex-direction: column; gap: 0.38rem; margin-bottom: 0.85rem; }
+    /* ── Formulário ── */
+    .mv-form {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .mv-field { display: flex; flex-direction: column; gap: 0.38rem; }
+
     .mv-label {
       font-size: 0.6rem;
       font-weight: 500;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(244,234,224,0.3);
-      padding-left: 1rem;
+      color: rgba(244,234,224,0.32);
+      padding-left: 1.1rem;
     }
+
     .mv-input {
-      background: var(--input);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
       border-radius: 50px;
-      padding: 0.95rem 1.35rem;
+      padding: 1rem 1.4rem;
       font-family: var(--font);
       font-size: 0.95rem;
       font-weight: 400;
       letter-spacing: 0.02em;
       color: var(--beige);
       outline: none;
-      transition: border-color 0.18s;
+      transition: border-color 0.18s, background 0.18s;
       width: 100%;
     }
     .mv-input::placeholder { color: rgba(244,234,224,0.2); }
-    .mv-input:focus { border-color: rgba(244,234,224,0.24); }
-
-    .mv-phone-row { display: flex; gap: 0.5rem; }
-    .mv-phone-prefix {
-      display: flex; align-items: center; gap: 0.35rem;
-      background: var(--input);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 50px;
-      padding: 0.95rem 1rem;
-      font-family: var(--font);
-      font-size: 0.9rem; font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--beige);
-      white-space: nowrap; flex-shrink: 0;
+    .mv-input:focus {
+      border-color: rgba(244,234,224,0.26);
+      background: rgba(255,255,255,0.07);
     }
-    .mv-phone-prefix .chev { font-size: 0.5rem; opacity: 0.28; margin-left: 2px; }
-    .mv-phone-num { flex: 1; min-width: 0; }
 
-    /* ── Navegação ── */
-    .mv-nav {
+    /* Telefone */
+    .mv-phone-row { display: flex; align-items: stretch; }
+    .mv-phone-wrap {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      margin-top: 0.5rem;
-    }
-    .mv-back {
+      gap: 0.35rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-right: none;
+      border-radius: 50px 0 0 50px;
+      padding: 1rem 1rem 1rem 1.2rem;
       font-family: var(--font);
-      font-size: 0.78rem;
+      font-size: 0.9rem;
       font-weight: 400;
-      letter-spacing: 0.06em;
-      color: rgba(244,234,224,0.32);
-      background: none; border: none;
-      cursor: pointer;
-      padding: 0.5rem 0;
-      transition: color 0.15s;
+      letter-spacing: 0.02em;
+      color: var(--beige);
+      white-space: nowrap;
+      flex-shrink: 0;
     }
-    .mv-back:hover { color: rgba(244,234,224,0.6); }
-    .mv-back[hidden] { visibility: hidden; pointer-events: none; }
+    .mv-phone-wrap .chev { font-size: 0.5rem; opacity: 0.28; }
+    .mv-phone-num {
+      border-radius: 0 50px 50px 0 !important;
+    }
 
+    /* Botão */
     .mv-btn {
+      margin-top: 0.3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -350,88 +220,87 @@
       color: #0d0010;
       border: none;
       border-radius: 50px;
-      padding: 0.88rem 0.88rem 0.88rem 1.65rem;
+      padding: 0.92rem 0.92rem 0.92rem 1.8rem;
       font-family: var(--font);
       font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
       transition: background 0.18s;
-      flex-shrink: 0;
+      width: 100%;
     }
-    .mv-btn:hover { background: #ffffff; }
+    .mv-btn:hover { background: #fff; }
     .mv-btn:disabled { opacity: 0.5; cursor: not-allowed; }
     .mv-btn-icon {
-      width: 2rem; height: 2rem;
+      width: 2.05rem;
+      height: 2.05rem;
       border-radius: 50%;
-      background: #0d0010; color: var(--beige);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; flex-shrink: 0;
+      background: #0d0010;
+      color: var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
     }
 
-    /* Botão full-width no step 4 */
-    .mv-btn.full {
-      width: 100%;
-      margin-top: 0.5rem;
-    }
-
-    /* ── Trust ── */
+    /* Trust */
     .mv-trust {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 1.5rem;
-      margin-top: 1.2rem;
+      margin-top: 1.15rem;
     }
     .mv-trust-item {
-      display: flex; align-items: center; gap: 0.35rem;
-      font-size: 0.58rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(244,234,224,0.22);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: rgba(244,234,224,0.24);
     }
 
-    /* ── Sucesso ── */
+    /* Sucesso */
+    @keyframes fade-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
     .mv-success {
       display: none;
       flex-direction: column;
       align-items: center;
       text-align: center;
       gap: 1rem;
-      padding: 2rem 0 1rem;
-      animation: step-in 0.3s ease both;
+      padding: 1.5rem 0;
+      animation: fade-in 0.35s ease both;
     }
     .mv-success-icon {
-      width: 3rem; height: 3rem;
+      width: 3rem;
+      height: 3rem;
       border-radius: 50%;
       border: 1px solid rgba(181,6,66,0.3);
       background: rgba(181,6,66,0.08);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; color: var(--crimson);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--crimson);
     }
     .mv-success h2 { font-size: 1.3rem; font-weight: 400; letter-spacing: 0.02em; }
     .mv-success p  { font-size: 0.9rem; font-weight: 400; line-height: 1.6; color: var(--muted); }
 
-    /* ── Mobile ── */
-    @media (max-width: 880px) {
-      .mv-header { padding: 1.25rem 1.5rem; }
-      .mv-main {
-        grid-template-columns: 1fr;
-        padding: 1.5rem 1.5rem 3rem;
-        row-gap: 2.5rem;
-      }
-      .mv-headline { font-size: clamp(3rem, 13vw, 5.5rem); }
-      .mv-body { max-width: 100%; }
-    }
-    @media (max-width: 480px) {
-      .mv-header { padding: 1rem 1.25rem; }
-      .mv-card { padding: 2rem 1.35rem 1.75rem; }
-      .mv-main { padding: 1.25rem 1.25rem 2.5rem; }
+    /* Mobile */
+    @media (max-width: 560px) {
+      .mv-page { padding: 2rem 1.1rem; }
+      .mv-card { padding: 2.1rem 1.4rem 1.75rem; }
+      .mv-logo-move { height: 24px; margin-bottom: 1.75rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- Blobs animados (Human Academy pattern) -->
+<!-- Blobs animados -->
 <div class="mv-bg" aria-hidden="true">
   <div class="mv-blob mv-blob-1"></div>
   <div class="mv-blob mv-blob-2"></div>
@@ -440,148 +309,52 @@
 
 <div class="mv-page">
 
-  <header class="mv-header">
-    <a href="/" class="mv-logo">navy</a>
-    <img src="assets/move-logo.svg" alt="Move" class="mv-logo-move">
-  </header>
+  <!-- Logo Move acima do card -->
+  <img src="assets/move-logo.svg" alt="Move" class="mv-logo-move">
 
-  <main class="mv-main">
+  <!-- Card de vidro -->
+  <div class="mv-card">
 
-    <!-- Esquerda -->
-    <div class="mv-left">
-      <h1 class="mv-headline">
-        Fale com a<br>Navy.<span class="mv-dot"></span>
-      </h1>
-      <p class="mv-body">
-        Se você chegou aqui através da Move e quer entender como o método Navy pode posicionar sua marca como a única escolhida, deixa seus dados. Nossa equipe te chama em alguns instantes para apresentar o próximo passo.
-      </p>
-    </div>
+    <div id="mv-form-state">
+      <p class="mv-card-title">Fale com a Navy</p>
+      <p class="mv-card-sub">Deixa seus dados e alguém da Navy<br>te chama em alguns instantes.</p>
 
-    <!-- Card -->
-    <div class="mv-card" id="mv-card">
+      <form class="mv-form" id="mv-form" novalidate>
 
-      <!-- Progresso -->
-      <div class="mv-progress">
-        <div class="mv-progress-track">
-          <div class="mv-progress-fill" id="mv-fill"></div>
-        </div>
-      </div>
-
-      <!-- Steps -->
-      <div id="mv-steps">
-
-        <!-- 1 · Nome -->
-        <div class="mv-step active" data-step="1">
-          <p class="mv-step-eyebrow">01 / 04</p>
-          <p class="mv-step-q">Como você se chama?</p>
-          <div class="mv-field">
-            <label class="mv-label" for="mv-nome">Nome completo</label>
-            <input class="mv-input" id="mv-nome" type="text"
-              placeholder="Seu nome" autocomplete="name" required>
-          </div>
-          <div class="mv-nav">
-            <button class="mv-back" hidden>← voltar</button>
-            <button class="mv-btn" id="mv-next-1">
-              <span>Continuar</span>
-              <span class="mv-btn-icon">→</span>
-            </button>
-          </div>
+        <div class="mv-field">
+          <label class="mv-label" for="mv-nome">Nome</label>
+          <input class="mv-input" id="mv-nome" type="text"
+            placeholder="Seu nome completo" autocomplete="name" required>
         </div>
 
-        <!-- 2 · Fase do negócio -->
-        <div class="mv-step" data-step="2">
-          <p class="mv-step-eyebrow">02 / 04</p>
-          <p class="mv-step-q">Como está seu negócio hoje?</p>
-          <div class="mv-options" id="opts-fase">
-            <button class="mv-opt" data-value="nascendo">
-              <span class="mv-opt-icon">🌱</span>Nascendo do zero
-            </button>
-            <button class="mv-opt" data-value="crescendo">
-              <span class="mv-opt-icon">📈</span>Em crescimento
-            </button>
-            <button class="mv-opt" data-value="consolidado">
-              <span class="mv-opt-icon">🏛</span>Já consolidado
-            </button>
-            <button class="mv-opt" data-value="reinventando">
-              <span class="mv-opt-icon">🔄</span>Reinventando a marca
-            </button>
-          </div>
-          <div class="mv-nav">
-            <button class="mv-back" data-to="1">← voltar</button>
-            <button class="mv-btn" id="mv-next-2" disabled>
-              <span>Continuar</span>
-              <span class="mv-btn-icon">→</span>
-            </button>
-          </div>
+        <div class="mv-field">
+          <label class="mv-label" for="mv-email">E-mail</label>
+          <input class="mv-input" id="mv-email" type="email"
+            placeholder="seu@email.com" autocomplete="email" required>
         </div>
 
-        <!-- 3 · Necessidade -->
-        <div class="mv-step" data-step="3">
-          <p class="mv-step-eyebrow">03 / 04</p>
-          <p class="mv-step-q">O que você precisa?</p>
-          <div class="mv-options" id="opts-need">
-            <button class="mv-opt" data-value="zero">
-              <span class="mv-opt-icon">✦</span>Marca do zero
-            </button>
-            <button class="mv-opt" data-value="reposit">
-              <span class="mv-opt-icon">↺</span>Reposicionamento
-            </button>
-            <button class="mv-opt" data-value="idv">
-              <span class="mv-opt-icon">◈</span>Identidade visual
-            </button>
-            <button class="mv-opt" data-value="completo">
-              <span class="mv-opt-icon">⬡</span>Estratégia + IDV
-            </button>
-          </div>
-          <div class="mv-nav">
-            <button class="mv-back" data-to="2">← voltar</button>
-            <button class="mv-btn" id="mv-next-3" disabled>
-              <span>Continuar</span>
-              <span class="mv-btn-icon">→</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- 4 · Contato -->
-        <div class="mv-step" data-step="4">
-          <p class="mv-step-eyebrow">04 / 04</p>
-          <p class="mv-step-q" id="mv-step4-q">Quase lá. Como a Navy te encontra?</p>
-          <div class="mv-field">
-            <label class="mv-label" for="mv-email">E-mail</label>
-            <input class="mv-input" id="mv-email" type="email"
-              placeholder="seu@email.com" autocomplete="email" required>
-          </div>
-          <div class="mv-field">
-            <label class="mv-label" for="mv-tel">Telefone / WhatsApp</label>
-            <div class="mv-phone-row">
-              <div class="mv-phone-prefix">
-                <span>🇧🇷</span><span>+55</span><span class="chev">▾</span>
-              </div>
-              <input class="mv-input mv-phone-num" id="mv-tel" type="tel"
-                placeholder="(11) 99999-9999" autocomplete="tel-national"
-                inputmode="numeric" required>
+        <div class="mv-field">
+          <label class="mv-label" for="mv-tel">Telefone</label>
+          <div class="mv-phone-row">
+            <div class="mv-phone-wrap">
+              <span>🇧🇷</span>
+              <span>+55</span>
+              <span class="chev">▾</span>
             </div>
+            <input class="mv-input mv-phone-num" id="mv-tel" type="tel"
+              placeholder="(11) 99999-9999" autocomplete="tel-national"
+              inputmode="numeric" required>
           </div>
-          <div class="mv-nav">
-            <button class="mv-back" data-to="3">← voltar</button>
-          </div>
-          <button class="mv-btn full" id="mv-submit">
-            <span id="mv-submit-label">Falar com a Navy</span>
-            <span class="mv-btn-icon">↗</span>
-          </button>
         </div>
 
-      </div><!-- /mv-steps -->
+        <button type="submit" class="mv-btn" id="mv-submit">
+          <span id="mv-btn-label">Falar com a Navy</span>
+          <span class="mv-btn-icon">↗</span>
+        </button>
 
-      <!-- Sucesso -->
-      <div class="mv-success" id="mv-success">
-        <div class="mv-success-icon">✓</div>
-        <h2>Recebemos seu contato!</h2>
-        <p>Alguém da Navy vai te chamar<br>em breve pelo WhatsApp.</p>
-      </div>
+      </form>
 
-      <!-- Trust -->
-      <div class="mv-trust" id="mv-trust">
+      <div class="mv-trust">
         <div class="mv-trust-item">
           <svg width="11" height="13" viewBox="0 0 11 13" fill="none">
             <rect x=".55" y="5" width="9.9" height="7.45" rx="1.4"
@@ -600,19 +373,24 @@
           Atendimento humano
         </div>
       </div>
+    </div>
 
-    </div><!-- /mv-card -->
-  </main>
-</div>
+    <!-- Sucesso -->
+    <div class="mv-success" id="mv-success">
+      <div class="mv-success-icon">✓</div>
+      <h2>Recebemos seu contato!</h2>
+      <p>Alguém da Navy vai te chamar<br>em breve pelo WhatsApp.</p>
+    </div>
+
+  </div><!-- /mv-card -->
+
+</div><!-- /mv-page -->
 
 <script>
 (function(){
-  var data = { nome:'', fase:'', need:'', email:'', tel:'' };
-  var currentStep = 1;
+  var tel = document.getElementById('mv-tel');
 
-  /* ── Máscara telefone ── */
-  var telInput = document.getElementById('mv-tel');
-  telInput.addEventListener('input', function(){
+  tel.addEventListener('input', function(){
     var v = this.value.replace(/\D/g,'').slice(0,11);
     if(v.length>10)      v='('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
     else if(v.length>6)  v='('+v.slice(0,2)+') '+v.slice(2,6)+'-'+v.slice(6);
@@ -621,101 +399,29 @@
     this.value = v;
   });
 
-  /* ── Progress bar ── */
-  function setProgress(step){
-    document.getElementById('mv-fill').style.width = (step/4*100)+'%';
-  }
-
-  /* ── Ir para step ── */
-  function goTo(n){
-    var steps = document.querySelectorAll('.mv-step');
-    steps.forEach(function(s){ s.classList.remove('active'); });
-    document.querySelector('[data-step="'+n+'"]').classList.add('active');
-    currentStep = n;
-    setProgress(n);
-  }
-
-  /* ── Step 1: nome ── */
-  document.getElementById('mv-next-1').addEventListener('click', function(){
-    var nome = document.getElementById('mv-nome').value.trim();
-    if(!nome) { document.getElementById('mv-nome').focus(); return; }
-    data.nome = nome;
-    /* personaliza pergunta step 4 */
-    document.getElementById('mv-step4-q').textContent =
-      'Quase lá, '+nome.split(' ')[0]+'. Como a Navy te encontra?';
-    goTo(2);
-  });
-  document.getElementById('mv-nome').addEventListener('keydown', function(e){
-    if(e.key==='Enter') document.getElementById('mv-next-1').click();
-  });
-
-  /* ── Opções genérico ── */
-  function setupOpts(containerId, nextBtnId, key){
-    var container = document.getElementById(containerId);
-    var nextBtn   = document.getElementById(nextBtnId);
-    container.querySelectorAll('.mv-opt').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        container.querySelectorAll('.mv-opt').forEach(function(b){ b.classList.remove('selected'); });
-        btn.classList.add('selected');
-        data[key] = btn.dataset.value;
-        nextBtn.disabled = false;
-      });
-    });
-  }
-
-  setupOpts('opts-fase','mv-next-2','fase');
-  setupOpts('opts-need','mv-next-3','need');
-
-  document.getElementById('mv-next-2').addEventListener('click', function(){ goTo(3); });
-  document.getElementById('mv-next-3').addEventListener('click', function(){ goTo(4); });
-
-  /* ── Voltar ── */
-  document.querySelectorAll('.mv-back').forEach(function(btn){
-    if(btn.dataset.to){
-      btn.addEventListener('click', function(){ goTo(parseInt(btn.dataset.to)); });
-    }
-  });
-
-  /* ── Submit ── */
-  document.getElementById('mv-submit').addEventListener('click', function(){
+  document.getElementById('mv-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var nome  = document.getElementById('mv-nome').value.trim();
     var email = document.getElementById('mv-email').value.trim();
-    var tel   = telInput.value.trim();
-    if(!email||!tel) return;
+    var fone  = tel.value.trim();
+    if(!nome||!email||!fone) return;
 
-    this.disabled = true;
-    document.getElementById('mv-submit-label').textContent = 'Enviando…';
+    var btn = document.getElementById('mv-submit');
+    btn.disabled = true;
+    document.getElementById('mv-btn-label').textContent = 'Enviando…';
 
-    var faseMap = {
-      nascendo:'Nascendo do zero', crescendo:'Em crescimento',
-      consolidado:'Já consolidado', reinventando:'Reinventando a marca'
-    };
-    var needMap = {
-      zero:'Marca do zero', reposit:'Reposicionamento',
-      idv:'Identidade visual', completo:'Estratégia + IDV'
-    };
-
-    var wap = '5511999999999'; /* ← atualizar número real */
+    var wap = '5511999999999'; /* ← atualizar com número real */
     var msg = encodeURIComponent(
       'Olá, Navy! Vim pela página da Move.\n\n'+
-      '👤 Nome: '+data.nome+
-      '\n📊 Fase: '+(faseMap[data.fase]||data.fase)+
-      '\n🎯 Precisa de: '+(needMap[data.need]||data.need)+
-      '\n📧 E-mail: '+email+
-      '\n📱 Telefone: +55 '+tel
+      'Nome: '+nome+'\nE-mail: '+email+'\nTelefone: +55 '+fone
     );
 
     setTimeout(function(){
       window.open('https://wa.me/'+wap+'?text='+msg,'_blank');
-      document.getElementById('mv-steps').style.display = 'none';
-      document.getElementById('mv-trust').style.display = 'none';
-      document.getElementById('mv-fill').style.width = '100%';
-      var s = document.getElementById('mv-success');
-      s.style.display = 'flex';
+      document.getElementById('mv-form-state').style.display = 'none';
+      document.getElementById('mv-success').style.display = 'flex';
     }, 500);
   });
-
-  /* Progress inicial */
-  setProgress(1);
 })();
 </script>
 </body>
