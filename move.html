@@ -375,6 +375,7 @@
       background: rgba(181,6,66,0.1);
       color: var(--beige);
     }
+    .mv-outro-field { display: none; margin-top: 0.55rem; font-size: 0.88rem; }
     #mv-step2 { display: none; }
     #mv-step2 .mv-btn { margin-top: 1.75rem; }
 
@@ -830,21 +831,24 @@
             <label class="mv-option"><input type="radio" name="tipo" value="Beleza & cosméticos"><span>Beleza & cosméticos</span></label>
             <label class="mv-option"><input type="radio" name="tipo" value="Saúde & bem-estar"><span>Saúde & bem-estar</span></label>
             <label class="mv-option"><input type="radio" name="tipo" value="Acessórios & lifestyle"><span>Acessórios & lifestyle</span></label>
+            <label class="mv-option"><input type="radio" name="tipo" value="Outro"><span>Outro</span></label>
           </div>
+          <input class="mv-input mv-outro-field" id="mv-tipo-outro" type="text" placeholder="Conta um pouco do seu negócio">
         </div>
 
         <div class="mv-question">
           <p class="mv-qlabel">Em que momento está a sua marca?</p>
           <div class="mv-options">
-            <label class="mv-option"><input type="radio" name="fase" value="Quero lançar minha marca"><span>Quero lançar minha marca</span></label>
-            <label class="mv-option"><input type="radio" name="fase" value="Já vendo e quero crescer"><span>Já vendo e quero crescer</span></label>
-            <label class="mv-option"><input type="radio" name="fase" value="Preciso reposicionar e renovar"><span>Preciso reposicionar e renovar</span></label>
+            <label class="mv-option"><input type="radio" name="fase" value="Quero criar minha marca do zero"><span>Quero criar minha marca do zero</span></label>
+            <label class="mv-option"><input type="radio" name="fase" value="Já vendo e quero me destacar mais"><span>Já vendo e quero me destacar mais</span></label>
+            <label class="mv-option"><input type="radio" name="fase" value="Minha marca precisa de uma renovação"><span>Minha marca precisa de uma renovação</span></label>
           </div>
         </div>
 
         <div class="mv-question">
           <p class="mv-qlabel">Faturamento mensal atual</p>
           <div class="mv-options">
+            <label class="mv-option"><input type="radio" name="faturamento" value="Pré-lançamento"><span>Pré-lançamento</span></label>
             <label class="mv-option"><input type="radio" name="faturamento" value="Até R$ 10k"><span>Até R$ 10k</span></label>
             <label class="mv-option"><input type="radio" name="faturamento" value="R$ 10k – R$ 30k"><span>R$ 10k – R$ 30k</span></label>
             <label class="mv-option"><input type="radio" name="faturamento" value="R$ 30k – R$ 100k"><span>R$ 30k – R$ 100k</span></label>
@@ -856,10 +860,12 @@
           <p class="mv-qlabel">Como chegou até a Navy?</p>
           <div class="mv-options">
             <label class="mv-option"><input type="radio" name="canal" value="Instagram"><span>Instagram</span></label>
+            <label class="mv-option"><input type="radio" name="canal" value="TikTok"><span>TikTok</span></label>
             <label class="mv-option"><input type="radio" name="canal" value="Indicação"><span>Indicação</span></label>
             <label class="mv-option"><input type="radio" name="canal" value="Google / pesquisa"><span>Google / pesquisa</span></label>
             <label class="mv-option"><input type="radio" name="canal" value="Outro"><span>Outro</span></label>
           </div>
+          <input class="mv-input mv-outro-field" id="mv-canal-outro" type="text" placeholder="Como nos encontrou?">
         </div>
 
       </div>
@@ -1001,6 +1007,25 @@
     step2.style.animation = 'fade-in 0.3s ease both';
   });
 
+  ['tipo', 'canal'].forEach(function(name) {
+    document.querySelectorAll('input[name="' + name + '"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        var field = document.getElementById('mv-' + name + '-outro');
+        if (!field) return;
+        field.style.display = this.value === 'Outro' ? 'block' : 'none';
+        if (this.value === 'Outro') field.focus();
+      });
+    });
+  });
+
+  function resolveOutro(radio, fieldId) {
+    if (!radio) return '—';
+    if (radio.value !== 'Outro') return radio.value;
+    var field = document.getElementById(fieldId);
+    var txt = field && field.value.trim();
+    return txt ? 'Outro: ' + txt : 'Outro';
+  }
+
   document.getElementById('mv-submit2').addEventListener('click', function(){
     var tipo        = document.querySelector('input[name="tipo"]:checked');
     var fase        = document.querySelector('input[name="fase"]:checked');
@@ -1014,10 +1039,10 @@
       nome:          _lead.nome,
       email:         _lead.email,
       telefone:      _lead.telefone,
-      tipo_negocio:  tipo  ? tipo.value  : '—',
+      tipo_negocio:  resolveOutro(tipo, 'mv-tipo-outro'),
       fase_negocio:  fase  ? fase.value  : '—',
       faturamento:   fat   ? fat.value   : '—',
-      canal:         canal ? canal.value : '—'
+      canal:         resolveOutro(canal, 'mv-canal-outro')
     };
     fetch('https://formspree.io/f/meebrvlv', {
       method: 'POST',
