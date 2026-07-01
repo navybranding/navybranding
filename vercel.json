@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/move", "destination": "/move.html" },
     { "source": "/cases", "destination": "/cases/index.html" },
     { "source": "/cases/:slug", "destination": "/cases/:slug.html" }
   ],
