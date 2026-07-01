@@ -531,6 +531,32 @@ footer                      { margin-bottom:0!important; padding-bottom:0!import
 .case-slide { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s; }
 .case-slide.is-first { opacity:1; }
 
+/* ── Process / Navy Method ────────────────────────────────────────── */
+/* hide the duplicate SVG-path heading (keep the h2 text version) */
+.process_heading_svg { display:none!important; }
+/* constrain the halo SVG — without this it renders at 100vw */
+.process_home_halo {
+  display:flex!important; justify-content:center!important;
+  margin-bottom:3rem!important;
+}
+.process_home_halo_svg {
+  width:min(26rem,60vw)!important; height:auto!important;
+}
+/* process heading: fit-to-width (JS already handles font-size) */
+.process_home_heading {
+  overflow:hidden!important; white-space:nowrap!important;
+  display:block!important; opacity:1!important;
+}
+@media (max-width:767px) {
+  .process_home_halo_svg { width:min(20rem,84vw)!important; }
+  .process_home_heading  { white-space:normal!important; }
+}
+
+/* ── Letter-spacing: mínimo, só pra respirar ──────────────────────── */
+body, p, li, span,
+.u-text-style-main, .u-text-style-small,
+.u-text-style-large, .u-text-style-micro { letter-spacing:0.025em!important; }
+
 /* ── Stats cross-fade ─────────────────────────────────────────────── */
 .problem_home_stat-list { display:grid!important; position:relative!important; }
 .problem_home_stat-item {
