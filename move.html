@@ -562,19 +562,15 @@
     }
     .kf-logos {
       display: flex;
-      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem 3rem;
     }
-    .kf-logos img {
-      height: 26px;
-      width: auto;
-      /* inverte para cinza chumbo */
-      filter: brightness(0) saturate(0) opacity(0.32);
-      transition: opacity 0.2s;
+    .kf-logos-strip {
+      width: 100%;
+      max-width: 860px;
+      height: auto;
+      display: block;
+      filter: brightness(0) opacity(0.3);
     }
-    .kf-logos img:hover { filter: brightness(0) saturate(0) opacity(0.55); }
 
     /* Responsivo key facts */
     @media (max-width: 860px) {
@@ -591,8 +587,7 @@
     }
     @media (max-width: 480px) {
       .kf-title { font-size: 2.1rem; }
-      .kf-logos { gap: 1.25rem 2rem; }
-      .kf-logos img { height: 20px; }
+      .kf-logos-strip { max-width: 340px; }
       .kf-card { aspect-ratio: 3/4; }
     }
   </style>
@@ -758,14 +753,7 @@
   <div class="kf-partners">
     <p class="kf-partners-label">Marcas que já trabalhamos</p>
     <div class="kf-logos">
-      <img src="assets/logo-gelato-grano.png" alt="Gelato Grano">
-      <img src="assets/logo-tempo.png" alt="Tempo Resort Wear">
-      <img src="assets/logo-duo-brand.svg" alt="Duo Brand">
-      <img src="assets/logo-nx-studio.png" alt="NX Studio">
-      <img src="assets/logo-love-miss.svg" alt="Love Miss">
-      <img src="assets/logo-not-silly.png" alt="Not Silly">
-      <img src="assets/logo-jerimescla.png" alt="Jeri Mescla">
-      <img src="assets/logo-joy.png" alt="Joy">
+      <img src="assets/logos-v2.svg" alt="Marcas parceiras" class="kf-logos-strip">
     </div>
   </div>
 
