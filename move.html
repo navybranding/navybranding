@@ -11,13 +11,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --beige:  #F4EAE0;
-      --wine:   #1C0010;
-      --deep:   #07000b;
-      --crimson:#B50642;
-      --muted:  rgba(244,234,224,0.42);
-      --subtle: rgba(244,234,224,0.18);
-      --font:   "owners", system-ui, sans-serif;
+      --bg:       #08060f;
+      --card:     #141018;
+      --input:    #0b0910;
+      --beige:    #F4EAE0;
+      --crimson:  #B50642;
+      --muted:    rgba(244,234,224,0.5);
+      --border:   rgba(255,255,255,0.09);
+      --font:     "owners", system-ui, sans-serif;
     }
 
     html, body {
@@ -26,27 +27,24 @@
       color: var(--beige);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      background-color: var(--bg);
     }
 
     body {
       min-height: 100dvh;
-      background-color: var(--deep);
-      /* Radial bloom topo-esquerda + degradê base */
+      /* fundo escuro neutro com bloom crimson sutil no canto superior-esq */
       background-image:
-        radial-gradient(ellipse 75% 55% at 28% 0%,
-          rgba(181,6,66,0.22) 0%,
-          rgba(80,0,28,0.12)  40%,
-          transparent         70%),
-        radial-gradient(ellipse 55% 65% at 72% 100%,
-          rgba(28,0,16,0.6)   0%,
-          transparent         65%),
-        linear-gradient(175deg,
-          #130010 0%,
-          #09000d 45%,
-          #050008 100%);
+        radial-gradient(ellipse 55% 50% at 15% 5%,
+          rgba(181,6,66,0.11) 0%,
+          rgba(100,0,30,0.05) 45%,
+          transparent 70%),
+        linear-gradient(165deg,
+          #0d0a14 0%,
+          #08060f 50%,
+          #060409 100%);
     }
 
-    /* ── Página full-screen ── */
+    /* ── Shell ── */
     .mv-page {
       display: flex;
       flex-direction: column;
@@ -62,105 +60,101 @@
       flex-shrink: 0;
     }
 
-    .mv-nav-logo {
+    .mv-logo-link {
       display: block;
       text-decoration: none;
       color: var(--beige);
-      opacity: 0.9;
     }
-    .mv-nav-logo svg {
+    .mv-logo-link svg {
       display: block;
-      width: 52px;
+      width: 54px;
       height: auto;
+      opacity: 0.88;
     }
 
-    .mv-nav-move {
-      height: 24px;
+    .mv-logo-move {
+      height: 22px;
       width: auto;
-      opacity: 0.5;
-      filter: brightness(10) saturate(0);
       display: block;
+      /* converte para branco então aplica opacidade suave */
+      filter: brightness(0) invert(1);
+      opacity: 0.38;
     }
 
-    /* ── Main centrado ── */
+    /* ── Grid principal ── */
     .mv-main {
       flex: 1;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      column-gap: 4rem;
+      column-gap: 5rem;
       align-items: center;
-      padding: 2rem 3.5rem 3.5rem;
-      max-width: 1300px;
+      padding: 1rem 3.5rem 3rem;
+      max-width: 1320px;
       margin: 0 auto;
       width: 100%;
     }
 
-    /* ── Lado esquerdo ── */
+    /* ── Coluna esquerda ── */
     .mv-left {
       display: flex;
       flex-direction: column;
-      justify-content: center;
     }
 
     .mv-headline {
-      font-size: clamp(3.5rem, 7.5vw, 8.5rem);
+      font-size: clamp(3.75rem, 8vw, 9.5rem);
       font-weight: 400;
-      line-height: 1.04;
-      letter-spacing: 0.01em;
+      line-height: 1.02;
+      letter-spacing: 0.005em;
       color: var(--beige);
     }
 
-    /* Ponto pequeno crimson – apenas o "." fica no headline, o dot é pseudo */
-    .mv-headline-period {
-      display: inline;
-    }
-    .mv-headline-period::after {
-      content: '';
+    /* Dot crimson pequeno após o ponto final */
+    .mv-dot {
       display: inline-block;
-      width: 0.115em;
-      height: 0.115em;
+      width: 11px;
+      height: 11px;
       background: var(--crimson);
       border-radius: 50%;
-      margin-left: 0.06em;
+      margin-left: 6px;
       vertical-align: middle;
       position: relative;
-      top: -0.12em;
+      top: -4px;
     }
 
     .mv-body {
-      margin-top: 2.25rem;
-      font-size: clamp(1rem, 1.2vw, 1.1rem);
+      margin-top: 2rem;
+      font-size: clamp(1rem, 1.15vw, 1.05rem);
       font-weight: 400;
-      line-height: 1.7;
+      line-height: 1.75;
       letter-spacing: 0.02em;
       color: var(--muted);
-      max-width: 42ch;
+      max-width: 44ch;
     }
 
-    /* ── Lado direito: Card ── */
+    /* ── Card ── */
     .mv-card {
-      background: rgba(22, 8, 18, 0.6);
-      border: 1px solid rgba(244, 234, 224, 0.09);
+      background: var(--card);
+      border: 1px solid var(--border);
       border-radius: 18px;
       padding: 2.75rem 2.5rem 2.25rem;
-      backdrop-filter: blur(28px) saturate(1.2);
-      -webkit-backdrop-filter: blur(28px) saturate(1.2);
+      /* sem backdrop-filter: card sólido e nítido */
       box-shadow:
-        0 0 0 0.5px rgba(244,234,224,0.04) inset,
-        0 24px 64px rgba(0,0,0,0.45),
-        0 0 80px rgba(181,6,66,0.06);
+        0 2px 0 0 rgba(255,255,255,0.04) inset,
+        0 -1px 0 0 rgba(0,0,0,0.4) inset,
+        0 20px 60px rgba(0,0,0,0.5);
     }
 
     .mv-card-title {
-      font-size: clamp(1.35rem, 2vw, 1.6rem);
+      font-size: clamp(1.4rem, 2vw, 1.65rem);
       font-weight: 400;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       color: var(--beige);
       text-align: center;
     }
+
     .mv-card-sub {
-      margin-top: 0.6rem;
-      font-size: 0.92rem;
+      margin-top: 0.55rem;
+      font-size: 0.9rem;
       font-weight: 400;
       line-height: 1.6;
       letter-spacing: 0.02em;
@@ -168,28 +162,32 @@
       text-align: center;
     }
 
-    /* ── Form ── */
+    /* ── Formulário ── */
     .mv-form {
       margin-top: 1.75rem;
       display: flex;
       flex-direction: column;
-      gap: 0.9rem;
+      gap: 0.85rem;
     }
 
-    .mv-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .mv-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.38rem;
+    }
 
     .mv-label {
       font-size: 0.62rem;
       font-weight: 500;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(244,234,224,0.38);
-      padding-left: 0.25rem;
+      color: rgba(244,234,224,0.36);
+      padding-left: 1rem;
     }
 
     .mv-input {
-      background: rgba(244,234,224,0.055);
-      border: 1px solid rgba(244,234,224,0.1);
+      background: var(--input);
+      border: 1px solid rgba(255,255,255,0.07);
       border-radius: 50px;
       padding: 0.95rem 1.35rem;
       font-family: var(--font);
@@ -201,8 +199,8 @@
       transition: border-color 0.18s;
       width: 100%;
     }
-    .mv-input::placeholder { color: rgba(244,234,224,0.22); }
-    .mv-input:focus { border-color: rgba(244,234,224,0.28); }
+    .mv-input::placeholder { color: rgba(244,234,224,0.2); }
+    .mv-input:focus { border-color: rgba(244,234,224,0.22); }
 
     /* Telefone */
     .mv-phone-row {
@@ -213,65 +211,65 @@
       display: flex;
       align-items: center;
       gap: 0.35rem;
-      background: rgba(244,234,224,0.055);
-      border: 1px solid rgba(244,234,224,0.1);
+      background: var(--input);
+      border: 1px solid rgba(255,255,255,0.07);
       border-radius: 50px;
-      padding: 0.95rem 1.1rem;
+      padding: 0.95rem 1.1rem 0.95rem 1.1rem;
       font-family: var(--font);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 400;
       letter-spacing: 0.02em;
       color: var(--beige);
       white-space: nowrap;
       flex-shrink: 0;
-      cursor: default;
     }
     .mv-phone-prefix .chev {
       font-size: 0.55rem;
-      opacity: 0.35;
-      margin-left: 0.05rem;
+      opacity: 0.3;
+      margin-left: 2px;
     }
-    .mv-phone-num { flex: 1; min-width: 0; }
+    .mv-phone-input { flex: 1; min-width: 0; }
 
-    /* ── Botão ── */
+    /* Botão */
     .mv-btn {
-      margin-top: 0.3rem;
-      position: relative;
+      margin-top: 0.2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
       background: var(--beige);
-      color: #100008;
+      color: #0d0010;
       border: none;
       border-radius: 50px;
-      padding: 0.9rem 0.9rem 0.9rem 1.75rem;
+      padding: 0.85rem 0.85rem 0.85rem 1.75rem;
       font-family: var(--font);
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.18s;
+      transition: background 0.18s, color 0.18s;
       width: 100%;
     }
-    .mv-btn:hover { background: #fff; }
+    .mv-btn:hover { background: #ffffff; }
     .mv-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
     .mv-btn-label { flex: 1; text-align: left; }
-    .mv-btn-circle {
-      width: 2.1rem;
-      height: 2.1rem;
+
+    .mv-btn-icon {
+      width: 2rem;
+      height: 2rem;
       border-radius: 50%;
-      background: #100008;
+      background: #0d0010;
       color: var(--beige);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      font-size: 0.85rem;
-      line-height: 1;
+      font-size: 0.9rem;
     }
 
-    /* ── Trust bar ── */
+    /* Trust */
     .mv-trust {
       display: flex;
       justify-content: center;
@@ -282,16 +280,15 @@
     .mv-trust-item {
       display: flex;
       align-items: center;
-      gap: 0.38rem;
+      gap: 0.35rem;
       font-size: 0.6rem;
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(244,234,224,0.28);
+      color: rgba(244,234,224,0.25);
     }
-    .mv-trust-item svg { opacity: 0.7; flex-shrink: 0; }
 
-    /* ── Success ── */
+    /* Sucesso */
     .mv-success {
       display: none;
       flex-direction: column;
@@ -301,35 +298,35 @@
       padding: 2.5rem 0 1.5rem;
     }
     .mv-success-check {
-      width: 3rem; height: 3rem;
+      width: 3rem;
+      height: 3rem;
       border-radius: 50%;
-      border: 1px solid rgba(181,6,66,0.35);
-      background: rgba(181,6,66,0.1);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem; color: var(--crimson);
+      border: 1px solid rgba(181,6,66,0.3);
+      background: rgba(181,6,66,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--crimson);
     }
-    .mv-success h2 {
-      font-size: 1.3rem; font-weight: 400; color: var(--beige);
-    }
-    .mv-success p {
-      font-size: 0.88rem; font-weight: 300; line-height: 1.6; color: var(--muted);
-    }
+    .mv-success h2 { font-size: 1.3rem; font-weight: 400; letter-spacing: 0.02em; }
+    .mv-success p  { font-size: 0.9rem; font-weight: 400; line-height: 1.6; color: var(--muted); }
 
     /* ── Mobile ── */
-    @media (max-width: 860px) {
+    @media (max-width: 880px) {
       .mv-header { padding: 1.25rem 1.5rem; }
       .mv-main {
         grid-template-columns: 1fr;
         padding: 1.5rem 1.5rem 3rem;
+        column-gap: 0;
         row-gap: 2.5rem;
       }
-      .mv-headline { font-size: clamp(2.8rem, 12vw, 5rem); }
+      .mv-headline { font-size: clamp(3rem, 13vw, 5.5rem); }
       .mv-body { max-width: 100%; }
     }
 
     @media (max-width: 480px) {
       .mv-header { padding: 1rem 1.25rem; }
-      .mv-nav-logo svg { width: 42px; }
       .mv-card { padding: 2rem 1.35rem 1.75rem; }
       .mv-main { padding: 1.25rem 1.25rem 2.5rem; }
     }
@@ -339,22 +336,24 @@
 
 <div class="mv-page">
 
+  <!-- Header -->
   <header class="mv-header">
-    <a href="/" class="mv-nav-logo" aria-label="Navy Branding">
+    <a href="/" class="mv-logo-link" aria-label="Navy Branding">
       <svg viewBox="0 0 480 233" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <text x="0" y="194" font-family="owners, sans-serif" font-size="200" font-weight="400"
-              fill="currentColor" letter-spacing="0">navy</text>
+        <text x="0" y="194" font-family="owners, sans-serif" font-size="200"
+              font-weight="400" fill="currentColor" letter-spacing="0">navy</text>
       </svg>
     </a>
-    <img src="assets/move-logo.svg" alt="Move" class="mv-nav-move">
+    <img src="assets/move-logo.svg" alt="Move" class="mv-logo-move">
   </header>
 
+  <!-- Conteúdo -->
   <main class="mv-main">
 
     <!-- Esquerda -->
     <div class="mv-left">
       <h1 class="mv-headline">
-        Fale com<br>a Navy<span class="mv-headline-period">.</span>
+        Fale com a<br>Navy.<span class="mv-dot"></span>
       </h1>
       <p class="mv-body">
         Se você chegou aqui através da Move e quer entender como o método Navy pode posicionar sua marca como a única escolhida, deixa seus dados. Nossa equipe te chama em alguns instantes para apresentar o próximo passo.
@@ -390,7 +389,7 @@
                 <span>+55</span>
                 <span class="chev">▾</span>
               </div>
-              <input class="mv-input mv-phone-num" id="mv-tel" type="tel"
+              <input class="mv-input mv-phone-input" id="mv-tel" type="tel"
                 placeholder="(11) 99999-9999" autocomplete="tel-national"
                 inputmode="numeric" required>
             </div>
@@ -398,7 +397,7 @@
 
           <button type="submit" class="mv-btn" id="mv-submit">
             <span class="mv-btn-label">Falar com a Navy</span>
-            <span class="mv-btn-circle">↗</span>
+            <span class="mv-btn-icon">↗</span>
           </button>
 
         </form>
@@ -406,15 +405,19 @@
         <div class="mv-trust">
           <div class="mv-trust-item">
             <svg width="11" height="13" viewBox="0 0 11 13" fill="none">
-              <rect x="0.55" y="5" width="9.9" height="7.45" rx="1.4" stroke="currentColor" stroke-width="1.1"/>
-              <path d="M3 5V3.5a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+              <rect x=".55" y="5" width="9.9" height="7.45" rx="1.4"
+                    stroke="currentColor" stroke-width="1.1"/>
+              <path d="M3 5V3.5a2.5 2.5 0 0 1 5 0V5"
+                    stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
             </svg>
             Dados protegidos
           </div>
           <div class="mv-trust-item">
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-              <circle cx="6.5" cy="4.5" r="2.4" stroke="currentColor" stroke-width="1.1"/>
-              <path d="M1 12c0-3.04 2.46-5.5 5.5-5.5S12 8.96 12 12" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+              <circle cx="6.5" cy="4.5" r="2.4"
+                      stroke="currentColor" stroke-width="1.1"/>
+              <path d="M1 12c0-3.04 2.46-5.5 5.5-5.5S12 8.96 12 12"
+                    stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
             </svg>
             Atendimento humano
           </div>
@@ -439,10 +442,10 @@
 
   tel.addEventListener('input', function(){
     var v = this.value.replace(/\D/g,'').slice(0,11);
-    if(v.length > 10)      v = '('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
-    else if(v.length > 6)  v = '('+v.slice(0,2)+') '+v.slice(2,6)+'-'+v.slice(6);
-    else if(v.length > 2)  v = '('+v.slice(0,2)+') '+v.slice(2);
-    else if(v.length > 0)  v = '('+v;
+    if(v.length > 10)     v = '('+v.slice(0,2)+') '+v.slice(2,7)+'-'+v.slice(7);
+    else if(v.length > 6) v = '('+v.slice(0,2)+') '+v.slice(2,6)+'-'+v.slice(6);
+    else if(v.length > 2) v = '('+v.slice(0,2)+') '+v.slice(2);
+    else if(v.length > 0) v = '('+v;
     this.value = v;
   });
 
@@ -457,17 +460,15 @@
     btn.disabled = true;
     btn.querySelector('.mv-btn-label').textContent = 'Enviando…';
 
-    var wap  = '5511999999999'; /* ← atualizar com número real da Navy */
-    var msg  = encodeURIComponent(
-      'Olá, Navy! Vim pela página da Move.\n\n'+
-      'Nome: '+nome+'\nE-mail: '+email+'\nTelefone: +55 '+fone
+    var wap = '5511999999999'; /* ← atualizar com número real */
+    var msg = encodeURIComponent(
+      'Olá, Navy! Vim pela página da Move.\n\nNome: '+nome+
+      '\nE-mail: '+email+'\nTelefone: +55 '+fone
     );
-
     setTimeout(function(){
-      window.open('https://wa.me/'+wap+'?text='+msg, '_blank');
+      window.open('https://wa.me/'+wap+'?text='+msg,'_blank');
       document.getElementById('mv-form-state').style.display = 'none';
-      var s = document.getElementById('mv-success');
-      s.style.display = 'flex';
+      document.getElementById('mv-success').style.display = 'flex';
     }, 500);
   });
 })();
