@@ -95,26 +95,70 @@
       }
     }
 
-    /* ── Layout: centrado como Human Academy ── */
+    /* ── Layout: split esquerda/direita ── */
     .mv-page {
       position: relative;
       z-index: 1;
       min-height: 100dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 4rem;
+      align-items: center;
+      padding: 3rem 5vw;
+      max-width: 1320px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Coluna esquerda */
+    .mv-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .mv-headline {
+      font-size: clamp(3.5rem, 7.5vw, 9rem);
+      font-weight: 400;
+      line-height: 1.03;
+      letter-spacing: 0.005em;
+      color: var(--beige);
+    }
+    .mv-dot {
+      display: inline-block;
+      width: 10px; height: 10px;
+      background: var(--crimson);
+      border-radius: 50%;
+      margin-left: 6px;
+      vertical-align: middle;
+      position: relative; top: -5px;
+    }
+    .mv-body {
+      margin-top: 2rem;
+      font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+      font-weight: 400;
+      line-height: 1.75;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      max-width: 44ch;
+    }
+
+    /* Coluna direita: logo + card */
+    .mv-right {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 3rem 1.5rem;
     }
 
     /* Logo Move: acima do card */
     .mv-logo-move {
       display: block;
-      height: 30px;
+      height: 28px;
       width: auto;
-      margin-bottom: 2.25rem;
+      margin-bottom: 2rem;
       filter: brightness(0) invert(1);
-      opacity: 0.72;
+      opacity: 0.68;
     }
 
     /* ── Card de vidro ── */
@@ -291,10 +335,20 @@
     .mv-success p  { font-size: 0.9rem; font-weight: 400; line-height: 1.6; color: var(--muted); }
 
     /* Mobile */
-    @media (max-width: 560px) {
-      .mv-page { padding: 2rem 1.1rem; }
-      .mv-card { padding: 2.1rem 1.4rem 1.75rem; }
-      .mv-logo-move { height: 24px; margin-bottom: 1.75rem; }
+    @media (max-width: 880px) {
+      .mv-page {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 1.5rem 3rem;
+        row-gap: 2.5rem;
+        min-height: unset;
+      }
+      .mv-headline { font-size: clamp(3rem, 13vw, 5.5rem); }
+      .mv-body { max-width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .mv-page { padding: 2rem 1.25rem 2.5rem; }
+      .mv-card { padding: 2rem 1.4rem 1.75rem; }
+      .mv-logo-move { height: 22px; margin-bottom: 1.5rem; }
     }
   </style>
 </head>
@@ -309,11 +363,22 @@
 
 <div class="mv-page">
 
-  <!-- Logo Move acima do card -->
-  <img src="assets/move-logo.svg" alt="Move" class="mv-logo-move">
+  <!-- Esquerda: headline + texto -->
+  <div class="mv-left">
+    <h1 class="mv-headline">
+      Fale com a<br>Navy.<span class="mv-dot"></span>
+    </h1>
+    <p class="mv-body">
+      Se você chegou aqui através da Move e quer entender como o método Navy pode posicionar sua marca como a única escolhida, deixa seus dados. Nossa equipe te chama em alguns instantes para apresentar o próximo passo.
+    </p>
+  </div>
 
-  <!-- Card de vidro -->
-  <div class="mv-card">
+  <!-- Direita: logo Move + card -->
+  <div class="mv-right">
+    <img src="assets/move-logo.svg" alt="Move" class="mv-logo-move">
+
+    <!-- Card de vidro -->
+    <div class="mv-card">
 
     <div id="mv-form-state">
       <p class="mv-card-title">Fale com a Navy</p>
@@ -382,7 +447,8 @@
       <p>Alguém da Navy vai te chamar<br>em breve pelo WhatsApp.</p>
     </div>
 
-  </div><!-- /mv-card -->
+    </div><!-- /mv-card -->
+  </div><!-- /mv-right -->
 
 </div><!-- /mv-page -->
 
