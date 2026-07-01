@@ -621,26 +621,20 @@ footer                      { margin-bottom:0!important; padding-bottom:0!import
   flex:1 1 auto!important;
 }
 .problems_home_list.u-grid-custom { justify-items:center!important; }
-/* logos: altura fixa no item → label absoluto alinha igual em todos */
-.problems_home_item {
-  min-height:96px!important; padding-bottom:28px!important;
-  display:flex!important; align-items:center!important; justify-content:center!important;
-}
+/* logos: tamanho maior, label absoluta já cuida do alinhamento */
+.problems_home_item { justify-content:center!important; align-items:center!important; }
 div.problems_home_image {
-  height:auto!important;
+  padding:6px 12px!important;
   display:flex!important; align-items:center!important; justify-content:center!important;
-  padding:4px 10px!important;
 }
 div.problems_home_image svg,
 div.problems_home_image img {
-  max-height:48px!important; height:auto!important;
-  width:auto!important; max-width:160px!important;
-  display:block!important;
+  height:40px!important; width:auto!important;
+  max-width:160px!important; display:block!important;
 }
 @media (max-width:767px) {
-  .problems_home_item { min-height:80px!important; padding-bottom:24px!important; }
   div.problems_home_image svg,
-  div.problems_home_image img { max-height:36px!important; max-width:110px!important; }
+  div.problems_home_image img { height:28px!important; max-width:110px!important; }
 }
 
 /* ── Process heading: branco ──────────────────────────────────────── */
