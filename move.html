@@ -319,6 +319,65 @@
       color: rgba(244,234,224,0.24);
     }
 
+    /* ── Step 2: qualificação ── */
+    .mv-step-indicator {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-bottom: 1.6rem;
+    }
+    .mv-step-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(244,234,224,0.18);
+      transition: background 0.2s;
+    }
+    .mv-step-dot--done   { background: rgba(244,234,224,0.42); }
+    .mv-step-dot--active { background: var(--beige); }
+    .mv-questions {
+      margin-top: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+    .mv-question { display: flex; flex-direction: column; gap: 0.55rem; }
+    .mv-qlabel {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(244,234,224,0.32);
+      padding-left: 0.2rem;
+    }
+    .mv-options { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .mv-option { cursor: pointer; user-select: none; }
+    .mv-option input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+    .mv-option span {
+      display: block;
+      padding: 0.5rem 0.95rem;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: rgba(244,234,224,0.55);
+      transition: all 0.15s ease;
+    }
+    .mv-option:hover span {
+      border-color: rgba(255,255,255,0.18);
+      color: var(--beige);
+    }
+    .mv-option input:checked + span {
+      border-color: rgba(181,6,66,0.55);
+      background: rgba(181,6,66,0.1);
+      color: var(--beige);
+    }
+    #mv-step2 { display: none; }
+    #mv-step2 .mv-btn { margin-top: 1.75rem; }
+
     /* Sucesso */
     @keyframes fade-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
     .mv-success {
@@ -753,6 +812,64 @@
       </div>
     </div>
 
+    <!-- Step 2: qualificação do lead -->
+    <div id="mv-step2">
+      <div class="mv-step-indicator">
+        <span class="mv-step-dot mv-step-dot--done"></span>
+        <span class="mv-step-dot mv-step-dot--active"></span>
+      </div>
+      <p class="mv-card-title" style="font-size:clamp(1.3rem,2.5vw,1.55rem)">Só mais algumas perguntas</p>
+      <p class="mv-card-sub" style="margin-top:0.5rem">Vai levar menos de 30 segundos.</p>
+
+      <div class="mv-questions">
+
+        <div class="mv-question">
+          <p class="mv-qlabel">Tipo de negócio</p>
+          <div class="mv-options">
+            <label class="mv-option"><input type="radio" name="tipo" value="Produto físico"><span>Produto físico</span></label>
+            <label class="mv-option"><input type="radio" name="tipo" value="Serviço / consultoria"><span>Serviço / consultoria</span></label>
+            <label class="mv-option"><input type="radio" name="tipo" value="E-commerce / digital"><span>E-commerce / digital</span></label>
+            <label class="mv-option"><input type="radio" name="tipo" value="Outro"><span>Outro</span></label>
+          </div>
+        </div>
+
+        <div class="mv-question">
+          <p class="mv-qlabel">Fase do negócio</p>
+          <div class="mv-options">
+            <label class="mv-option"><input type="radio" name="fase" value="Lançando agora"><span>Lançando agora</span></label>
+            <label class="mv-option"><input type="radio" name="fase" value="Crescendo e me posicionando"><span>Crescendo e me posicionando</span></label>
+            <label class="mv-option"><input type="radio" name="fase" value="Reposicionando a marca"><span>Reposicionando a marca</span></label>
+          </div>
+        </div>
+
+        <div class="mv-question">
+          <p class="mv-qlabel">Faturamento mensal</p>
+          <div class="mv-options">
+            <label class="mv-option"><input type="radio" name="faturamento" value="Até R$ 10k"><span>Até R$ 10k</span></label>
+            <label class="mv-option"><input type="radio" name="faturamento" value="R$ 10k – R$ 30k"><span>R$ 10k – R$ 30k</span></label>
+            <label class="mv-option"><input type="radio" name="faturamento" value="R$ 30k – R$ 100k"><span>R$ 30k – R$ 100k</span></label>
+            <label class="mv-option"><input type="radio" name="faturamento" value="Acima de R$ 100k"><span>Acima de R$ 100k</span></label>
+          </div>
+        </div>
+
+        <div class="mv-question">
+          <p class="mv-qlabel">Como conheceu a Navy?</p>
+          <div class="mv-options">
+            <label class="mv-option"><input type="radio" name="canal" value="Instagram"><span>Instagram</span></label>
+            <label class="mv-option"><input type="radio" name="canal" value="Indicação"><span>Indicação</span></label>
+            <label class="mv-option"><input type="radio" name="canal" value="Google / pesquisa"><span>Google / pesquisa</span></label>
+            <label class="mv-option"><input type="radio" name="canal" value="Outro"><span>Outro</span></label>
+          </div>
+        </div>
+
+      </div>
+
+      <button type="button" class="mv-btn" id="mv-submit2">
+        <span id="mv-btn2-label">Enviar candidatura</span>
+        <span class="mv-btn-icon">↗</span>
+      </button>
+    </div>
+
     <!-- Sucesso -->
     <div class="mv-success" id="mv-success">
       <div class="mv-success-icon">✓</div>
@@ -869,39 +986,61 @@
     this.value = v;
   });
 
+  var _lead = {};
+
   document.getElementById('mv-form').addEventListener('submit', function(e){
     e.preventDefault();
     var nome  = document.getElementById('mv-nome').value.trim();
     var email = document.getElementById('mv-email').value.trim();
     var fone  = tel.value.trim();
-    if(!nome||!email||!fone) return;
+    if(!nome || !email || !fone) return;
+    _lead = { nome: nome, email: email, telefone: '+55 ' + fone };
+    document.getElementById('mv-form-state').style.display = 'none';
+    var step2 = document.getElementById('mv-step2');
+    step2.style.display = 'block';
+    step2.style.animation = 'fade-in 0.3s ease both';
+  });
 
-    var btn = document.getElementById('mv-submit');
-    btn.disabled = true;
-    document.getElementById('mv-btn-label').textContent = 'Enviando…';
-
+  document.getElementById('mv-submit2').addEventListener('click', function(){
+    var tipo        = document.querySelector('input[name="tipo"]:checked');
+    var fase        = document.querySelector('input[name="fase"]:checked');
+    var fat         = document.querySelector('input[name="faturamento"]:checked');
+    var canal       = document.querySelector('input[name="canal"]:checked');
+    var btn         = this;
+    var label       = document.getElementById('mv-btn2-label');
+    btn.disabled    = true;
+    label.textContent = 'Enviando…';
+    var payload = {
+      nome:          _lead.nome,
+      email:         _lead.email,
+      telefone:      _lead.telefone,
+      tipo_negocio:  tipo  ? tipo.value  : '—',
+      fase_negocio:  fase  ? fase.value  : '—',
+      faturamento:   fat   ? fat.value   : '—',
+      canal:         canal ? canal.value : '—'
+    };
     fetch('https://formspree.io/f/meebrvlv', {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nome: nome, email: email, telefone: '+55 ' + fone })
+      body: JSON.stringify(payload)
     })
     .then(function(res){
       if (res.ok) {
-        document.getElementById('mv-form-state').style.display = 'none';
+        document.getElementById('mv-step2').style.display = 'none';
         document.getElementById('mv-success').style.display = 'flex';
       } else {
         return res.json().then(function(data){
-          var msg = (data.errors && data.errors.map(function(e){ return e.message; }).join(', ')) || 'Erro ao enviar. Tente novamente.';
+          var msg = (data.errors && data.errors.map(function(err){ return err.message; }).join(', ')) || 'Erro ao enviar. Tente novamente.';
           alert(msg);
           btn.disabled = false;
-          document.getElementById('mv-btn-label').textContent = 'Aplicar para o MOVE®';
+          label.textContent = 'Enviar candidatura';
         });
       }
     })
     .catch(function(){
       alert('Erro de conexão. Verifique sua internet e tente novamente.');
       btn.disabled = false;
-      document.getElementById('mv-btn-label').textContent = 'Aplicar para o MOVE®';
+      label.textContent = 'Enviar candidatura';
     });
   });
 })();
