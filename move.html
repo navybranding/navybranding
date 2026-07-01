@@ -697,13 +697,13 @@
 
         <div class="mv-field">
           <label class="mv-label" for="mv-nome">Nome</label>
-          <input class="mv-input" id="mv-nome" type="text"
+          <input class="mv-input" id="mv-nome" name="nome" type="text"
             placeholder="Seu nome completo" autocomplete="name" required>
         </div>
 
         <div class="mv-field">
           <label class="mv-label" for="mv-email">E-mail</label>
-          <input class="mv-input" id="mv-email" type="email"
+          <input class="mv-input" id="mv-email" name="email" type="email"
             placeholder="seu@email.com" autocomplete="email" required>
         </div>
 
@@ -715,7 +715,7 @@
               <span>+55</span>
               <span class="chev">▾</span>
             </div>
-            <input class="mv-input mv-phone-num" id="mv-tel" type="tel"
+            <input class="mv-input mv-phone-num" id="mv-tel" name="telefone" type="tel"
               placeholder="(11) 99999-9999" autocomplete="tel-national"
               inputmode="numeric" required>
           </div>
@@ -874,17 +874,29 @@
     btn.disabled = true;
     document.getElementById('mv-btn-label').textContent = 'Enviando…';
 
-    var wap = '5511999999999'; /* ← atualizar com número real */
-    var msg = encodeURIComponent(
-      'Olá, Navy! Vim pela página do MOVE e quero aplicar.\n\n'+
-      'Nome: '+nome+'\nE-mail: '+email+'\nTelefone: +55 '+fone
-    );
-
-    setTimeout(function(){
-      window.open('https://wa.me/'+wap+'?text='+msg,'_blank');
-      document.getElementById('mv-form-state').style.display = 'none';
-      document.getElementById('mv-success').style.display = 'flex';
-    }, 500);
+    fetch('https://formspree.io/f/meebrvlv', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nome: nome, email: email, telefone: '+55 ' + fone })
+    })
+    .then(function(res){
+      if (res.ok) {
+        document.getElementById('mv-form-state').style.display = 'none';
+        document.getElementById('mv-success').style.display = 'flex';
+      } else {
+        return res.json().then(function(data){
+          var msg = (data.errors && data.errors.map(function(e){ return e.message; }).join(', ')) || 'Erro ao enviar. Tente novamente.';
+          alert(msg);
+          btn.disabled = false;
+          document.getElementById('mv-btn-label').textContent = 'Aplicar para o MOVE®';
+        });
+      }
+    })
+    .catch(function(){
+      alert('Erro de conexão. Verifique sua internet e tente novamente.');
+      btn.disabled = false;
+      document.getElementById('mv-btn-label').textContent = 'Aplicar para o MOVE®';
+    });
   });
 })();
 
