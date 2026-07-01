@@ -377,7 +377,35 @@
     }
     .mv-outro-field { display: none; margin-top: 0.55rem; font-size: 0.88rem; }
     #mv-step2a, #mv-step2b { display: none; }
-    #mv-step2a .mv-btn, #mv-step2b .mv-btn { margin-top: 1.75rem; }
+    .mv-form-nav {
+      margin-top: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.65rem;
+    }
+    .mv-form-nav .mv-btn { margin-top: 0; }
+    .mv-btn-back {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      font-size: 0.78rem;
+      color: rgba(244,234,224,0.3);
+      padding: 0.25rem 0;
+      text-align: center;
+      letter-spacing: 0.04em;
+      transition: color 0.15s;
+    }
+    .mv-btn-back:hover { color: rgba(244,234,224,0.6); }
+    .mv-q-error {
+      display: none;
+      font-size: 0.7rem;
+      color: rgba(181,6,66,0.85);
+      padding-left: 0.2rem;
+      margin-top: 0.1rem;
+    }
+    .mv-q-error--show { display: block; }
 
     /* Sucesso */
     @keyframes fade-in { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
@@ -837,6 +865,7 @@
             <label class="mv-option"><input type="radio" name="tipo" value="Outro"><span>Outro</span></label>
           </div>
           <input class="mv-input mv-outro-field" id="mv-tipo-outro" type="text" placeholder="Qual é o seu mercado?">
+          <p class="mv-q-error" id="mv-err-tipo">Selecione uma opção para continuar.</p>
         </div>
 
         <div class="mv-question">
@@ -848,14 +877,18 @@
             <label class="mv-option"><input type="radio" name="fase" value="Outro"><span>Outro</span></label>
           </div>
           <input class="mv-input mv-outro-field" id="mv-fase-outro" type="text" placeholder="Conta o que te trouxe até aqui.">
+          <p class="mv-q-error" id="mv-err-fase">Selecione uma opção para continuar.</p>
         </div>
 
       </div>
 
-      <button type="button" class="mv-btn" id="mv-next2a">
-        <span>Continuar</span>
-        <span class="mv-btn-icon">→</span>
-      </button>
+      <div class="mv-form-nav">
+        <button type="button" class="mv-btn" id="mv-next2a">
+          <span>Continuar</span>
+          <span class="mv-btn-icon">→</span>
+        </button>
+        <button type="button" class="mv-btn-back" id="mv-back-2a">← Voltar</button>
+      </div>
     </div>
 
     <!-- Step 2b: faturamento + canal -->
@@ -879,6 +912,7 @@
             <label class="mv-option"><input type="radio" name="faturamento" value="R$ 30k – R$ 100k"><span>R$ 30k – R$ 100k</span></label>
             <label class="mv-option"><input type="radio" name="faturamento" value="Acima de R$ 100k"><span>Acima de R$ 100k</span></label>
           </div>
+          <p class="mv-q-error" id="mv-err-faturamento">Selecione uma opção para continuar.</p>
         </div>
 
         <div class="mv-question">
@@ -891,14 +925,18 @@
             <label class="mv-option"><input type="radio" name="canal" value="Outro"><span>Outro</span></label>
           </div>
           <input class="mv-input mv-outro-field" id="mv-canal-outro" type="text" placeholder="Nos conta como chegou até aqui.">
+          <p class="mv-q-error" id="mv-err-canal">Selecione uma opção para continuar.</p>
         </div>
 
       </div>
 
-      <button type="button" class="mv-btn" id="mv-submit2">
-        <span id="mv-btn2-label">Enviar candidatura</span>
-        <span class="mv-btn-icon">↗</span>
-      </button>
+      <div class="mv-form-nav">
+        <button type="button" class="mv-btn" id="mv-submit2">
+          <span id="mv-btn2-label">Enviar candidatura</span>
+          <span class="mv-btn-icon">↗</span>
+        </button>
+        <button type="button" class="mv-btn-back" id="mv-back-2b">← Voltar</button>
+      </div>
     </div>
 
     <!-- Sucesso -->
@@ -1032,16 +1070,53 @@
     step2a.style.animation = 'fade-in 0.3s ease both';
   });
 
+  function validateQ(name, errId, outroFieldId) {
+    var radio = document.querySelector('input[name="' + name + '"]:checked');
+    var errEl = document.getElementById(errId);
+    if (!radio) {
+      errEl.textContent = 'Selecione uma opção para continuar.';
+      errEl.classList.add('mv-q-error--show');
+      return false;
+    }
+    if (radio.value === 'Outro' && outroFieldId) {
+      var f = document.getElementById(outroFieldId);
+      if (!f || !f.value.trim()) {
+        errEl.textContent = 'Por favor, especifique.';
+        errEl.classList.add('mv-q-error--show');
+        return false;
+      }
+    }
+    errEl.classList.remove('mv-q-error--show');
+    return true;
+  }
+
   document.getElementById('mv-next2a').addEventListener('click', function(){
+    var v1 = validateQ('tipo', 'mv-err-tipo', 'mv-tipo-outro');
+    var v2 = validateQ('fase', 'mv-err-fase', 'mv-fase-outro');
+    if (!v1 || !v2) return;
     document.getElementById('mv-step2a').style.display = 'none';
     var step2b = document.getElementById('mv-step2b');
     step2b.style.display = 'block';
     step2b.style.animation = 'fade-in 0.3s ease both';
   });
 
+  document.getElementById('mv-back-2a').addEventListener('click', function(){
+    document.getElementById('mv-step2a').style.display = 'none';
+    document.getElementById('mv-form-state').style.display = 'block';
+  });
+
+  document.getElementById('mv-back-2b').addEventListener('click', function(){
+    document.getElementById('mv-step2b').style.display = 'none';
+    var step2a = document.getElementById('mv-step2a');
+    step2a.style.display = 'block';
+    step2a.style.animation = 'fade-in 0.3s ease both';
+  });
+
   ['tipo', 'fase', 'canal'].forEach(function(name) {
     document.querySelectorAll('input[name="' + name + '"]').forEach(function(radio) {
       radio.addEventListener('change', function() {
+        var errEl = document.getElementById('mv-err-' + name);
+        if (errEl) errEl.classList.remove('mv-q-error--show');
         var field = document.getElementById('mv-' + name + '-outro');
         if (!field) return;
         field.style.display = this.value === 'Outro' ? 'block' : 'none';
@@ -1050,8 +1125,15 @@
     });
   });
 
+  document.querySelectorAll('input[name="faturamento"]').forEach(function(radio) {
+    radio.addEventListener('change', function() {
+      var errEl = document.getElementById('mv-err-faturamento');
+      if (errEl) errEl.classList.remove('mv-q-error--show');
+    });
+  });
+
   function resolveOutro(radio, fieldId) {
-    if (!radio) return '—';
+    if (!radio) return 'Não respondido';
     if (radio.value !== 'Outro') return radio.value;
     var field = document.getElementById(fieldId);
     var txt = field && field.value.trim();
@@ -1059,6 +1141,9 @@
   }
 
   document.getElementById('mv-submit2').addEventListener('click', function(){
+    var v1 = validateQ('faturamento', 'mv-err-faturamento', null);
+    var v2 = validateQ('canal', 'mv-err-canal', 'mv-canal-outro');
+    if (!v1 || !v2) return;
     var tipo        = document.querySelector('input[name="tipo"]:checked');
     var fase        = document.querySelector('input[name="fase"]:checked');
     var fat         = document.querySelector('input[name="faturamento"]:checked');
