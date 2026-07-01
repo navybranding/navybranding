@@ -154,11 +154,11 @@
     /* Logo Move: acima do card */
     .mv-logo-move {
       display: block;
-      height: 36px;
+      height: clamp(44px, 5vw, 62px);
       width: auto;
       margin-bottom: 2rem;
       filter: brightness(0) invert(1);
-      opacity: 0.68;
+      opacity: 0.72;
     }
 
     /* ── Card de vidro ── */
@@ -334,21 +334,56 @@
     .mv-success h2 { font-size: 1.3rem; font-weight: 400; letter-spacing: 0.02em; }
     .mv-success p  { font-size: 0.9rem; font-weight: 400; line-height: 1.6; color: var(--muted); }
 
-    /* Mobile */
-    @media (max-width: 880px) {
+    /* ── Tablet largo (≤1100px): aperta gap e padding ── */
+    @media (max-width: 1100px) {
+      .mv-page { column-gap: 2.5rem; padding: 2.5rem 4vw; }
+    }
+
+    /* ── Tablet / mobile (≤860px): coluna única ── */
+    @media (max-width: 860px) {
       .mv-page {
         grid-template-columns: 1fr;
+        row-gap: 0;
         padding: 2.5rem 1.5rem 3rem;
-        row-gap: 2.5rem;
         min-height: unset;
       }
-      .mv-headline { font-size: clamp(3rem, 13vw, 5.5rem); }
-      .mv-body { max-width: 100%; }
+      /* Reordena: logo + card aparecem ABAIXO do texto */
+      .mv-left  { order: 1; margin-bottom: 2.25rem; }
+      .mv-right { order: 2; width: 100%; align-items: stretch; }
+
+      .mv-headline { font-size: clamp(2.8rem, 11vw, 5rem); }
+      .mv-body { max-width: 100%; font-size: 0.95rem; }
+
+      .mv-logo-move {
+        height: 40px;
+        margin-bottom: 1.5rem;
+        /* centraliza no mobile */
+        align-self: center;
+      }
+      .mv-card { max-width: 100%; }
     }
+
+    /* ── Mobile pequeno (≤480px) ── */
     @media (max-width: 480px) {
-      .mv-page { padding: 2rem 1.25rem 2.5rem; }
-      .mv-card { padding: 2rem 1.4rem 1.75rem; }
-      .mv-logo-move { height: 29px; margin-bottom: 1.5rem; }
+      .mv-page { padding: 2rem 1.1rem 2.5rem; }
+      .mv-headline { font-size: clamp(2.4rem, 12vw, 3.5rem); }
+      .mv-left { margin-bottom: 1.75rem; }
+      .mv-card { padding: 1.85rem 1.25rem 1.5rem; border-radius: 16px; }
+      .mv-logo-move { height: 34px; }
+      .mv-card-title { font-size: 1.4rem; }
+      /* inputs mais altos = melhor toque */
+      .mv-input { padding: 1.05rem 1.2rem; font-size: 1rem; }
+      .mv-phone-wrap { padding: 1.05rem 0.9rem 1.05rem 1.1rem; font-size: 0.95rem; }
+      .mv-btn { padding: 1.05rem 1.05rem 1.05rem 1.5rem; font-size: 0.7rem; }
+      .mv-btn-icon { width: 2.2rem; height: 2.2rem; font-size: 1rem; }
+    }
+
+    /* ── Mobile muito pequeno (≤360px) ── */
+    @media (max-width: 360px) {
+      .mv-page { padding: 1.5rem 1rem 2rem; }
+      .mv-headline { font-size: 2.2rem; }
+      .mv-card { padding: 1.5rem 1rem 1.25rem; }
+      .mv-logo-move { height: 28px; }
     }
   </style>
 </head>
