@@ -844,7 +844,9 @@
             <label class="mv-option"><input type="radio" name="fase" value="Quero criar minha marca do zero"><span>Quero criar minha marca do zero</span></label>
             <label class="mv-option"><input type="radio" name="fase" value="Já vendo, mas não me destaco"><span>Já vendo, mas não me destaco</span></label>
             <label class="mv-option"><input type="radio" name="fase" value="Preciso colocar minha marca em movimento"><span>Preciso colocar minha marca em movimento</span></label>
+            <label class="mv-option"><input type="radio" name="fase" value="Outro"><span>Outro</span></label>
           </div>
+          <input class="mv-input mv-outro-field" id="mv-fase-outro" type="text" placeholder="Conta o que te trouxe até aqui.">
         </div>
 
         <div class="mv-question">
@@ -1009,7 +1011,7 @@
     step2.style.animation = 'fade-in 0.3s ease both';
   });
 
-  ['tipo', 'canal'].forEach(function(name) {
+  ['tipo', 'fase', 'canal'].forEach(function(name) {
     document.querySelectorAll('input[name="' + name + '"]').forEach(function(radio) {
       radio.addEventListener('change', function() {
         var field = document.getElementById('mv-' + name + '-outro');
@@ -1042,7 +1044,7 @@
       email:         _lead.email,
       telefone:      _lead.telefone,
       tipo_negocio:  resolveOutro(tipo, 'mv-tipo-outro'),
-      fase_negocio:  fase  ? fase.value  : '—',
+      fase_negocio:  resolveOutro(fase, 'mv-fase-outro'),
       faturamento:   fat   ? fat.value   : '—',
       canal:         resolveOutro(canal, 'mv-canal-outro')
     };
