@@ -595,14 +595,28 @@ div.problems_home_image img {
 .services_home_subtitle.u-text-style-h5 { line-height:1.55!important; margin-top:0!important; }
 .services_home_heading.u-text-style-h2  { line-height:1.05!important; }
 
-/* ── Font-weight: leve e hierárquico ─────────────────────────────── */
+/* ── Font-weight: espelha bymonolog (500 headings, 300 body) ─────── */
 .u-text-style-display,
-.u-text-style-h1             { font-weight:600!important; }
-.u-text-style-h2, .u-text-style-h3 { font-weight:500!important; }
+.u-text-style-h1, .u-text-style-h2,
+.u-text-style-h3             { font-weight:500!important; }
 .u-text-style-h4, .u-text-style-h5,
-.u-text-style-h6             { font-weight:400!important; }
+.u-text-style-h6             { font-weight:300!important; }
 .u-text-style-main, .u-text-style-small,
 .u-text-style-large          { font-weight:300!important; }
+
+/* ── Hero logos (logos-v2.svg): 40% largura, centralizado ───────── */
+.hero_home_bottom            { align-items:center!important; }
+.hero_home_svg               {
+  width:40%!important; max-width:480px!important;
+  height:auto!important; display:block!important;
+  opacity:0.55!important;
+}
+@media (max-width:767px) {
+  .hero_home_svg { width:72%!important; max-width:320px!important; }
+}
+@media (max-width:479px) {
+  .hero_home_svg { width:88%!important; }
+}
 
 /* ── "Ver todos" cta: herda fundo beige da seção works ───────────── */
 .works_home_cta { background-color:transparent!important; }
