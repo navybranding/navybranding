@@ -3,8 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fale com a Navy — Move</title>
+  <meta name="theme-color" content="#07050e">
+  <title>Aplique para o MOVE® | Navy Branding</title>
   <meta name="description" content="Posicionamento que faz a sua marca ser a única escolhida. A Navy te chama em instantes.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bynavy.com/move">
+  <meta property="og:title" content="Aplique para o MOVE® | Navy Branding">
+  <meta property="og:description" content="Posicionamento que faz a sua marca ser a única escolhida. A Navy te chama em instantes.">
+  <meta property="og:image" content="https://bynavy.com/assets/6a09d58252f753171f674af9_OG.avif">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aplique para o MOVE® | Navy Branding">
+  <meta name="twitter:description" content="Posicionamento que faz a sua marca ser a única escolhida. A Navy te chama em instantes.">
+  <meta name="twitter:image" content="https://bynavy.com/assets/6a09d58252f753171f674af9_OG.avif">
+  <link rel="canonical" href="https://bynavy.com/move">
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+  <link rel="dns-prefetch" href="https://formspree.io">
   <link rel="stylesheet" href="https://use.typekit.net/sjc8xmj.css">
   <link rel="icon" href="assets/navy_favicon.svg" type="image/svg+xml">
   <style>
@@ -752,6 +767,28 @@
       .kf-title { font-size: 2.1rem; }
       .kf-logos-track .kf-logo-item { max-height: 22px; max-width: 140px; }
     }
+
+    /* ── Performance mobile: desativa animações custosas ── */
+    @media (max-width: 860px) {
+      .mv-bg { display: none; }
+      .mv-card { animation: none; box-shadow: inset 0 1px rgba(255,255,255,0.22), inset 0 0 0 1px rgba(255,255,255,0.08), inset 0 -1px rgba(255,255,255,0.06), 0 24px 64px rgba(0,0,0,0.6), 0 0 24px rgba(181,6,66,0.1); }
+    }
+
+    /* ── Acessibilidade: respeita preferência de movimento reduzido ── */
+    @media (prefers-reduced-motion: reduce) {
+      .mv-blob, .mv-card, .kf-logos-track { animation: none !important; }
+      .mv-success { animation: none; }
+    }
+
+    /* ── Validação step 1 ── */
+    .mv-field-error {
+      display: none;
+      font-size: 0.7rem;
+      color: rgba(181,6,66,0.85);
+      padding-left: 1.1rem;
+      margin-top: 0.15rem;
+    }
+    .mv-field-error--show { display: block; }
   </style>
 </head>
 <body>
@@ -793,12 +830,14 @@
           <label class="mv-label" for="mv-nome">Nome</label>
           <input class="mv-input" id="mv-nome" name="nome" type="text"
             placeholder="Seu nome completo" autocomplete="name" required>
+          <p class="mv-field-error" id="mv-err-nome">Preencha o seu nome.</p>
         </div>
 
         <div class="mv-field">
           <label class="mv-label" for="mv-email">E-mail</label>
           <input class="mv-input" id="mv-email" name="email" type="email"
             placeholder="seu@email.com" autocomplete="email" required>
+          <p class="mv-field-error" id="mv-err-email">Preencha um e-mail válido.</p>
         </div>
 
         <div class="mv-field">
@@ -813,6 +852,7 @@
               placeholder="(11) 99999-9999" autocomplete="tel-national"
               inputmode="numeric" required>
           </div>
+          <p class="mv-field-error" id="mv-err-tel">Preencha o telefone com DDD.</p>
         </div>
 
         <button type="submit" class="mv-btn" id="mv-submit">
@@ -965,7 +1005,7 @@
     <!-- Matheus Fellipe -->
     <div class="kf-card">
       <div class="kf-photo">
-        <img src="assets/socio-matheus-fellipe.jpg" alt="Matheus Fellipe">
+        <img src="assets/socio-matheus-fellipe.jpg" alt="Matheus Fellipe" loading="lazy" decoding="async">
       </div>
       <div class="kf-body">
         <p class="kf-name">Matheus Fellipe</p>
@@ -976,7 +1016,7 @@
     <!-- Anna Beatriz -->
     <div class="kf-card">
       <div class="kf-photo">
-        <img src="assets/anna-beatriz.webp" alt="Anna Beatriz">
+        <img src="assets/anna-beatriz.webp" alt="Anna Beatriz" loading="lazy" decoding="async">
       </div>
       <div class="kf-body">
         <p class="kf-name">Anna Beatriz</p>
@@ -987,7 +1027,7 @@
     <!-- Matheus Marins -->
     <div class="kf-card">
       <div class="kf-photo">
-        <img src="assets/socio-matheus-marins.png" alt="Matheus Marins">
+        <img src="assets/socio-matheus-marins.png" alt="Matheus Marins" loading="lazy" decoding="async">
       </div>
       <div class="kf-body">
         <p class="kf-name">Matheus Marins</p>
@@ -1005,27 +1045,27 @@
 
     <!-- Desktop: grid estático -->
     <div class="kf-logos">
-      <img src="assets/cl-gelato-grano.svg"    alt="Gelato de Grano"  class="kf-logo-item">
-      <img src="assets/cl-tempo-resort-wear.svg" alt="Tempo Resort Wear" class="kf-logo-item">
-      <img src="assets/cl-duo-brand.svg"       alt="Duo Brand"        class="kf-logo-item">
-      <img src="assets/cl-nx.svg"              alt="NX"               class="kf-logo-item">
-      <img src="assets/cl-love-miss.svg"       alt="Love Miss"        class="kf-logo-item">
-      <img src="assets/cl-las-batas.svg"       alt="Las Batas"        class="kf-logo-item">
-      <img src="assets/cl-not-silly.svg"       alt="Not Silly"        class="kf-logo-item">
-      <img src="assets/cl-dra-charm.svg"       alt="Dra. Charm"       class="kf-logo-item">
+      <img src="assets/cl-gelato-grano.svg"    alt="Gelato de Grano"  class="kf-logo-item" loading="lazy" decoding="async">
+      <img src="assets/cl-tempo-resort-wear.svg" alt="Tempo Resort Wear" class="kf-logo-item" loading="lazy" decoding="async">
+      <img src="assets/cl-duo-brand.svg"       alt="Duo Brand"        class="kf-logo-item" loading="lazy" decoding="async">
+      <img src="assets/cl-nx.svg"              alt="NX"               class="kf-logo-item" loading="lazy" decoding="async">
+      <img src="assets/cl-love-miss.svg"       alt="Love Miss"        class="kf-logo-item" loading="lazy" decoding="async">
+      <img src="assets/cl-las-batas.svg"       alt="Las Batas"        class="kf-logo-item" loading="lazy" decoding="async">
+      <img src="assets/cl-not-silly.svg"       alt="Not Silly"        class="kf-logo-item" loading="lazy" decoding="async">
+      <img src="assets/cl-dra-charm.svg"       alt="Dra. Charm"       class="kf-logo-item" loading="lazy" decoding="async">
     </div>
 
     <!-- Mobile: marquee infinito -->
     <div class="kf-logos-marquee">
       <div class="kf-logos-track">
-        <img src="assets/cl-gelato-grano.svg"    alt="" class="kf-logo-item">
-        <img src="assets/cl-tempo-resort-wear.svg" alt="" class="kf-logo-item">
-        <img src="assets/cl-duo-brand.svg"       alt="" class="kf-logo-item">
-        <img src="assets/cl-nx.svg"              alt="" class="kf-logo-item">
-        <img src="assets/cl-love-miss.svg"       alt="" class="kf-logo-item">
-        <img src="assets/cl-las-batas.svg"       alt="" class="kf-logo-item">
-        <img src="assets/cl-not-silly.svg"       alt="" class="kf-logo-item">
-        <img src="assets/cl-dra-charm.svg"       alt="" class="kf-logo-item">
+        <img src="assets/cl-gelato-grano.svg"    alt="" class="kf-logo-item" loading="lazy" decoding="async">
+        <img src="assets/cl-tempo-resort-wear.svg" alt="" class="kf-logo-item" loading="lazy" decoding="async">
+        <img src="assets/cl-duo-brand.svg"       alt="" class="kf-logo-item" loading="lazy" decoding="async">
+        <img src="assets/cl-nx.svg"              alt="" class="kf-logo-item" loading="lazy" decoding="async">
+        <img src="assets/cl-love-miss.svg"       alt="" class="kf-logo-item" loading="lazy" decoding="async">
+        <img src="assets/cl-las-batas.svg"       alt="" class="kf-logo-item" loading="lazy" decoding="async">
+        <img src="assets/cl-not-silly.svg"       alt="" class="kf-logo-item" loading="lazy" decoding="async">
+        <img src="assets/cl-dra-charm.svg"       alt="" class="kf-logo-item" loading="lazy" decoding="async">
         <!-- segunda volta para loop contínuo -->
         <img src="assets/cl-gelato-grano.svg"    alt="" class="kf-logo-item" aria-hidden="true">
         <img src="assets/cl-tempo-resort-wear.svg" alt="" class="kf-logo-item" aria-hidden="true">
@@ -1062,12 +1102,31 @@
     var nome  = document.getElementById('mv-nome').value.trim();
     var email = document.getElementById('mv-email').value.trim();
     var fone  = tel.value.trim();
-    if(!nome || !email || !fone) return;
+    var ok = true;
+    var nomeErr  = document.getElementById('mv-err-nome');
+    var emailErr = document.getElementById('mv-err-email');
+    var telErr   = document.getElementById('mv-err-tel');
+    if (!nome) { nomeErr.classList.add('mv-field-error--show'); ok = false; }
+    else { nomeErr.classList.remove('mv-field-error--show'); }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailErr.textContent = !email ? 'Preencha o seu e-mail.' : 'E-mail inválido.';
+      emailErr.classList.add('mv-field-error--show'); ok = false;
+    } else { emailErr.classList.remove('mv-field-error--show'); }
+    if (!fone) { telErr.classList.add('mv-field-error--show'); ok = false; }
+    else { telErr.classList.remove('mv-field-error--show'); }
+    if (!ok) return;
     _lead = { nome: nome, email: email, telefone: '+55 ' + fone };
     document.getElementById('mv-form-state').style.display = 'none';
     var step2a = document.getElementById('mv-step2a');
     step2a.style.display = 'block';
     step2a.style.animation = 'fade-in 0.3s ease both';
+  });
+
+  ['mv-nome', 'mv-email', 'mv-tel'].forEach(function(id) {
+    document.getElementById(id).addEventListener('input', function() {
+      var errEl = document.getElementById('mv-err-' + id.replace('mv-', ''));
+      if (errEl) errEl.classList.remove('mv-field-error--show');
+    });
   });
 
   function validateQ(name, errId, outroFieldId) {
@@ -1158,7 +1217,7 @@
       telefone:      _lead.telefone,
       tipo_negocio:  resolveOutro(tipo, 'mv-tipo-outro'),
       fase_negocio:  resolveOutro(fase, 'mv-fase-outro'),
-      faturamento:   fat   ? fat.value   : '—',
+      faturamento:   fat   ? fat.value   : 'Não informado',
       canal:         resolveOutro(canal, 'mv-canal-outro')
     };
     fetch('https://formspree.io/f/meebrvlv', {
