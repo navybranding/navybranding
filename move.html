@@ -614,11 +614,12 @@
     /* Responsivo key facts */
     @media (max-width: 860px) {
       .kf {
-        padding: 4rem 0 3.5rem;
+        padding: 3rem 0 2.5rem;
         min-height: 100svh;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        overflow: hidden;
       }
       .kf-header { padding: 0 1.5rem; }
       /* Carrossel de cards */
@@ -645,6 +646,11 @@
       }
       /* Logo marquee em vez de static */
       .kf-partners { margin-top: 0; flex-shrink: 0; }
+      .kf-partners-label {
+        font-size: 0.65rem;
+        color: rgba(7,5,14,0.5);
+        margin-bottom: 1.25rem;
+      }
       .kf-logos { display: none; }
       .kf-logos-marquee { display: block; }
     }
