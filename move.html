@@ -23,6 +23,7 @@
       color: var(--beige);
       -webkit-font-smoothing: antialiased;
       background-color: #07050e;
+      overflow-x: hidden;
     }
 
     /* ── Blobs (Human Academy liquid-float pattern) ── */
@@ -619,7 +620,6 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        overflow: hidden;
       }
       .kf-header { padding: 0 1.5rem; }
       /* Carrossel de cards */
@@ -647,9 +647,10 @@
       /* Logo marquee em vez de static */
       .kf-partners { margin-top: 0; flex-shrink: 0; }
       .kf-partners-label {
-        font-size: 0.65rem;
-        color: rgba(7,5,14,0.5);
+        font-size: 0.7rem;
+        color: rgba(7,5,14,0.55);
         margin-bottom: 1.25rem;
+        display: block;
       }
       .kf-logos { display: none; }
       .kf-logos-marquee { display: block; }
