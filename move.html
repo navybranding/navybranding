@@ -384,6 +384,194 @@
       .mv-card { padding: 1.5rem 1rem 1.25rem; }
       .mv-logo-move { height: 28px; }
     }
+
+    /* ════════════════════════════════
+       KEY FACTS SECTION
+    ════════════════════════════════ */
+    .kf {
+      background: #EEE6DA;
+      padding: 5.5rem 5vw 4.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .kf-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .kf-eyebrow {
+      font-family: var(--font);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(7,5,14,0.38);
+      margin-bottom: 0.8rem;
+    }
+    .kf-title {
+      font-family: var(--font);
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-weight: 400;
+      letter-spacing: 0.005em;
+      line-height: 1.08;
+      color: #07050e;
+    }
+    .kf-sub {
+      margin-top: 0.85rem;
+      font-family: var(--font);
+      font-size: clamp(0.9rem, 1.1vw, 1rem);
+      font-weight: 400;
+      line-height: 1.65;
+      letter-spacing: 0.02em;
+      color: rgba(7,5,14,0.48);
+      max-width: 50ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Cards grid */
+    .kf-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .kf-card {
+      background: #100a14;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Foto */
+    .kf-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .kf-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    /* Placeholder Anna Beatriz */
+    .kf-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #241428 0%, #120a10 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .kf-placeholder-icon {
+      width: 4.5rem;
+      height: 4.5rem;
+      border-radius: 50%;
+      border: 1px solid rgba(244,234,224,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(244,234,224,0.18);
+      font-size: 1.4rem;
+    }
+
+    /* Corpo do card */
+    .kf-body {
+      padding: 1.35rem 1.4rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      flex: 1;
+    }
+    .kf-card-label {
+      font-family: var(--font);
+      font-size: 0.56rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(244,234,224,0.28);
+    }
+    .kf-name {
+      font-family: var(--font);
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #F4EAE0;
+      margin-top: 0.2rem;
+    }
+    .kf-role {
+      font-family: var(--font);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: rgba(244,234,224,0.32);
+    }
+    .kf-quote {
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+      color: rgba(244,234,224,0.38);
+      margin-top: 0.6rem;
+    }
+
+    /* Parceiros */
+    .kf-partners {
+      max-width: 1100px;
+      margin: 3.5rem auto 0;
+      text-align: center;
+    }
+    .kf-partners-label {
+      font-family: var(--font);
+      font-size: 0.56rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(7,5,14,0.32);
+      margin-bottom: 2rem;
+    }
+    .kf-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem 3rem;
+    }
+    .kf-logos img {
+      height: 26px;
+      width: auto;
+      /* inverte para cinza chumbo */
+      filter: brightness(0) saturate(0) opacity(0.32);
+      transition: opacity 0.2s;
+    }
+    .kf-logos img:hover { filter: brightness(0) saturate(0) opacity(0.55); }
+
+    /* Responsivo key facts */
+    @media (max-width: 860px) {
+      .kf { padding: 3.5rem 1.5rem 3rem; }
+      .kf-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin: 0 auto;
+        gap: 1rem;
+      }
+      .kf-photo, .kf-photo-placeholder { aspect-ratio: 4/3; }
+      .kf-photo img { object-position: center 20%; }
+    }
+    @media (max-width: 480px) {
+      .kf-title { font-size: 2.1rem; }
+      .kf-logos { gap: 1.25rem 2rem; }
+      .kf-logos img { height: 20px; }
+    }
   </style>
 </head>
 <body>
@@ -485,6 +673,80 @@
   </div><!-- /mv-right -->
 
 </div><!-- /mv-page -->
+
+<!-- ════ KEY FACTS ════ -->
+<section class="kf">
+
+  <div class="kf-header">
+    <p class="kf-eyebrow">Quem está por trás</p>
+    <h2 class="kf-title">Os fundadores</h2>
+    <p class="kf-sub">Estratégia, criatividade e gestão no mesmo time. É assim que marcas se tornam as únicas escolhidas.</p>
+  </div>
+
+  <div class="kf-grid">
+
+    <!-- Matheus Fellipe -->
+    <div class="kf-card">
+      <div class="kf-photo">
+        <img src="assets/socio-matheus-fellipe.jpg" alt="Matheus Fellipe">
+      </div>
+      <div class="kf-body">
+        <span class="kf-card-label">Co-Founder · Estratégia de Marca</span>
+        <p class="kf-name">Matheus Fellipe</p>
+        <p class="kf-role">Brand Strategist</p>
+        <p class="kf-quote">"Posicionamento não é o que você diz. É o único lugar que você ocupa na mente do seu cliente."</p>
+      </div>
+    </div>
+
+    <!-- Anna Beatriz (placeholder) -->
+    <div class="kf-card">
+      <div class="kf-photo-placeholder">
+        <div class="kf-placeholder-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M4 20c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="kf-body">
+        <span class="kf-card-label">Co-Founder · Gestão & Operações</span>
+        <p class="kf-name">Anna Beatriz</p>
+        <p class="kf-role">COO</p>
+        <p class="kf-quote">"A operação que garante que cada entrega da Navy seja tão boa quanto a estratégia que a criou."</p>
+      </div>
+    </div>
+
+    <!-- Matheus Marins -->
+    <div class="kf-card">
+      <div class="kf-photo">
+        <img src="assets/socio-matheus-marins.png" alt="Matheus Marins">
+      </div>
+      <div class="kf-body">
+        <span class="kf-card-label">Co-Founder · Direção Criativa</span>
+        <p class="kf-name">Matheus Marins</p>
+        <p class="kf-role">Creative Director</p>
+        <p class="kf-quote">"Identidade visual é a parte que fala antes de você. Ela precisa dizer a coisa certa antes mesmo de a pessoa ler uma palavra."</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Parceiros -->
+  <div class="kf-partners">
+    <p class="kf-partners-label">Marcas que já trabalhamos</p>
+    <div class="kf-logos">
+      <img src="assets/69e9f491acef69f9818ce334_Client-1.svg" alt="">
+      <img src="assets/69e9f4a05d31ea04c8f9f86a_Client-2.svg" alt="">
+      <img src="assets/69e9f4d0e415495ae306feb2_Client-3.svg" alt="">
+      <img src="assets/69e9f4c62222c4e2399adb2d_Client-4.svg" alt="">
+      <img src="assets/69e9f4ae5b2f1cfeee4e5276_Client-5.svg" alt="">
+      <img src="assets/69e9f4f4c88302e5028f9618_Client-6.svg" alt="">
+      <img src="assets/69e9f4ba9599b080b301b9f2_Client-7.svg" alt="">
+    </div>
+  </div>
+
+</section>
+<!-- ════ /KEY FACTS ════ -->
 
 <script>
 (function(){
