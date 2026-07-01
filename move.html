@@ -932,7 +932,7 @@
 
       <div class="mv-form-nav">
         <button type="button" class="mv-btn" id="mv-submit2">
-          <span id="mv-btn2-label">Enviar candidatura</span>
+          <span id="mv-btn2-label">Enviar aplicação</span>
           <span class="mv-btn-icon">↗</span>
         </button>
         <button type="button" class="mv-btn-back" id="mv-back-2b">← Voltar</button>
@@ -1175,14 +1175,14 @@
           var msg = (data.errors && data.errors.map(function(err){ return err.message; }).join(', ')) || 'Erro ao enviar. Tente novamente.';
           alert(msg);
           btn.disabled = false;
-          label.textContent = 'Enviar candidatura';
+          label.textContent = 'Enviar aplicação';
         });
       }
     })
     .catch(function(){
       alert('Erro de conexão. Verifique sua internet e tente novamente.');
       btn.disabled = false;
-      label.textContent = 'Enviar candidatura';
+      label.textContent = 'Enviar aplicação';
     });
   });
 })();
