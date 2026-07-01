@@ -134,13 +134,20 @@
       vertical-align: middle;
       position: relative; top: -5px;
     }
+    .mv-reg {
+      font-size: 0.32em;
+      vertical-align: super;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
     .mv-body {
       margin-top: 2rem;
       font-size: clamp(0.95rem, 1.1vw, 1.05rem);
       font-weight: 400;
       line-height: 1.75;
       letter-spacing: 0.02em;
-      color: var(--muted);
+      color: rgba(244,234,224,0.78);
       max-width: 44ch;
     }
 
@@ -351,7 +358,7 @@
       .mv-right { order: 2; width: 100%; align-items: stretch; }
 
       .mv-headline { font-size: clamp(2.8rem, 11vw, 5rem); }
-      .mv-body { max-width: 100%; font-size: 0.95rem; }
+      .mv-body { display: none; }
 
       .mv-logo-move {
         height: 40px;
@@ -572,10 +579,12 @@
 
     /* ── Logo items (desktop + marquee) ── */
     .kf-logo-item {
-      height: 26px;
+      height: auto;
+      max-height: 28px;
       width: auto;
+      max-width: 180px;
       flex-shrink: 0;
-      filter: brightness(0) opacity(0.3);
+      filter: brightness(0) opacity(0.32);
       display: block;
     }
 
@@ -625,10 +634,13 @@
       }
       .kf-grid::-webkit-scrollbar { display: none; }
       .kf-card {
-        flex: 0 0 78vw;
-        max-width: 300px;
+        flex: 0 0 68vw;
+        max-width: 260px;
         scroll-snap-align: start;
+        scroll-snap-stop: always;
         aspect-ratio: 3/4;
+        transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform;
       }
       /* Logo marquee em vez de static */
       .kf-partners { margin-top: 0; flex-shrink: 0; }
@@ -637,8 +649,8 @@
     }
     @media (max-width: 480px) {
       .kf-title { font-size: 2.1rem; }
-      .kf-card { flex: 0 0 82vw; }
-      .kf-logos-track img { width: 480px; }
+      .kf-card { flex: 0 0 72vw; }
+      .kf-logos-track .kf-logo-item { max-height: 22px; max-width: 140px; }
     }
   </style>
 </head>
@@ -656,10 +668,10 @@
   <!-- Esquerda: headline + texto -->
   <div class="mv-left">
     <h1 class="mv-headline">
-      Aplique para<br>o MOVE.
+      Aplique para<br>o MOVE<sup class="mv-reg">®</sup>.
     </h1>
     <p class="mv-body">
-      Se você chegou até aqui e quer entender como podemos posicionar sua marca para vender mais, aplique para o MOVE. Te chamamos em alguns instantes para apresentar o próximo passo.
+      Se você chegou até aqui e quer entender como podemos posicionar sua marca para vender mais, aplique para o MOVE<sup class="mv-reg">®</sup>. Te chamamos em alguns instantes para apresentar o próximo passo.
     </p>
   </div>
 
@@ -671,7 +683,7 @@
     <div class="mv-card">
 
     <div id="mv-form-state">
-      <p class="mv-card-title">Aplique para o MOVE</p>
+      <p class="mv-card-title">Aplique para o MOVE<sup class="mv-reg" style="color:inherit">®</sup></p>
       <p class="mv-card-sub">Deixa seus dados e a Navy<br>te chama em alguns instantes.</p>
 
       <form class="mv-form" id="mv-form" novalidate>
@@ -703,7 +715,7 @@
         </div>
 
         <button type="submit" class="mv-btn" id="mv-submit">
-          <span id="mv-btn-label">Aplicar para o MOVE</span>
+          <span id="mv-btn-label">Aplicar para o MOVE<sup class="mv-reg" style="color:inherit">®</sup></span>
           <span class="mv-btn-icon">↗</span>
         </button>
 
@@ -799,36 +811,36 @@
 
     <!-- Desktop: grid estático -->
     <div class="kf-logos">
-      <img src="assets/navystudio_logo_00_Group_1171275522.svg"                   alt="Gelato de Grano"   class="kf-logo-item">
-      <img src="assets/navystudio_logo_05_TEMPO_RESORT_WEAR-12_2__Vectorized_.svg" alt="Tempo Resort Wear"  class="kf-logo-item">
-      <img src="assets/navystudio_logo_06_DUO_BRAND.svg"                           alt="Duo Brand"         class="kf-logo-item">
-      <img src="assets/navystudio_logo_04_Vector.svg"                              alt="NX"                class="kf-logo-item">
-      <img src="assets/navystudio_logo_11_LOVE_MISS.svg"                           alt="Love Miss"         class="kf-logo-item">
-      <img src="assets/navystudio_logo_07_5__Vectorized_.svg"                      alt="Las Batas"         class="kf-logo-item">
-      <img src="assets/logo-not-silly.png"                                         alt="Not Silly"         class="kf-logo-item">
-      <img src="assets/navystudio_logo_10_Vector.svg"                              alt="Dra. Charm"        class="kf-logo-item">
+      <img src="assets/cl-gelato-grano.svg"    alt="Gelato de Grano"  class="kf-logo-item">
+      <img src="assets/cl-tempo-resort-wear.svg" alt="Tempo Resort Wear" class="kf-logo-item">
+      <img src="assets/cl-duo-brand.svg"       alt="Duo Brand"        class="kf-logo-item">
+      <img src="assets/cl-nx.svg"              alt="NX"               class="kf-logo-item">
+      <img src="assets/cl-love-miss.svg"       alt="Love Miss"        class="kf-logo-item">
+      <img src="assets/cl-las-batas.svg"       alt="Las Batas"        class="kf-logo-item">
+      <img src="assets/cl-not-silly.svg"       alt="Not Silly"        class="kf-logo-item">
+      <img src="assets/cl-dra-charm.svg"       alt="Dra. Charm"       class="kf-logo-item">
     </div>
 
     <!-- Mobile: marquee infinito -->
     <div class="kf-logos-marquee">
       <div class="kf-logos-track">
-        <img src="assets/navystudio_logo_00_Group_1171275522.svg"                   alt="" class="kf-logo-item">
-        <img src="assets/navystudio_logo_05_TEMPO_RESORT_WEAR-12_2__Vectorized_.svg" alt="" class="kf-logo-item">
-        <img src="assets/navystudio_logo_06_DUO_BRAND.svg"                           alt="" class="kf-logo-item">
-        <img src="assets/navystudio_logo_04_Vector.svg"                              alt="" class="kf-logo-item">
-        <img src="assets/navystudio_logo_11_LOVE_MISS.svg"                           alt="" class="kf-logo-item">
-        <img src="assets/navystudio_logo_07_5__Vectorized_.svg"                      alt="" class="kf-logo-item">
-        <img src="assets/logo-not-silly.png"                                         alt="" class="kf-logo-item">
-        <img src="assets/navystudio_logo_10_Vector.svg"                              alt="" class="kf-logo-item">
+        <img src="assets/cl-gelato-grano.svg"    alt="" class="kf-logo-item">
+        <img src="assets/cl-tempo-resort-wear.svg" alt="" class="kf-logo-item">
+        <img src="assets/cl-duo-brand.svg"       alt="" class="kf-logo-item">
+        <img src="assets/cl-nx.svg"              alt="" class="kf-logo-item">
+        <img src="assets/cl-love-miss.svg"       alt="" class="kf-logo-item">
+        <img src="assets/cl-las-batas.svg"       alt="" class="kf-logo-item">
+        <img src="assets/cl-not-silly.svg"       alt="" class="kf-logo-item">
+        <img src="assets/cl-dra-charm.svg"       alt="" class="kf-logo-item">
         <!-- segunda volta para loop contínuo -->
-        <img src="assets/navystudio_logo_00_Group_1171275522.svg"                   alt="" class="kf-logo-item" aria-hidden="true">
-        <img src="assets/navystudio_logo_05_TEMPO_RESORT_WEAR-12_2__Vectorized_.svg" alt="" class="kf-logo-item" aria-hidden="true">
-        <img src="assets/navystudio_logo_06_DUO_BRAND.svg"                           alt="" class="kf-logo-item" aria-hidden="true">
-        <img src="assets/navystudio_logo_04_Vector.svg"                              alt="" class="kf-logo-item" aria-hidden="true">
-        <img src="assets/navystudio_logo_11_LOVE_MISS.svg"                           alt="" class="kf-logo-item" aria-hidden="true">
-        <img src="assets/navystudio_logo_07_5__Vectorized_.svg"                      alt="" class="kf-logo-item" aria-hidden="true">
-        <img src="assets/logo-not-silly.png"                                         alt="" class="kf-logo-item" aria-hidden="true">
-        <img src="assets/navystudio_logo_10_Vector.svg"                              alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/cl-gelato-grano.svg"    alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/cl-tempo-resort-wear.svg" alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/cl-duo-brand.svg"       alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/cl-nx.svg"              alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/cl-love-miss.svg"       alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/cl-las-batas.svg"       alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/cl-not-silly.svg"       alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/cl-dra-charm.svg"       alt="" class="kf-logo-item" aria-hidden="true">
       </div>
     </div>
   </div>
@@ -878,33 +890,75 @@
 (function(){
   var grid = document.querySelector('.kf-grid');
   if (!grid) return;
-  var idx = 0, timer, paused = false;
 
-  function cards() { return grid.querySelectorAll('.kf-card'); }
+  var idx = 0, timer, raf, touchX;
 
-  function advance() {
-    var c = cards();
-    if (!c.length) return;
-    idx = (idx + 1) % c.length;
-    var card = c[idx];
-    var pl = parseInt(getComputedStyle(grid).paddingLeft) || 0;
-    grid.scrollTo({ left: card.offsetLeft - pl, behavior: 'smooth' });
+  function isMobile() { return window.innerWidth <= 860; }
+
+  function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+  function animateTo(target, dur) {
+    cancelAnimationFrame(raf);
+    var start  = grid.scrollLeft;
+    var change = target - start;
+    if (Math.abs(change) < 2) return;
+    var t0 = null;
+    grid.style.scrollSnapType = 'none';
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      grid.scrollLeft = start + change * easeInOut(p);
+      if (p < 1) { raf = requestAnimationFrame(step); }
+      else { grid.scrollLeft = target; grid.style.scrollSnapType = ''; }
+    }
+    raf = requestAnimationFrame(step);
+  }
+
+  function goTo(n) {
+    var cards = grid.querySelectorAll('.kf-card');
+    var len = cards.length;
+    idx = ((n % len) + len) % len;
+    var card = cards[idx];
+    var pl = parseFloat(getComputedStyle(grid).paddingLeft) || 0;
+    animateTo(card.offsetLeft - pl, 620);
   }
 
   function start() {
-    if (window.innerWidth > 860) return;
+    if (!isMobile()) return;
     clearInterval(timer);
-    timer = setInterval(advance, 3200);
+    timer = setInterval(function(){ goTo(idx + 1); }, 3400);
   }
 
-  function pause(ms) {
+  function pause(ms) { clearInterval(timer); setTimeout(start, ms || 5500); }
+
+  // Touch: swipe manual + retoma auto-play depois
+  grid.addEventListener('touchstart', function(e) {
+    touchX = e.touches[0].clientX;
     clearInterval(timer);
-    setTimeout(start, ms || 5000);
-  }
+    cancelAnimationFrame(raf);
+    grid.style.scrollSnapType = 'x mandatory';
+  }, { passive: true });
+
+  grid.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 30) goTo(idx + (dx < 0 ? 1 : -1));
+    pause(5500);
+  }, { passive: true });
+
+  // Snap-change tracking (atualiza idx ao deslizar manualmente)
+  grid.addEventListener('scrollend', function() {
+    var cards = grid.querySelectorAll('.kf-card');
+    var pl = parseFloat(getComputedStyle(grid).paddingLeft) || 0;
+    var nearest = 0, minDist = Infinity;
+    cards.forEach(function(c, i) {
+      var dist = Math.abs(c.offsetLeft - pl - grid.scrollLeft);
+      if (dist < minDist) { minDist = dist; nearest = i; }
+    });
+    idx = nearest;
+  }, { passive: true });
 
   start();
-  grid.addEventListener('touchstart', function(){ pause(6000); }, { passive: true });
-  window.addEventListener('resize', function(){ clearInterval(timer); start(); });
+  window.addEventListener('resize', function(){ clearInterval(timer); idx = 0; start(); });
 })();
 </script>
 </body>
