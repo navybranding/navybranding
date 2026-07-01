@@ -561,17 +561,20 @@
     /* Parceiros */
     .kf-partners {
       max-width: 1100px;
-      margin: 3.5rem auto 0;
+      margin: 0 auto;
       text-align: center;
     }
     .kf-partners-label {
+      display: block;
       font-family: var(--font);
       font-size: 0.65rem;
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: rgba(7,5,14,0.7);
-      margin-bottom: 2rem;
+      text-align: center;
+      margin-top: 3.5rem;
+      padding-bottom: 1rem;
     }
     .kf-logos {
       display: flex;
@@ -647,11 +650,10 @@
       /* Logo marquee em vez de static */
       .kf-partners { margin-top: 0; flex-shrink: 0; }
       .kf-partners-label {
-        display: block;
-        font-size: 0.82rem;
+        font-size: 0.78rem;
         color: rgba(7,5,14,0.85);
-        padding-top: 0.5rem;
-        margin-bottom: 1.25rem;
+        margin-top: 0;
+        padding: 0 1.5rem 0.75rem;
       }
       .kf-logos { display: none; }
       .kf-logos-marquee { display: block; }
@@ -809,9 +811,11 @@
 
   </div>
 
+  <!-- Label de parceiros: filho direto do .kf para não ser afetado por overflow filho -->
+  <p class="kf-partners-label">Marcas que já trabalhamos</p>
+
   <!-- Parceiros -->
   <div class="kf-partners">
-    <p class="kf-partners-label">Marcas que já trabalhamos</p>
 
     <!-- Desktop: grid estático -->
     <div class="kf-logos">
