@@ -914,6 +914,19 @@
   });
   if (pending <= 0) init();
 })();
+
+/* ── Inicia carrossel na Anna Beatriz (card central) ── */
+(function(){
+  if (window.innerWidth > 860) return;
+  var grid = document.querySelector('.kf-grid');
+  if (!grid) return;
+  var cards = grid.querySelectorAll('.kf-card');
+  if (cards.length < 2) return;
+  requestAnimationFrame(function(){
+    var card = cards[1];
+    grid.scrollLeft = card.offsetLeft - (grid.clientWidth - card.offsetWidth) / 2;
+  });
+})();
 </script>
 </body>
 </html>
