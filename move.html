@@ -562,14 +562,21 @@
     }
     .kf-logos {
       display: flex;
+      align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem 3.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .kf-logos-strip {
-      width: 100%;
-      max-width: 860px;
-      height: auto;
-      display: block;
+
+    /* ── Logo items (desktop + marquee) ── */
+    .kf-logo-item {
+      height: 26px;
+      width: auto;
+      flex-shrink: 0;
       filter: brightness(0) opacity(0.3);
+      display: block;
     }
 
     /* ── Marquee logos (mobile) ── */
@@ -584,22 +591,24 @@
     }
     .kf-logos-track {
       display: flex;
-      animation: kf-marquee 20s linear infinite;
+      align-items: center;
+      gap: 3rem;
+      animation: kf-marquee 28s linear infinite;
       will-change: transform;
-    }
-    .kf-logos-track img {
-      flex-shrink: 0;
-      width: 640px;
-      height: auto;
-      display: block;
-      filter: brightness(0) opacity(0.3);
-      padding: 0 1rem;
+      padding: 0.25rem 0;
     }
 
     /* Responsivo key facts */
     @media (max-width: 860px) {
-      .kf { padding: 3.5rem 0 3rem; overflow: hidden; }
-      .kf-title { padding: 0 1.5rem; }
+      .kf {
+        padding: 4rem 0 3.5rem;
+        overflow: hidden;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+      .kf-header { padding: 0 1.5rem; }
       /* Carrossel de cards */
       .kf-grid {
         display: flex;
@@ -612,22 +621,23 @@
         scrollbar-width: none;
         max-width: unset;
         margin: 0;
+        flex-shrink: 0;
       }
       .kf-grid::-webkit-scrollbar { display: none; }
       .kf-card {
-        flex: 0 0 calc(85vw - 1.5rem);
+        flex: 0 0 78vw;
         max-width: 300px;
         scroll-snap-align: start;
         aspect-ratio: 3/4;
       }
       /* Logo marquee em vez de static */
-      .kf-partners { margin-top: 3rem; }
+      .kf-partners { margin-top: 0; flex-shrink: 0; }
       .kf-logos { display: none; }
       .kf-logos-marquee { display: block; }
     }
     @media (max-width: 480px) {
       .kf-title { font-size: 2.1rem; }
-      .kf-card { flex: 0 0 80vw; }
+      .kf-card { flex: 0 0 82vw; }
       .kf-logos-track img { width: 480px; }
     }
   </style>
@@ -748,11 +758,9 @@
       <div class="kf-photo">
         <img src="assets/socio-matheus-fellipe.jpg" alt="Matheus Fellipe">
       </div>
-      <span class="kf-card-label">Co-Founder · Growth</span>
       <div class="kf-body">
         <p class="kf-name">Matheus Fellipe</p>
         <p class="kf-role">Head of Growth</p>
-        <p class="kf-quote">"Crescimento não é acidente. É o resultado de uma marca que foi construída pra vender antes de anunciar."</p>
       </div>
     </div>
 
@@ -766,11 +774,9 @@
           </svg>
         </div>
       </div>
-      <span class="kf-card-label">Co-Founder · Direção Criativa</span>
       <div class="kf-body">
         <p class="kf-name">Anna Beatriz</p>
         <p class="kf-role">Creative Director</p>
-        <p class="kf-quote">"Branding não é estética. É a diferença entre uma marca que atrai e uma que nem é notada."</p>
       </div>
     </div>
 
@@ -779,11 +785,9 @@
       <div class="kf-photo">
         <img src="assets/socio-matheus-marins.png" alt="Matheus Marins">
       </div>
-      <span class="kf-card-label">Co-Founder · Estratégia & Conteúdo</span>
       <div class="kf-body">
         <p class="kf-name">Matheus Marins</p>
         <p class="kf-role">Brand Strategist & Content</p>
-        <p class="kf-quote">"O que você fala, como você fala e pra quem você fala define se a sua marca é lembrada ou esquecida."</p>
       </div>
     </div>
 
@@ -792,16 +796,39 @@
   <!-- Parceiros -->
   <div class="kf-partners">
     <p class="kf-partners-label">Marcas que já trabalhamos</p>
-    <!-- Desktop: estático -->
+
+    <!-- Desktop: grid estático -->
     <div class="kf-logos">
-      <img src="assets/logos-v2.svg" alt="Marcas parceiras" class="kf-logos-strip">
+      <img src="assets/navystudio_logo_00_Group_1171275522.svg"                   alt="Gelato de Grano"   class="kf-logo-item">
+      <img src="assets/navystudio_logo_05_TEMPO_RESORT_WEAR-12_2__Vectorized_.svg" alt="Tempo Resort Wear"  class="kf-logo-item">
+      <img src="assets/navystudio_logo_06_DUO_BRAND.svg"                           alt="Duo Brand"         class="kf-logo-item">
+      <img src="assets/navystudio_logo_04_Vector.svg"                              alt="NX"                class="kf-logo-item">
+      <img src="assets/navystudio_logo_11_LOVE_MISS.svg"                           alt="Love Miss"         class="kf-logo-item">
+      <img src="assets/navystudio_logo_07_5__Vectorized_.svg"                      alt="Las Batas"         class="kf-logo-item">
+      <img src="assets/logo-not-silly.png"                                         alt="Not Silly"         class="kf-logo-item">
+      <img src="assets/navystudio_logo_10_Vector.svg"                              alt="Dra. Charm"        class="kf-logo-item">
     </div>
+
     <!-- Mobile: marquee infinito -->
     <div class="kf-logos-marquee">
       <div class="kf-logos-track">
-        <img src="assets/logos-v2.svg" alt="">
-        <img src="assets/logos-v2.svg" alt="">
-        <img src="assets/logos-v2.svg" alt="">
+        <img src="assets/navystudio_logo_00_Group_1171275522.svg"                   alt="" class="kf-logo-item">
+        <img src="assets/navystudio_logo_05_TEMPO_RESORT_WEAR-12_2__Vectorized_.svg" alt="" class="kf-logo-item">
+        <img src="assets/navystudio_logo_06_DUO_BRAND.svg"                           alt="" class="kf-logo-item">
+        <img src="assets/navystudio_logo_04_Vector.svg"                              alt="" class="kf-logo-item">
+        <img src="assets/navystudio_logo_11_LOVE_MISS.svg"                           alt="" class="kf-logo-item">
+        <img src="assets/navystudio_logo_07_5__Vectorized_.svg"                      alt="" class="kf-logo-item">
+        <img src="assets/logo-not-silly.png"                                         alt="" class="kf-logo-item">
+        <img src="assets/navystudio_logo_10_Vector.svg"                              alt="" class="kf-logo-item">
+        <!-- segunda volta para loop contínuo -->
+        <img src="assets/navystudio_logo_00_Group_1171275522.svg"                   alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/navystudio_logo_05_TEMPO_RESORT_WEAR-12_2__Vectorized_.svg" alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/navystudio_logo_06_DUO_BRAND.svg"                           alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/navystudio_logo_04_Vector.svg"                              alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/navystudio_logo_11_LOVE_MISS.svg"                           alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/navystudio_logo_07_5__Vectorized_.svg"                      alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/logo-not-silly.png"                                         alt="" class="kf-logo-item" aria-hidden="true">
+        <img src="assets/navystudio_logo_10_Vector.svg"                              alt="" class="kf-logo-item" aria-hidden="true">
       </div>
     </div>
   </div>
@@ -845,6 +872,39 @@
       document.getElementById('mv-success').style.display = 'flex';
     }, 500);
   });
+})();
+
+/* ── Auto-play carrossel de founders (mobile) ── */
+(function(){
+  var grid = document.querySelector('.kf-grid');
+  if (!grid) return;
+  var idx = 0, timer, paused = false;
+
+  function cards() { return grid.querySelectorAll('.kf-card'); }
+
+  function advance() {
+    var c = cards();
+    if (!c.length) return;
+    idx = (idx + 1) % c.length;
+    var card = c[idx];
+    var pl = parseInt(getComputedStyle(grid).paddingLeft) || 0;
+    grid.scrollTo({ left: card.offsetLeft - pl, behavior: 'smooth' });
+  }
+
+  function start() {
+    if (window.innerWidth > 860) return;
+    clearInterval(timer);
+    timer = setInterval(advance, 3200);
+  }
+
+  function pause(ms) {
+    clearInterval(timer);
+    setTimeout(start, ms || 5000);
+  }
+
+  start();
+  grid.addEventListener('touchstart', function(){ pause(6000); }, { passive: true });
+  window.addEventListener('resize', function(){ clearInterval(timer); start(); });
 })();
 </script>
 </body>
