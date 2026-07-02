@@ -730,6 +730,19 @@ div.problems_home_image img {
   .hero_home_svg { width:90%!important; }
 }
 
+/* ── Mobile: hero visível mesmo sem animações GSAP ───────────── */
+@media (max-width:767px) {
+  /* Paths do logo hero: GSAP coloca yPercent:120 → força posição 0 */
+  .hero_home_svg path                  { transform:none!important; opacity:1!important; visibility:visible!important; }
+  /* SVG de conteúdo: GSAP coloca autoAlpha:0 → força visível */
+  .hero_home_content_svg,
+  .hero_home_content_svg path          { opacity:1!important; transform:none!important; visibility:visible!important; }
+  /* SplitText: cada linha fica com overflow:hidden + yPercent:110 */
+  .hero_home_content_p .split-line     { overflow:visible!important; transform:none!important; opacity:1!important; }
+  /* Container geral do content_p */
+  .hero_home_content_p                 { overflow:visible!important; }
+}
+
 /* ── "Ver todos": mesmo fundo beige da seção works (beige-200) ───── */
 .works_home_cta { background-color:#ddddd5!important; }
 
