@@ -479,7 +479,6 @@ html.lenis, html.lenis body {
 .hero_home_img { transform: translate(0px, 0px) !important; }
 
 /* ── Menu: fundo sólido + altura total ──────────────────────────────── */
-.menu_wrap    { background-color: #1C0010 !important; }
 .menu_contain {
   transition: transform 0.5s cubic-bezier(0.16,1,0.35,1) !important;
   background-color: #1C0010 !important;
@@ -2338,26 +2337,6 @@ document.querySelectorAll('.case-reel-slideshow').forEach(function(reel) {
 })();
 </script>
 
-<div id="n-dbg" style="display:none;position:fixed;bottom:70px;left:0;right:0;padding:6px 8px;background:#B50642;color:#F4EAE0;font-family:monospace;font-size:10px;z-index:9999999;text-align:center;word-break:break-all;line-height:1.4;"></div>
-<script>
-window.addEventListener('load',function(){
-  if(window.innerWidth>1024)return;
-  try{
-    var h=document.querySelector('.hero_home_wrap');
-    var cs=h?getComputedStyle(h):{};
-    var el=document.elementFromPoint(window.innerWidth/2,window.innerHeight/2);
-    var d=document.getElementById('n-dbg');
-    if(d){
-      d.innerHTML='W:'+window.innerWidth+' hero:'+
-        (cs.opacity||'?')+'/'+( cs.visibility||'?')+
-        ' center:'+(el?el.tagName+'.'+el.className.slice(0,22):'?')+
-        '<br>bundle:'+(document.body.classList.contains('bundle-loaded')?'✓ carregou':'✗ FALHOU')+
-        ' body-classes:'+document.body.className.slice(0,40);
-      d.style.display='block';
-    }
-  }catch(e){var d2=document.getElementById('n-dbg');if(d2){d2.textContent='ERR:'+e;d2.style.display='block';}}
-});
-</script>
 <script>
 /* ── Mobile menu + modal "sobre" ──────────────────────────────────────── */
 (function(){
