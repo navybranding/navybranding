@@ -534,7 +534,7 @@ html.lenis, html.lenis body {
   .services_eyebrow_logo { height: 1.75rem !important; }
   .process_home_content { padding-left: 1rem !important; padding-right: 1rem !important; }
 }
-</style><script src="js/bundle.js?v=5" defer></script><script>(function(){function killHowlerBGM(){if(typeof Howler==='undefined'||!Howler._howls)return;Howler._howls.forEach(function(h){if(h._html5||(h._src&&h._src[0]&&h._src[0].indexOf('bgm')>-1)){h.volume(0);try{h.pause();}catch(e){}h.on('play',function(){h.volume(0);});}});}setTimeout(killHowlerBGM,100);setTimeout(killHowlerBGM,500);setTimeout(killHowlerBGM,2000);})();</script><style id="navy-fix">
+</style><script src="js/bundle.js?v=6" defer></script><script>(function(){function killHowlerBGM(){if(typeof Howler==='undefined'||!Howler._howls)return;Howler._howls.forEach(function(h){if(h._html5||(h._src&&h._src[0]&&h._src[0].indexOf('bgm')>-1)){h.volume(0);try{h.pause();}catch(e){}h.on('play',function(){h.volume(0);});}});}setTimeout(killHowlerBGM,100);setTimeout(killHowlerBGM,500);setTimeout(killHowlerBGM,2000);})();</script><style id="navy-fix">
 /* ── Fonte: Owners no lugar de Khteka/Animo ───────────────────────── */
 :root {
   --_typography---font--primary-family:   "owners", Arial, sans-serif;
@@ -796,6 +796,124 @@ body:not(.bundle-loaded) .hero_home_content_p { color:#F4EAE0!important; }
   .works_home_link.u-grid-custom { display:flex!important; flex-flow:column!important; }
   .works_home_cover.u-ratio-1-1  { aspect-ratio:16/9!important; height:auto!important; width:100%!important; }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVY IDV — PALETA, TIPOGRAFIA E UX MELHORADOS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Corpo: fundo explícito + suavização de fonte ──────────────── */
+body { background-color:#1C0010!important; -webkit-font-smoothing:antialiased!important; }
+
+/* ── Eyebrow: ponto accent crimson ─────────────────────────────── */
+.g_eyebrow_circle {
+  background-color:rgba(181,6,66,0.8)!important;
+  width:.5rem!important; height:.5rem!important;
+}
+
+/* ── Tipografia: line-heights editoriais ────────────────────────── */
+.u-text-style-display                      { line-height:0.92!important; }
+.u-text-style-h1, .u-text-style-h2        { line-height:1.0!important; }
+.u-text-style-h3                           { line-height:1.05!important; }
+.u-text-style-h4                           { line-height:1.2!important; }
+.u-text-style-h5, .u-text-style-h6        { line-height:1.35!important; }
+.u-text-style-main, .u-text-style-small,
+.u-text-style-large                        { line-height:1.55!important; }
+
+/* ── Hero: texto legível sobre imagem ───────────────────────────── */
+.hero_home_content_p { color:#F4EAE0!important; line-height:1.2!important; }
+
+/* ── Works: tag "ver case →" crimson no hover ───────────────────── */
+.cn-open-tag {
+  position:absolute!important; bottom:1rem!important; left:1rem!important; z-index:10!important;
+  font-family:"owners",Arial,sans-serif!important; font-size:.6875rem!important;
+  font-weight:500!important; letter-spacing:.1em!important; text-transform:uppercase!important;
+  color:#F4EAE0!important; background-color:#B50642!important;
+  padding:.3rem .7rem!important; border-radius:3px!important;
+  pointer-events:none!important; opacity:0!important; transform:translateY(6px)!important;
+  transition:opacity .25s ease, transform .25s ease!important;
+}
+@media (hover:hover) and (pointer:fine) {
+  .works_home_cover:hover .cn-open-tag { opacity:1!important; transform:translateY(0)!important; }
+}
+/* Works overlay: tom navy wine */
+.works_home_overlay { background-color:rgba(28,0,16,0.82)!important; }
+
+/* ── Stats/Problems: cores ──────────────────────────────────────── */
+.problems_home_heading.u-text-style-h1 { color:#F4EAE0!important; line-height:1.0!important; }
+
+/* ── Services: hierarquia visual ────────────────────────────────── */
+.services_home_heading.u-text-style-h2           { color:#F4EAE0!important; }
+.services_home_subtitle.u-text-style-h5          { color:rgba(244,234,224,0.65)!important; line-height:1.4!important; }
+.services_home_testimonee.u-text-style-small     { color:rgba(244,234,224,0.5)!important; }
+
+/* ── Process: tipografia dos itens ──────────────────────────────── */
+.process_home_content_heading.u-text-style-h6 { color:#F4EAE0!important; }
+.process_home_content-p.u-text-style-small    { color:rgba(244,234,224,0.65)!important; }
+
+/* ── FAQ: bordas beige + cores ──────────────────────────────────── */
+.faq_home_heading.u-text-style-h2  { color:#F4EAE0!important; }
+.g_faq_list                        { border-top:1px solid rgba(244,234,224,0.08)!important; }
+.g_faq_item                        { border-bottom:1px solid rgba(244,234,224,0.08)!important; }
+.accordion_css_item_body p,
+.accordion_css_item_body           { color:rgba(244,234,224,0.65)!important; line-height:1.6!important; }
+
+/* ── Gap section ────────────────────────────────────────────────── */
+.gap_home_inner_heading { color:#F4EAE0!important; }
+
+/* ── Footer: cor dos links ──────────────────────────────────────── */
+.footer_nav_span.u-text-style-h3 { color:#F4EAE0!important; }
+
+/* ── Dots do carrossel (stats + services) ───────────────────────── */
+.slider-dots {
+  display:flex!important; align-items:center!important;
+  gap:.375rem!important; margin-top:1.5rem!important;
+}
+.slider-dot {
+  width:.3125rem!important; height:.3125rem!important; border-radius:50%!important;
+  flex-shrink:0!important; background-color:rgba(244,234,224,0.18)!important;
+  border:none!important; padding:0!important; cursor:pointer!important;
+  transition:width .35s ease, background-color .35s ease, border-radius .35s ease!important;
+}
+.slider-dot.is-active {
+  width:1.5rem!important; border-radius:.1875rem!important;
+  background-color:#F4EAE0!important;
+}
+.slider-dot:hover:not(.is-active) { background-color:rgba(244,234,224,0.4)!important; }
+
+/* ── Mobile ≤ 767px ─────────────────────────────────────────────── */
+@media (max-width:767px) {
+  /* Hero: overlay sutil para legibilidade do texto */
+  .hero_home_overlay { opacity:0.42!important; }
+
+  /* Hero texto h4: cabe confortavelmente no mobile */
+  .hero_home_content_p.u-text-style-h4 {
+    font-size:clamp(1.625rem,6.5vw,2.5rem)!important;
+  }
+
+  /* Works: espaço entre cards */
+  .works_home_list { gap:2rem!important; }
+
+  /* FAQ heading: tamanho adequado no mobile */
+  .faq_home_heading.u-text-style-h2 { font-size:clamp(1.75rem,7vw,3rem)!important; }
+
+  /* Footer: padding inferior */
+  .footer_bottom { padding-top:1.75rem!important; }
+
+  /* Dots: espaçamento no mobile */
+  .slider-dots { margin-top:1.25rem!important; }
+}
+
+/* ── Small mobile ≤ 479px ───────────────────────────────────────── */
+@media (max-width:479px) {
+  /* Hero texto: cabe em telas menores */
+  .hero_home_content_p.u-text-style-h4 {
+    font-size:clamp(1.375rem,6vw,1.75rem)!important;
+  }
+  /* Works heading: proporcional */
+  .works_home_heading.u-text-style-display {
+    font-size:clamp(2rem,10vw,3.5rem)!important;
+  }
+}
 </style>
 <script>
 (function(){
@@ -807,8 +925,20 @@ body:not(.bundle-loaded) .hero_home_content_p { color:#F4EAE0!important; }
     var section = list.closest('section') || list.parentElement.parentElement.parentElement.parentElement;
     var dynEl = section ? section.querySelector('.testimonials_dynamic_value') : null;
     var cur = 0;
+    var dotsWrap = document.createElement('div');
+    dotsWrap.className = 'slider-dots';
+    var dots = Array.from(items).map(function(_, i) {
+      var d = document.createElement('button');
+      d.className = 'slider-dot'; d.type = 'button';
+      d.setAttribute('aria-label', 'item ' + (i + 1));
+      d.addEventListener('click', function() { cur = i; show(cur); });
+      dotsWrap.appendChild(d);
+      return d;
+    });
+    list.after(dotsWrap);
     function show(i) {
       items.forEach(function(el, idx) { el.classList.toggle('is-active', idx === i); });
+      dots.forEach(function(d, idx) { d.classList.toggle('is-active', idx === i); });
       if (dynEl) dynEl.textContent = i + 1;
     }
     show(0);
