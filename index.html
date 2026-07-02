@@ -730,17 +730,22 @@ div.problems_home_image img {
   .hero_home_svg { width:90%!important; }
 }
 
-/* ── Mobile: hero visível mesmo sem animações GSAP ───────────── */
+/* ── Mobile: hero forçado visível (bypassa GSAP/SplitText) ───── */
 @media (max-width:767px) {
-  /* Paths do logo hero: GSAP coloca yPercent:120 → força posição 0 */
-  .hero_home_svg path                  { transform:none!important; opacity:1!important; visibility:visible!important; }
-  /* SVG de conteúdo: GSAP coloca autoAlpha:0 → força visível */
-  .hero_home_content_svg,
-  .hero_home_content_svg path          { opacity:1!important; transform:none!important; visibility:visible!important; }
-  /* SplitText: cada linha fica com overflow:hidden + yPercent:110 */
-  .hero_home_content_p .split-line     { overflow:visible!important; transform:none!important; opacity:1!important; }
-  /* Container geral do content_p */
-  .hero_home_content_p                 { overflow:visible!important; }
+  /* Hero section: visível independente do GSAP */
+  .hero_home_wrap         { visibility:visible!important; opacity:1!important; }
+  /* Reset nuclear: todos os filhos do hero ficam visíveis */
+  .hero_home_wrap *       { opacity:1!important; visibility:visible!important; transform:none!important; clip-path:none!important; overflow:visible!important; }
+  /* SplitText cria .split-line (wrapper overflow:hidden) com filho animado */
+  .hero_home_content_p .split-line,
+  .hero_home_content_p .split-line > * { overflow:visible!important; transform:none!important; opacity:1!important; }
+  /* Texto: cor garantida (beige sobre fundo escuro) */
+  .hero_home_content_p    { color:#F4EAE0!important; overflow:visible!important; }
+  /* Overlay e fade: permanecem transparentes */
+  .hero_home_overlay,
+  .hero_home_fade         { opacity:0!important; }
+  /* Canvas: oculto no mobile */
+  .hero_canvas_item       { display:none!important; opacity:0!important; }
 }
 
 /* ── "Ver todos": mesmo fundo beige da seção works (beige-200) ───── */
